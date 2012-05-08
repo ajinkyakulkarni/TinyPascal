@@ -1,5 +1,5 @@
-#ifndef _CHARACTER_TABLE_H_
-#define _CHARACTER_TABLE_H_
+#ifndef _CHAR_TABLE_H_
+#define _CHAR_TABLE_H_
 
 #include <map>
 #include "character_category.h"
@@ -10,7 +10,7 @@ public:
 
     character_table();
 
-    const inline character_category operator[](char value) const;
+    character_category operator[](char value);
 
 private:
 

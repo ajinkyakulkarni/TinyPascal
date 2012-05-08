@@ -58,7 +58,7 @@ private:
     }
 
     const inline character_category getCurrentCharCategory() {
-        return table_[currentCharacter()];
+        table_[currentCharacter()];
     }
 
     const inline character_category getPeekCharCategory() {
@@ -207,7 +207,7 @@ private:
     character_table table_;
     int currentLine_;
     char currentCharacter_;
-    std::string currentTokenText_;
+    string currentTokenText_;
 
 
     void convertToSpace() {

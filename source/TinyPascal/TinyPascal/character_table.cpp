@@ -24,7 +24,7 @@ character_table::character_table() {
     map_['\t'] = TAB;
 }
 
-const inline character_category character_table::operator[](char value) const {
+character_category character_table::operator[](char value) {
     character_category category = map_.at(value);
     return category;
 }

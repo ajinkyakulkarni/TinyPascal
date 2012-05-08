@@ -3,7 +3,7 @@
 using std::string;
 using std::ifstream;
 
-file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), index_(0), stream_(filename.c_str()) {
+file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), index_(0), buffer_(""), stream_(filename.c_str()) {
     //fillBuffer();
 }
 

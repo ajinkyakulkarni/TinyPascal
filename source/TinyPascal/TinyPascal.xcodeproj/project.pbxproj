@@ -40,6 +40,7 @@
 		C04E3E91DA9F1DD6974A1339 /* character_category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = character_category.h; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A133D /* file_buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_buffer.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A133F /* file_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_buffer.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1341 /* Example1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +85,17 @@
 				C04E3E91DA9F1DD6974A132F /* token_type.h */,
 				C04E3E91DA9F1DD6974A132D /* TinyPascal.1 */,
 				C04E3E91DA9F1DD6974A132B /* main.cpp */,
+				C04E3E91DA9F1DD6974A1340 /* Samples */,
 			);
 			path = TinyPascal;
+			sourceTree = "<group>";
+		};
+		C04E3E91DA9F1DD6974A1340 /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				C04E3E91DA9F1DD6974A1341 /* Example1.txt */,
+			);
+			path = Samples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

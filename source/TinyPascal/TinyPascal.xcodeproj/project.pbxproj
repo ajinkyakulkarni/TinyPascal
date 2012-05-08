@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		C04E3E91DA9F1DD6974A132C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A132B /* main.cpp */; };
 		C04E3E91DA9F1DD6974A1331 /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1330 /* token.cpp */; };
+		C04E3E91DA9F1DD6974A1334 /* scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1333 /* scanner.cpp */; };
+		C04E3E91DA9F1DD6974A1337 /* character_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1336 /* character_table.cpp */; };
+		C04E3E91DA9F1DD6974A133B /* scanner_state.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A133A /* scanner_state.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +34,13 @@
 		C04E3E91DA9F1DD6974A132F /* token_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = token_type.h; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1330 /* token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = token.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1332 /* token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = token.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1333 /* scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1335 /* scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1336 /* character_table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = character_table.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1338 /* character_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = character_table.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1339 /* character_category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = character_category.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A133A /* scanner_state.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_state.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A133C /* scanner_state.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner_state.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +73,13 @@
 		C04E3E91DA9F1DD6974A132A /* TinyPascal */ = {
 			isa = PBXGroup;
 			children = (
+				C04E3E91DA9F1DD6974A133C /* scanner_state.h */,
+				C04E3E91DA9F1DD6974A133A /* scanner_state.cpp */,
+				C04E3E91DA9F1DD6974A1339 /* character_category.h */,
+				C04E3E91DA9F1DD6974A1338 /* character_table.h */,
+				C04E3E91DA9F1DD6974A1336 /* character_table.cpp */,
+				C04E3E91DA9F1DD6974A1335 /* scanner.h */,
+				C04E3E91DA9F1DD6974A1333 /* scanner.cpp */,
 				C04E3E91DA9F1DD6974A1332 /* token.h */,
 				C04E3E91DA9F1DD6974A1330 /* token.cpp */,
 				C04E3E91DA9F1DD6974A132F /* token_type.h */,
@@ -122,6 +139,9 @@
 			files = (
 				C04E3E91DA9F1DD6974A132C /* main.cpp in Sources */,
 				C04E3E91DA9F1DD6974A1331 /* token.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1334 /* scanner.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1337 /* character_table.cpp in Sources */,
+				C04E3E91DA9F1DD6974A133B /* scanner_state.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +153,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -142,6 +164,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;
 			};
@@ -152,6 +175,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -167,6 +192,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/include;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -206,6 +232,7 @@
 				C04E3E91DA9F1DD6974A1326 /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

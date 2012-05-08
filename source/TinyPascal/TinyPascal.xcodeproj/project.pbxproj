@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C04E3E91DA9F1DD6974A132C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A132B /* main.cpp */; };
+		C04E3E91DA9F1DD6974A1331 /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1330 /* token.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,10 @@
 		C04E3E91DA9F1DD6974A1322 /* TinyPascal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TinyPascal; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04E3E91DA9F1DD6974A132B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A132D /* TinyPascal.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TinyPascal.1; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A132E /* character_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = character_type.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A132F /* token_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = token_type.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1330 /* token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = token.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1332 /* token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = token.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +63,10 @@
 		C04E3E91DA9F1DD6974A132A /* TinyPascal */ = {
 			isa = PBXGroup;
 			children = (
+				C04E3E91DA9F1DD6974A1332 /* token.h */,
+				C04E3E91DA9F1DD6974A1330 /* token.cpp */,
+				C04E3E91DA9F1DD6974A132F /* token_type.h */,
+				C04E3E91DA9F1DD6974A132E /* character_type.h */,
 				C04E3E91DA9F1DD6974A132D /* TinyPascal.1 */,
 				C04E3E91DA9F1DD6974A132B /* main.cpp */,
 			);
@@ -112,6 +121,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C04E3E91DA9F1DD6974A132C /* main.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1331 /* token.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

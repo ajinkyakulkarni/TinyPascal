@@ -11,7 +11,7 @@
 		C04E3E91DA9F1DD6974A1331 /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1330 /* token.cpp */; };
 		C04E3E91DA9F1DD6974A1334 /* scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1333 /* scanner.cpp */; };
 		C04E3E91DA9F1DD6974A1337 /* character_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1336 /* character_table.cpp */; };
-		C04E3E91DA9F1DD6974A133B /* scanner_state.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A133A /* scanner_state.cpp */; };
+		C04E3E91DA9F1DD6974A133E /* file_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A133D /* file_buffer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,7 +30,6 @@
 		C04E3E91DA9F1DD6974A1322 /* TinyPascal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TinyPascal; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04E3E91DA9F1DD6974A132B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A132D /* TinyPascal.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TinyPascal.1; sourceTree = "<group>"; };
-		C04E3E91DA9F1DD6974A132E /* character_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = character_type.h; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A132F /* token_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = token_type.h; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1330 /* token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = token.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1332 /* token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = token.h; sourceTree = "<group>"; };
@@ -39,8 +38,8 @@
 		C04E3E91DA9F1DD6974A1336 /* character_table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = character_table.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1338 /* character_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = character_table.h; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1339 /* character_category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = character_category.h; sourceTree = "<group>"; };
-		C04E3E91DA9F1DD6974A133A /* scanner_state.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_state.cpp; sourceTree = "<group>"; };
-		C04E3E91DA9F1DD6974A133C /* scanner_state.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner_state.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A133D /* file_buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_buffer.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A133F /* file_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_buffer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +72,8 @@
 		C04E3E91DA9F1DD6974A132A /* TinyPascal */ = {
 			isa = PBXGroup;
 			children = (
-				C04E3E91DA9F1DD6974A133C /* scanner_state.h */,
-				C04E3E91DA9F1DD6974A133A /* scanner_state.cpp */,
+				C04E3E91DA9F1DD6974A133F /* file_buffer.h */,
+				C04E3E91DA9F1DD6974A133D /* file_buffer.cpp */,
 				C04E3E91DA9F1DD6974A1339 /* character_category.h */,
 				C04E3E91DA9F1DD6974A1338 /* character_table.h */,
 				C04E3E91DA9F1DD6974A1336 /* character_table.cpp */,
@@ -83,7 +82,6 @@
 				C04E3E91DA9F1DD6974A1332 /* token.h */,
 				C04E3E91DA9F1DD6974A1330 /* token.cpp */,
 				C04E3E91DA9F1DD6974A132F /* token_type.h */,
-				C04E3E91DA9F1DD6974A132E /* character_type.h */,
 				C04E3E91DA9F1DD6974A132D /* TinyPascal.1 */,
 				C04E3E91DA9F1DD6974A132B /* main.cpp */,
 			);
@@ -141,7 +139,7 @@
 				C04E3E91DA9F1DD6974A1331 /* token.cpp in Sources */,
 				C04E3E91DA9F1DD6974A1334 /* scanner.cpp in Sources */,
 				C04E3E91DA9F1DD6974A1337 /* character_table.cpp in Sources */,
-				C04E3E91DA9F1DD6974A133B /* scanner_state.cpp in Sources */,
+				C04E3E91DA9F1DD6974A133E /* file_buffer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

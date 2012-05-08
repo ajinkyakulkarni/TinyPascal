@@ -1,5 +1,5 @@
-#ifndef _CHARACTER_CATEGORY_H_
-#define _CHARACTER_CATEGORY_H_
+#ifndef _CHARACTER_CATEGORY_H
+#define _CHARACTER_CATEGORY_H
 enum character_category {
     LETTER,
     DIGIT,

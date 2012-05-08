@@ -4,6 +4,7 @@
 #include "token.h"
 #include <string>
 #include <memory>
+#include "character_category.h"
 
 class scanner_impl;
 

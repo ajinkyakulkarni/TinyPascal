@@ -10,8 +10,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #ifndef _TOKEN_TYPE_
 #define _TOKEN_TYPE_
 
-enum token_type{
+enum token_type {
     NO_TOKEN,
+    RESERVED_WORD,
     IDENTIFIER,
     NUMBER,
     STRING,

@@ -10,6 +10,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "scanner.h"
 #include "character_table.h"
 #include "file_buffer.h"
+#include "reserved_words_table.h"
 #include <boost/noncopyable.hpp>
 
 using std::string;
@@ -98,6 +99,15 @@ public:
 
     void read() {
         current_ = buffer_.character();
+
+        if (current_ == '\n') {
+            line_++;
+            current_ = ' ';
+        }
+
+        if (current_ == '\t') {
+            current_ = ' ';
+        }
     }
 
     void undo() {
@@ -109,11 +119,15 @@ public:
     }
 
     character_category peekType() {
-        return table_[buffer_.peek()];
+        return character_table_[buffer_.peek()];
     }
 
     character_category currentType() {
-        return table_[current()];
+        return character_table_[current()];
+    }
+
+    token_type getReservedWordToken(string const& text) {
+        return reserved_words_table_[text];
     }
 
     shared_ptr<token> getNextToken() {
@@ -135,7 +149,7 @@ public:
         return shared_ptr<token>(new token(END_OF_FILE));
     }
 
-    void assignIndentifierProcessor() {
+    void assignIdentifierProcessor() {
         processor_ = shared_ptr<token_processor>(new identifier_processor(*this));
     }
 
@@ -151,14 +165,6 @@ public:
         processor_ = shared_ptr<token_processor>(new identifier_processor(*this));
     }
 
-    void assignNewLineProcessor() {
-        processor_ = shared_ptr<token_processor>(new identifier_processor(*this));
-    }
-
-    void assignTabProcessor() {
-        processor_ = shared_ptr<token_processor>(new identifier_processor(*this));
-    }
-
     void assignSpecialCharacterProcessor() {
         processor_ = shared_ptr<token_processor>(new special_character_processor(*this));
     }
@@ -166,7 +172,8 @@ public:
 private:
     string filename_;
     file_buffer buffer_;
-    character_table table_;
+    character_table character_table_;
+    reserved_words_table reserved_words_table_;
     shared_ptr<token_processor> processor_;
     char current_;
     int line_;
@@ -195,7 +202,7 @@ token_processor::~token_processor() {
 void token_processor::configure() {
     switch (scanner_.currentType()) {
         case LETTER:
-            scanner_.assignIndentifierProcessor();
+            scanner_.assignIdentifierProcessor();
             break;
         case DIGIT:
             scanner_.assignNumericProcessor();
@@ -205,12 +212,6 @@ void token_processor::configure() {
             break;
         case QUOTE:
             scanner_.assignStringProcessor();
-            break;
-        case NEWLINE:
-            scanner_.assignNewLineProcessor();
-            break;
-        case TAB:
-            scanner_.assignTabProcessor();
             break;
         default:
             scanner_.assignSpecialCharacterProcessor();
@@ -238,6 +239,10 @@ shared_ptr<token> identifier_processor::processToken() {
         currentTokenText.push_back(scanner_.current());
     }
 
+    token_type reserved = scanner_.getReservedWordToken(currentTokenText);
+    if (reserved != NO_TOKEN)
+        return shared_ptr<token>(new token(RESERVED_WORD, currentTokenText));
+
     return shared_ptr<token>(new token(IDENTIFIER, currentTokenText));
 }
 
@@ -262,10 +267,10 @@ shared_ptr<token> numeric_processor::processToken() {
                 scanner_.read();
                 currentTokenText.push_back(scanner_.current());
             }
-			if(scanner_.canPeek() && (scanner_.peekType() == DOT)){
-				currentTokenText.push_back(scanner_.peek());
-				return shared_ptr<token>(new token(ERROR, currentTokenText));
-			}
+            if (scanner_.canPeek() && (scanner_.peekType() == DOT)) {
+                currentTokenText.push_back(scanner_.peek());
+                return shared_ptr<token>(new token(ERROR, currentTokenText));
+            }
         } else {
             shared_ptr<token> result(new token(ERROR, currentTokenText));
             scanner_.undo();

@@ -29,8 +29,6 @@ character_table::character_table() {
     map_['.'] = DOT;
     map_[' '] = SPACE;
     map_['\''] = QUOTE;
-    map_['\n'] = NEWLINE;
-    map_['\t'] = TAB;
 }
 
 character_category character_table::operator[](char value) {

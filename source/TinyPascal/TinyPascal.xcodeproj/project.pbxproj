@@ -12,6 +12,7 @@
 		C04E3E91DA9F1DD6974A1334 /* scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1333 /* scanner.cpp */; };
 		C04E3E91DA9F1DD6974A1337 /* character_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1336 /* character_table.cpp */; };
 		C04E3E91DA9F1DD6974A133E /* file_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A133D /* file_buffer.cpp */; };
+		C04E3E91DA9F1DD6974A1343 /* reserved_words_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1342 /* reserved_words_table.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,8 @@
 		C04E3E91DA9F1DD6974A133D /* file_buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = file_buffer.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A133F /* file_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = file_buffer.h; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1341 /* Example1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example1.txt; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1342 /* reserved_words_table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = reserved_words_table.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1344 /* reserved_words_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reserved_words_table.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 		C04E3E91DA9F1DD6974A132A /* TinyPascal */ = {
 			isa = PBXGroup;
 			children = (
+				C04E3E91DA9F1DD6974A1344 /* reserved_words_table.h */,
+				C04E3E91DA9F1DD6974A1342 /* reserved_words_table.cpp */,
 				C04E3E91DA9F1DD6974A133F /* file_buffer.h */,
 				C04E3E91DA9F1DD6974A133D /* file_buffer.cpp */,
 				C04E3E91DA9F1DD6974A1339 /* character_category.h */,
@@ -150,6 +155,7 @@
 				C04E3E91DA9F1DD6974A1334 /* scanner.cpp in Sources */,
 				C04E3E91DA9F1DD6974A1337 /* character_table.cpp in Sources */,
 				C04E3E91DA9F1DD6974A133E /* file_buffer.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1343 /* reserved_words_table.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,221 +1,135 @@
 #include "scanner.h"
 #include "character_table.h"
 #include "file_buffer.h"
+#include <boost/noncopyable.hpp>
 
 using std::string;
 using std::shared_ptr;
 
-class scanner_impl {
+class scanner_impl;
+
+class token_processor : boost::noncopyable{
 public:
-    scanner_impl(string const & filename) : filename_(filename), buffer_(filename, 10) {
+
+	token_processor(scanner_impl& scanner);
+	virtual ~token_processor() = 0;
+
+	void configure();
+	virtual shared_ptr<token> processToken() = 0;
+protected:
+	scanner_impl& scanner_;
+};
+
+class start_processor : public token_processor{
+public:
+	start_processor(scanner_impl& scanner);
+	shared_ptr<token> processToken();
+};
+
+class identifier_processor : public token_processor{
+public:
+	identifier_processor(scanner_impl& scanner);
+	shared_ptr<token> processToken();
+};
+
+class numeric_processor : public token_processor{
+public:
+	numeric_processor(scanner_impl& scanner);
+	shared_ptr<token> processToken();
+};
+
+class special_character_processor : public token_processor{
+public:
+	special_character_processor(scanner_impl& scanner);
+	shared_ptr<token> processToken();
+};
+
+class whitespace_processor : public token_processor{
+public:
+	whitespace_processor(scanner_impl& scanner);
+	shared_ptr<token> processToken();
+};
+
+class scanner_impl : boost::noncopyable {
+public:
+    scanner_impl(string const & filename) : filename_(filename), buffer_(filename, 10), processor_(new start_processor(*this)) {
 
     }
+
+	bool empty() {
+        return !(buffer_.canPeek());
+    }
+
+	char current(){
+		return current_;
+	}
+
+	char peek(){
+		return buffer_.peek();
+	}
+		
+	void read(){
+		current_ = buffer_.character();
+	}
+
+	void undo(){
+		buffer_.rewind();
+	}
+
+	bool canPeek(){
+		return buffer_.canPeek();
+	}
+
+	character_category peekType(){
+		return table_[buffer_.peek()];
+	}
+
+	character_category currenType(){
+		return table_[current()];
+	}
 
     shared_ptr<token> getNextToken() {
-        while (moreCharactersAvailable()) {
 
-            extractCharacter();
+		if(this->empty()) 
+			return shared_ptr<token>(new token(END_OF_FILE));
 
-            switch (getCurrentCharCategory()) {
-                case LETTER:
-                    return processWord();
-                case DIGIT:
-                    return processNumber();
-                case SPACE:
-                    processSpace();
-                    break;
-                case QUOTE:
-                    return processString();
-                case NEWLINE:
-                    currentCharacter_ = ' ';
-                    processSpace();
-                    incrementLine();
-                    break;
-                case TAB:
-                    convertToSpace();
-                    processSpace();
-                    break;
-                default:
-                    return processSpecial();
-            }
-        }
-        return shared_ptr<token>(new token(END_OF_FILE));
+		read();
+		processor_->configure();
+		return processor_->processToken();
     }
 
-private:
+	void assignIndentifierProcessor(){
+		processor_ = shared_ptr<identifier_processor>(new identifier_processor(*this));
+	}
 
+	void assignWhitespaceProcessor(){
+		processor_ = shared_ptr<whitespace_processor>(new whitespace_processor(*this));
+	}
 
-    inline bool moreCharactersAvailable() {
-        return static_cast<bool>(buffer_.canPeek());
-    }
+	void assignStringProcessor(){
+		processor_ = shared_ptr<identifier_processor>(new identifier_processor(*this));
+	}
 
-    inline const char currentCharacter() {
-        return currentCharacter_;
-    }
+	void assignNewLineProcessor(){
+		processor_ = shared_ptr<identifier_processor>(new identifier_processor(*this));
+	}
 
-    inline const char currentPeekCharacter() {
-        return buffer_.peek();
-    }
+	void assignTabProcessor(){
+		processor_ = shared_ptr<identifier_processor>(new identifier_processor(*this));
+	}
 
-    const inline character_category getCurrentCharCategory() {
-        return table_[currentCharacter()];
-    }
-
-    const inline character_category getPeekCharCategory() {
-        return table_[currentPeekCharacter()];
-    }
-
-    inline void extractCharacter() {
-		currentCharacter_ = buffer_.character();
-    }
-
-    inline void pushTokenText() {
-        currentTokenText_ += currentCharacter_;
-    }
-
-    inline void incrementLine() {
-        currentLine_++;
-    }
-
-    inline void extractAndPush() {
-        extractCharacter();
-        pushTokenText();
-    }
-
-    void returnCurrentCharacter() {
-        buffer_.rewind();
-    }
-
-    shared_ptr<token> getTokenAndFlush(token_type type) {
-        shared_ptr<token> result(new token(type, currentTokenText_));
-        currentTokenText_ = "";
-        return result;
-    }
-
-    void processSpace() {
-        while (getPeekCharCategory() == SPACE) {
-            currentCharacter_ = buffer_.character();
-        }
-    }
-
-    shared_ptr<token> processString() {
-        currentTokenText_ += currentCharacter_;
-        currentCharacter_ = buffer_.peek();
-        while (currentCharacter_ != '\'' && currentCharacter_) {
-            extractAndPush();
-        }
-
-        return getTokenAndFlush(STRING);
-    }
-
-    shared_ptr<token> processNumber() {
-        pushTokenText();
-
-        while (getPeekCharCategory() == DIGIT) {
-            extractAndPush();
-        }
-
-        if (getPeekCharCategory() == DOT) {
-            extractAndPush();
-            if (getPeekCharCategory() == DIGIT) {
-                while (getPeekCharCategory() == DIGIT) {
-                    extractAndPush();
-                }
-            } else {
-                returnCurrentCharacter();
-                return getTokenAndFlush(ERROR);
-            }
-        }
-
-        return getTokenAndFlush(NUMBER);
-    }
-
-    shared_ptr<token> processWord() {
-        pushTokenText();
-        while (getPeekCharCategory() == DIGIT || getPeekCharCategory() == LETTER) {
-            extractAndPush();
-        }
-
-        return getTokenAndFlush(IDENTIFIER);
-    }
-
-    shared_ptr<token> processSpecial() {
-        pushTokenText();
-        switch (currentCharacter()) {
-            case '^':
-                return getTokenAndFlush(UPARROW);
-            case '*':
-                return getTokenAndFlush(STAR);
-            case '(':
-                return getTokenAndFlush(LPAREN);
-            case ')':
-                return getTokenAndFlush(RPAREN);
-            case '-':
-                return getTokenAndFlush(MINUS);
-            case '+':
-                return getTokenAndFlush(PLUS);
-            case '=':
-                return getTokenAndFlush(EQUAL);
-            case '[':
-                return getTokenAndFlush(LBRACKET);
-            case ']':
-                return getTokenAndFlush(RBRACKET);
-            case ';':
-                return getTokenAndFlush(SEMICOLON);
-            case ',':
-                return getTokenAndFlush(COMMA);
-            case '/':
-                return getTokenAndFlush(SLASH);
-            case ':':
-                if (buffer_.canPeek() && buffer_.peek() == '=') {
-                    extractAndPush();
-                    return getTokenAndFlush(COLONEQUAL);
-                } else {
-                    return getTokenAndFlush(COLON);
-                }
-            case '<':
-                if (buffer_.canPeek() && buffer_.peek() == '=') {
-                    extractAndPush();
-                    return getTokenAndFlush(LE);
-                } else {
-                    return getTokenAndFlush(LT);
-                }
-            case '>':
-                if (buffer_.canPeek() && buffer_.peek() == '=') {
-                    extractAndPush();
-                    return getTokenAndFlush(GE);
-                } else {
-                    return getTokenAndFlush(GT);
-                }
-            case '.':
-                if (buffer_.canPeek() && buffer_.peek() == '.') {
-                    extractAndPush();
-                    return getTokenAndFlush(DOTDOT);
-                } else {
-                    return getTokenAndFlush(PERIOD);
-                }
-            default:
-                return getTokenAndFlush(ERROR);
-
-        }
-    }
-
+	void assignSpecialCharacterProcessor(){
+		processor_ = shared_ptr<identifier_processor>(new identifier_processor(*this));
+	}
 
 private:
     string filename_;
     file_buffer buffer_;
     character_table table_;
-    int currentLine_;
-    char currentCharacter_;
-    string currentTokenText_;
-
-
-    void convertToSpace() {
-        currentCharacter_ = ' ';
-    }
-
+    shared_ptr<token_processor> processor_;
+	char current_;
+	int line_;
 };
-
 
 scanner::scanner(std::string const & filename) {
     impl_ = new scanner_impl(filename);
@@ -227,6 +141,187 @@ scanner::~scanner() {
 
 shared_ptr<token> scanner::getNextToken() {
     return impl_->getNextToken();
+}
+
+token_processor::token_processor(scanner_impl& scanner) : scanner_(scanner){
+
+}
+
+token_processor::~token_processor(){
+
+};
+
+void token_processor::configure(){
+	
+	switch (scanner_.current()) {
+            case LETTER:
+                scanner_.assignIndentifierProcessor();
+				break;
+            case DIGIT:
+                 scanner_.assignIndentifierProcessor();
+				 break;
+            case SPACE:
+                 scanner_.assignIndentifierProcessor();
+                break;
+            case QUOTE:
+                 scanner_.assignStringProcessor();
+				 break;
+            case NEWLINE:
+                 scanner_.assignNewLineProcessor();
+                break;
+            case TAB:
+                 scanner_.assignTabProcessor();
+                break;
+            default:
+                 scanner_.assignSpecialCharacterProcessor();
+        }
+}
+
+start_processor::start_processor(scanner_impl& scanner) : token_processor(scanner){
+
+}
+
+shared_ptr<token> start_processor::processToken(){
+	return shared_ptr<token>(new token(NO_TOKEN,""));
+}
+
+identifier_processor::identifier_processor(scanner_impl& scanner) : token_processor(scanner){
+
+}
+
+shared_ptr<token> identifier_processor::processToken(){
+	string currentTokenText;
+	currentTokenText.push_back(scanner_.current());
+
+	while (scanner_.canPeek() && (scanner_.peekType() == DIGIT || scanner_.peekType() == LETTER)) {
+		scanner_.read();
+		currentTokenText.push_back(scanner_.current());
+    }
+
+	return shared_ptr<token>(new token(IDENTIFIER,currentTokenText));
+}
+
+numeric_processor::numeric_processor(scanner_impl& scanner) : token_processor(scanner){
+
+}
+
+shared_ptr<token> numeric_processor::processToken(){
+	string currentTokenText;
+	currentTokenText.push_back(scanner_.current());
+
+	while (scanner_.canPeek() && (scanner_.peekType() == DIGIT)) {
+		scanner_.read();
+		currentTokenText.push_back(scanner_.current());
+    }
+
+	if (scanner_.canPeek() && scanner_.peekType() == DOT) {
+		scanner_.read();
+		currentTokenText.push_back(scanner_.current());
+        if (scanner_.canPeek() && scanner_.peekType() == DIGIT) {
+            while (scanner_.canPeek() && scanner_.peekType() == DIGIT) {
+				scanner_.read();
+                currentTokenText.push_back(scanner_.current());
+            }
+        } else {
+			shared_ptr<token> result(new token(ERROR,currentTokenText));
+            scanner_.undo();
+            return result;
+        }
+    }
+
+	return shared_ptr<token>(new token(IDENTIFIER,currentTokenText));
+}
+
+special_character_processor::special_character_processor(scanner_impl& scanner) : token_processor(scanner){
+
+}
+
+shared_ptr<token> special_character_processor::processToken(){
+
+	string currentTokenText;
+	currentTokenText.push_back(scanner_.current());
+
+	switch (scanner_.current()) {
+            case '^':
+                return shared_ptr<token>(new token(UPARROW,currentTokenText));
+            case '*':
+                return shared_ptr<token>(new token(STAR,currentTokenText));
+            case '(':
+                return shared_ptr<token>(new token(LPAREN,currentTokenText));
+            case ')':
+                return shared_ptr<token>(new token(RPAREN,currentTokenText));
+            case '-':
+                return shared_ptr<token>(new token(MINUS,currentTokenText));
+            case '+':
+                return shared_ptr<token>(new token(PLUS,currentTokenText));
+            case '=':
+                return shared_ptr<token>(new token(EQUAL,currentTokenText));
+            case '[':
+                return shared_ptr<token>(new token(LBRACKET,currentTokenText));
+            case ']':
+                return shared_ptr<token>(new token(RBRACKET,currentTokenText));
+            case ';':
+                return shared_ptr<token>(new token(SEMICOLON,currentTokenText));
+            case ',':
+                return shared_ptr<token>(new token(COMMA,currentTokenText));
+            case '/':
+                return shared_ptr<token>(new token(SLASH,currentTokenText));
+            case ':':
+                if (scanner_.canPeek() && scanner_.peek() == '=') {
+					scanner_.read();
+					currentTokenText.push_back(scanner_.current());
+
+                    return shared_ptr<token>(new token(COLONEQUAL,currentTokenText));
+                } else {
+                    return shared_ptr<token>(new token(COLON,currentTokenText));
+                }
+            case '<':
+				if (scanner_.canPeek() && scanner_.peek() == '=') {
+					scanner_.read();
+					currentTokenText.push_back(scanner_.current());
+
+                    return shared_ptr<token>(new token(LE,currentTokenText));
+                } else {
+                    return shared_ptr<token>(new token(LT,currentTokenText));
+                }
+            case '>':
+                if (scanner_.canPeek() && scanner_.peek() == '=') {
+					scanner_.read();
+					currentTokenText.push_back(scanner_.current());
+
+                    return shared_ptr<token>(new token(GE,currentTokenText));
+                } else {
+                    return shared_ptr<token>(new token(GT,currentTokenText));
+                }
+            case '.':
+                if (scanner_.canPeek() && scanner_.peek() == '.') {
+					scanner_.read();
+					currentTokenText.push_back(scanner_.current());
+
+                    return shared_ptr<token>(new token(DOTDOT,currentTokenText));
+                } else {
+                    return shared_ptr<token>(new token(PERIOD,currentTokenText));
+                }
+            default:
+               return shared_ptr<token>(new token(ERROR,currentTokenText));
+
+        }
+}
+
+whitespace_processor::whitespace_processor(scanner_impl& scanner) : token_processor(scanner){
+
+}
+
+shared_ptr<token> whitespace_processor::processToken(){
+	string currentTokenText;
+	currentTokenText.push_back(scanner_.current());
+
+	while (scanner_.canPeek() && scanner_.peekType() == SPACE) {
+		scanner_.read();
+		currentTokenText.push_back(scanner_.current());
+    }
+
+	return shared_ptr<token>(new token(NO_TOKEN,currentTokenText));
 }
 
 

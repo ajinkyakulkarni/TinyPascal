@@ -4,11 +4,11 @@
 #include "token.h"
 #include <string>
 #include <memory>
+#include <boost/noncopyable.hpp>
 
 class scanner_impl;
 
-
-class scanner {
+class scanner : boost::noncopyable{
 public:
 
     scanner(std::string const & filename_);
@@ -17,12 +17,7 @@ public:
     std::shared_ptr<token> getNextToken();
 
 private:
-
-    scanner(scanner const & other);
-    scanner& operator = (scanner const & other);
-
     scanner_impl *impl_;
-
 };
 
 #endif

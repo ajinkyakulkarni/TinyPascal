@@ -3,17 +3,15 @@
 
 #include <map>
 #include "character_category.h"
+#include <boost/noncopyable.hpp>
 
-class character_table {
+class character_table : boost::noncopyable{
 public:
 
     character_table();
     character_category operator[](char value);
 
 private:
-
-    character_table(character_table const &);
-    character_table& operator = (character_table);
     std::map<char, character_category > map_;
 };
 

@@ -5,8 +5,9 @@
 #include <iostream>
 #include <boost/iostreams/device/file.hpp>
 #include <boost/iostreams/stream.hpp>
+#include <boost/noncopyable.hpp>
 
-class file_buffer {
+class file_buffer : boost::noncopyable{
 public:
 
 	file_buffer(std::string const & filename, int bufferSize);
@@ -19,10 +20,6 @@ public:
 	void rewind();
 
 private:
-
-	file_buffer(file_buffer const &);
-	file_buffer& operator = (file_buffer);
-	
 	const std::string filename_;
 	const int bufferSize_;
 	boost::iostreams::stream_buffer<boost::iostreams::file_sink> buffer_;

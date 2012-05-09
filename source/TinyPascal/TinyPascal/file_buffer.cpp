@@ -1,32 +1,41 @@
+/*
+Copyright (c) 2011 Blair Davidson
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 #include "file_buffer.h"
+#include <boost/iostreams/device/file.hpp>
+#include <boost/iostreams/stream.hpp>
 
 using std::string;
 using std::ifstream;
 
-file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), index_(0), buffer_(""), stream_(filename.c_str()) {
-    //fillBuffer();
+file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), buffer_(filename, bufferSize), stream_(&buffer_){
+	
 }
 
 file_buffer::~file_buffer() {
-    if (stream_.is_open()) {
-        stream_.close();
-    }
+
 }
 
 bool file_buffer::canPeek() {
-    return 0;
+	return stream_.peek();
 }
 
 char file_buffer::peek() {
-    return 0;
+    return stream_.peek();
 }
 
-char file_buffer::getCharacter() {
-    return 0;
+char file_buffer::character() {
+    return stream_.get();
 }
 
-void file_buffer::returnCharacter(char i) {
-
+void file_buffer::rewind() {
+	stream_.unget();
 }
 
 

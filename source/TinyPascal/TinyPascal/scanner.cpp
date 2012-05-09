@@ -246,7 +246,7 @@ numeric_processor::numeric_processor(scanner_impl& scanner) : token_processor(sc
 }
 
 shared_ptr<token> numeric_processor::processToken() {
-    string currentTokenText;
+    string currentTokenText("");
     currentTokenText.push_back(scanner_.current());
 
     while (scanner_.canPeek() && (scanner_.peekType() == DIGIT)) {
@@ -278,7 +278,7 @@ special_character_processor::special_character_processor(scanner_impl& scanner) 
 
 shared_ptr<token> special_character_processor::processToken() {
 
-    string currentTokenText;
+    string currentTokenText("");
     currentTokenText.push_back(scanner_.current());
 
     switch (scanner_.current()) {
@@ -353,7 +353,7 @@ whitespace_processor::whitespace_processor(scanner_impl& scanner) : token_proces
 }
 
 shared_ptr<token> whitespace_processor::processToken() {
-    string currentTokenText;
+    string currentTokenText("");
     currentTokenText.push_back(scanner_.current());
 
     while (scanner_.canPeek() && scanner_.peekType() == SPACE) {

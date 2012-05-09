@@ -1,4 +1,4 @@
-TinyPascal
+Tiny Pascal
 ==========
 
-Pascal compiler
+Educational Pascal compiler

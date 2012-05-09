@@ -30,12 +30,16 @@ token& token::operator = (token const & other) {
 
 }
 
-bool token::validToken() const {
-    return !((type_ == END_OF_FILE) || (type_ == ERROR));
+bool token::eof() const {
+    return ((type_ == END_OF_FILE));
 }
 
 bool token::isNoToken() const {
     return (type_ == NO_TOKEN);
+}
+
+bool token::isError() const {
+    return (type_ == ERROR);
 }
 
 token_type token::getType() const {

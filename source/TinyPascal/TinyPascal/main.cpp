@@ -23,8 +23,12 @@ int main(int argc, const char *argv[]) {
 
     shared_ptr<token> t = s.getNextToken();
 
-    while (t->validToken()) {
+    while (!t->eof()) {
         cout << "Processed token: " << t->getTypeAsString() << " - " << t->getText() << endl;
+
+		if(t->isError())
+			break;
+
         t = s.getNextToken();
     }
 

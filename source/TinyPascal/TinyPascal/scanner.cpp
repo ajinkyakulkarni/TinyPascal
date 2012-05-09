@@ -262,6 +262,10 @@ shared_ptr<token> numeric_processor::processToken() {
                 scanner_.read();
                 currentTokenText.push_back(scanner_.current());
             }
+			if(scanner_.canPeek() && (scanner_.peekType() == DOT)){
+				currentTokenText.push_back(scanner_.peek());
+				return shared_ptr<token>(new token(ERROR, currentTokenText));
+			}
         } else {
             shared_ptr<token> result(new token(ERROR, currentTokenText));
             scanner_.undo();
@@ -269,7 +273,7 @@ shared_ptr<token> numeric_processor::processToken() {
         }
     }
 
-    return shared_ptr<token>(new token(IDENTIFIER, currentTokenText));
+    return shared_ptr<token>(new token(NUMBER, currentTokenText));
 }
 
 special_character_processor::special_character_processor(scanner_impl& scanner) : token_processor(scanner) {

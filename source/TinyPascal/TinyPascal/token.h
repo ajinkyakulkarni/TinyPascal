@@ -24,9 +24,11 @@ public:
 
     token& operator = (token const & other);
 
-    bool validToken() const;
+    bool eof() const;
 
     bool isNoToken() const;
+
+	bool isError() const;
 
     token_type getType() const;
 

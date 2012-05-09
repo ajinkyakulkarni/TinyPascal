@@ -1,32 +1,32 @@
 #include "file_buffer.h"
+#include <boost/iostreams/device/file.hpp>
+#include <boost/iostreams/stream.hpp>
 
 using std::string;
 using std::ifstream;
 
-file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), index_(0), buffer_(""), stream_(filename.c_str()) {
-    //fillBuffer();
+file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), buffer_(filename, bufferSize), stream_(&buffer_){
+	
 }
 
 file_buffer::~file_buffer() {
-    if (stream_.is_open()) {
-        stream_.close();
-    }
+
 }
 
 bool file_buffer::canPeek() {
-    return 0;
+	return stream_.peek();
 }
 
 char file_buffer::peek() {
-    return 0;
+    return stream_.peek();
 }
 
-char file_buffer::getCharacter() {
-    return 0;
+char file_buffer::character() {
+    return stream_.get();
 }
 
-void file_buffer::returnCharacter(char i) {
-
+void file_buffer::rewind() {
+	stream_.unget();
 }
 
 

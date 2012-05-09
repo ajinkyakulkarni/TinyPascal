@@ -2,38 +2,31 @@
 #define _FILE_BUFFER_H_
 
 #include <string>
-#include <fstream>
+#include <iostream>
+#include <boost/iostreams/device/file.hpp>
+#include <boost/iostreams/stream.hpp>
 
 class file_buffer {
 public:
 
-    file_buffer(std::string const & filename, int bufferSize);
+	file_buffer(std::string const & filename, int bufferSize);
+	~file_buffer();
 
-    ~file_buffer();
+	bool canPeek();
+	char peek();
+	char character();
 
-    bool canPeek();
-
-    char peek();
-
-    char getCharacter();
-
-    void returnCharacter(char i);
+	void rewind();
 
 private:
 
-
-    file_buffer(file_buffer const &);
-
-    file_buffer& operator = (file_buffer);
-
-private:
-    const std::string filename_;
-    const int bufferSize_;
-    int index_;
-    std::string buffer_;
-    std::ifstream stream_;
-
-
+	file_buffer(file_buffer const &);
+	file_buffer& operator = (file_buffer);
+	
+	const std::string filename_;
+	const int bufferSize_;
+	boost::iostreams::stream_buffer<boost::iostreams::file_sink> buffer_;
+	std::istream stream_;
 };
 
 #endif

@@ -5,16 +5,20 @@
 #include "token_type.h"
 
 class token {
-    public:
+public:
+
     token(token_type const & type);
     token(token_type const & type, std::string const & text);
     token(token const & other);
     token& operator = (token const & other);
+
     bool validToken() const;
     token_type getType() const;
     std::string getText() const;
     std::string getTypeAsString() const;
-    private:
+
+private:
+
     token_type type_;
     std::string text_;
 };

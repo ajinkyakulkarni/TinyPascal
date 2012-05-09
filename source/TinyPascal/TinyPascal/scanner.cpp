@@ -58,7 +58,7 @@ private:
     }
 
     const inline character_category getCurrentCharCategory() {
-        table_[currentCharacter()];
+        return table_[currentCharacter()];
     }
 
     const inline character_category getPeekCharCategory() {
@@ -66,7 +66,7 @@ private:
     }
 
     inline void extractCharacter() {
-        currentCharacter_ = buffer_.getCharacter();
+		currentCharacter_ = buffer_.character();
     }
 
     inline void pushTokenText() {
@@ -83,7 +83,7 @@ private:
     }
 
     void returnCurrentCharacter() {
-        buffer_.returnCharacter(currentCharacter_);
+        buffer_.rewind();
     }
 
     shared_ptr<token> getTokenAndFlush(token_type type) {
@@ -94,7 +94,7 @@ private:
 
     void processSpace() {
         while (getPeekCharCategory() == SPACE) {
-            currentCharacter_ = buffer_.getCharacter();
+            currentCharacter_ = buffer_.character();
         }
     }
 

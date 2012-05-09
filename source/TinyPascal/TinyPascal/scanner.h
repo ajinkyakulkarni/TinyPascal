@@ -12,7 +12,6 @@ class scanner {
 public:
 
     scanner(std::string const & filename_);
-
     ~scanner();
 
     std::shared_ptr<token> getNextToken();
@@ -20,7 +19,6 @@ public:
 private:
 
     scanner(scanner const & other);
-
     scanner& operator = (scanner const & other);
 
     scanner_impl *impl_;

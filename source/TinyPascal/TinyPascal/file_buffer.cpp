@@ -8,14 +8,12 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #include "file_buffer.h"
-#include <boost/iostreams/device/file.hpp>
-#include <boost/iostreams/stream.hpp>
 
 using std::string;
 using std::ifstream;
 
-file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), buffer_(filename, bufferSize), stream_(&buffer_){
-	
+file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), stream_(filename) {
+
 }
 
 file_buffer::~file_buffer() {
@@ -23,7 +21,7 @@ file_buffer::~file_buffer() {
 }
 
 bool file_buffer::canPeek() {
-	return stream_.peek();
+    return stream_.peek();
 }
 
 char file_buffer::peek() {
@@ -35,7 +33,7 @@ char file_buffer::character() {
 }
 
 void file_buffer::rewind() {
-	stream_.unget();
+    stream_.unget();
 }
 
 

@@ -11,20 +11,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 using std::string;
 
-token::token(token_type const & type) : type_(type)
-{
+token::token(token_type const & type) : type_(type) {
 }
 
-token::token(token_type const & type, string const & text) : type_(type), text_(text)
-{
+token::token(token_type const & type, string const & text) : type_(type), text_(text) {
 }
 
-token::token(token const & other) : type_(other.type_), text_(other.text_)
-{
+token::token(token const & other) : type_(other.type_), text_(other.text_) {
 }
 
-token& token::operator = (token const & other)
-{
+token& token::operator = (token const & other) {
     if (this == &other) return *this;
 
     this->text_ = other.text_;
@@ -34,24 +30,24 @@ token& token::operator = (token const & other)
 
 }
 
-bool token::validToken() const
-{
+bool token::validToken() const {
     return !((type_ == END_OF_FILE) || (type_ == ERROR));
 }
 
-token_type token::getType() const
-{
+bool token::isNoToken() const {
+    return (type_ == NO_TOKEN);
+}
+
+token_type token::getType() const {
     return type_;
 }
 
-std::string token::getText() const
-{
+std::string token::getText() const {
     return text_;
 };
 
-std::string token::getTypeAsString() const{
-    switch (getType())
-    {
+std::string token::getTypeAsString() const {
+    switch (getType()) {
         case NO_TOKEN:
             return "No token";
         case END_OF_FILE:

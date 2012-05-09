@@ -16,9 +16,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 class token {
 public:
 
-    token(token_type const & type);
-
-    token(token_type const & type, std::string const & text);
+    token(token_type const & type, std::string const & text, int line);
 
     token(token const & other);
 
@@ -30,6 +28,8 @@ public:
 
 	bool isError() const;
 
+	int getLine() const;
+
     token_type getType() const;
 
     std::string getText() const;
@@ -40,6 +40,7 @@ private:
 
     token_type type_;
     std::string text_;
+	int line_;
 };
 
 #endif

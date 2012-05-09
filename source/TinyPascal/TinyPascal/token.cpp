@@ -11,10 +11,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 using std::string;
 
-token::token(token_type const & type) : type_(type) {
-}
 
-token::token(token_type const & type, string const & text) : type_(type), text_(text) {
+
+token::token(token_type const & type, string const & text, int line) : type_(type), text_(text), line_(line) {
 }
 
 token::token(token const & other) : type_(other.type_), text_(other.text_) {
@@ -25,9 +24,14 @@ token& token::operator = (token const & other) {
 
     this->text_ = other.text_;
     this->type_ = other.type_;
+	this->line_ = other.line_;
 
     return *this;
 
+}
+
+int token::getLine() const{
+	return line_;
 }
 
 bool token::eof() const {
@@ -54,6 +58,8 @@ std::string token::getTypeAsString() const {
     switch (getType()) {
         case NO_TOKEN:
             return "No token";
+		case RESERVED_WORD:
+            return "Reserved Word";
         case END_OF_FILE:
             return "End Of File";
         case IDENTIFIER:

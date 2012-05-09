@@ -39,6 +39,18 @@
     <ClInclude Include="token_type.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="reserved_words_table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="syntax_exception.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="unexpected_token_exception.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pascal_exceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -59,5 +71,17 @@
     <ClCompile Include="token.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="reserved_words_table.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="syntax_exception.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="unexpected_token_exception.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Samples\Example1.txt" />
   </ItemGroup>
 </Project>

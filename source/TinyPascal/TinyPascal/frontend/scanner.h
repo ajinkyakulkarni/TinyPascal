@@ -7,35 +7,31 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#ifndef _SCANNER_
+#define _SCANNER_
 
-#include <iostream>
 #include "token.h"
-#include "scanner.h"
-#include "eof_token.h"
+#include <string>
+#include <memory>
+#include <boost/noncopyable.hpp>
 
-using namespace std;
-using namespace pascal::frontend;
+namespace pascal {
+    namespace frontend {
+        class scanner_impl;
 
-int main(int argc, const char *argv[]) {
+        class scanner : boost::noncopyable {
+        public:
 
-    cout << "File supplied for scanning is: " << argv[1] << endl;
+            scanner(std::string const & filename_);
 
-    std::string file(argv[1]);
-    scanner s(file);
+            ~scanner();
 
-    shared_ptr<token> t = s.getNextToken();
+            std::shared_ptr<token> getNextToken();
 
-    eof_token *eof;
-
-    try {
-        while (!(typeid(eof) == typeid(t.get()))) {
-            cout << "Processed token: " << " - " << t->getText() << " on line: " << t->getLine() << endl;
-            t = s.getNextToken();
-        }
-
-    } catch(std::runtime_error& ex) {
-        std::cout << "Error: " << ex.what() << std::endl;
+        private:
+            scanner_impl *impl_;
+        };
     }
-
-    return 0;
 }
+
+#endif

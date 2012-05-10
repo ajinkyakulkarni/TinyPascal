@@ -7,35 +7,40 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#ifndef _FILE_BUFFER_H_
+#define _FILE_BUFFER_H_
 
-#include <iostream>
-#include "token.h"
-#include "scanner.h"
-#include "eof_token.h"
+#include <string>
+#include <fstream>
+#include <boost/noncopyable.hpp>
 
-using namespace std;
-using namespace pascal::frontend;
+namespace pascal {
+    namespace frontend {
+        namespace io {
+            class file_buffer : boost::noncopyable {
+            public:
 
-int main(int argc, const char *argv[]) {
+                file_buffer(std::string const & filename, int bufferSize);
 
-    cout << "File supplied for scanning is: " << argv[1] << endl;
+                ~file_buffer();
 
-    std::string file(argv[1]);
-    scanner s(file);
+                bool canPeek();
 
-    shared_ptr<token> t = s.getNextToken();
+                bool eof();
 
-    eof_token *eof;
+                char peek();
 
-    try {
-        while (!(typeid(eof) == typeid(t.get()))) {
-            cout << "Processed token: " << " - " << t->getText() << " on line: " << t->getLine() << endl;
-            t = s.getNextToken();
+                char character();
+
+                void rewind();
+
+            private:
+                const std::string filename_;
+                const int bufferSize_;
+                std::ifstream stream_;
+            };
         }
-
-    } catch(std::runtime_error& ex) {
-        std::cout << "Error: " << ex.what() << std::endl;
     }
-
-    return 0;
 }
+
+#endif

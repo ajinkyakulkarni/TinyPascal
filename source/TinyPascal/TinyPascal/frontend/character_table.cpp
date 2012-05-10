@@ -7,35 +7,38 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#include "character_table.h"
 
-#include <iostream>
-#include "token.h"
-#include "scanner.h"
-#include "eof_token.h"
+namespace pascal {
+    namespace frontend {
+        namespace lexer {
+            character_table::character_table() {
+                for (int i = 0; i <= 255; i++) {
+                    map_[(char) i] = SPECIAL;
+                }
 
-using namespace std;
-using namespace pascal::frontend;
+                for (int i = 'a'; i <= 'z'; i++) {
+                    map_[(char) i] = LETTER;
+                }
 
-int main(int argc, const char *argv[]) {
+                for (int i = 'A'; i <= 'Z'; i++) {
+                    map_[(char) i] = LETTER;
+                }
 
-    cout << "File supplied for scanning is: " << argv[1] << endl;
+                for (int i = '0'; i <= '9'; i++) {
+                    map_[(char) i] = DIGIT;
+                }
 
-    std::string file(argv[1]);
-    scanner s(file);
+                map_['.'] = DOT;
+                map_[' '] = SPACE;
+                map_['\''] = QUOTE;
+                map_['_'] = LETTER;
+            }
 
-    shared_ptr<token> t = s.getNextToken();
-
-    eof_token *eof;
-
-    try {
-        while (!(typeid(eof) == typeid(t.get()))) {
-            cout << "Processed token: " << " - " << t->getText() << " on line: " << t->getLine() << endl;
-            t = s.getNextToken();
+            character_category character_table::operator[](char value) {
+                character_category category = map_.at(value);
+                return category;
+            }
         }
-
-    } catch(std::runtime_error& ex) {
-        std::cout << "Error: " << ex.what() << std::endl;
     }
-
-    return 0;
 }

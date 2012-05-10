@@ -7,26 +7,26 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#ifndef _RESERVED_WORDS_H_
-#define _RESERVED_WORDS_H_
 
+#ifndef _UNEXPECTED_TOKEN_EXCEPTION_
+#define _UNEXPECTED_TOKEN_EXCEPTION_
+
+#include <stdexcept>
 #include <string>
-#include <map>
-#include <boost/noncopyable.hpp>
-#include "token_type.h"
 
-using std::map;
 using std::string;
+namespace pascal {
+    namespace frontend {
+        namespace errors {
+            class unexpected_token_exception : public std::runtime_error {
+            public:
 
-class reserved_words_table : boost::noncopyable {
-public:
+                unexpected_token_exception(string const & message);
 
-    reserved_words_table();
+                virtual ~unexpected_token_exception();
 
-    token_type operator[](string const & word) const;
-
-private:
-    map <string, token_type> words;
-};
-
+            };
+        }
+    }
+}
 #endif

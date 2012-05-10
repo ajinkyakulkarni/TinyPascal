@@ -7,21 +7,24 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#ifndef _CHAR_TABLE_H_
-#define _CHAR_TABLE_H_
+#ifndef _RW_TOKEN_H_
+#define _RW_TOKEN_H_
 
-#include <map>
-#include "character_category.h"
+#include <string>
+#include "special_character_type.h"
+#include "token.h"
 #include <boost/noncopyable.hpp>
 
-class character_table : boost::noncopyable{
-public:
+namespace pascal {
+    namespace frontend {
+        class reserved_word_token : public token {
+        public:
 
-    character_table();
-    character_category operator[](char value);
+            reserved_word_token(std::string const & text, int line);
 
-private:
-    std::map<char, character_category > map_;
-};
+            ~reserved_word_token();
 
+        };
+    }
+}
 #endif

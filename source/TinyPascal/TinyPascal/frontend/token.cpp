@@ -7,35 +7,23 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
-#include <iostream>
 #include "token.h"
-#include "scanner.h"
-#include "eof_token.h"
 
-using namespace std;
-using namespace pascal::frontend;
-
-int main(int argc, const char *argv[]) {
-
-    cout << "File supplied for scanning is: " << argv[1] << endl;
-
-    std::string file(argv[1]);
-    scanner s(file);
-
-    shared_ptr<token> t = s.getNextToken();
-
-    eof_token *eof;
-
-    try {
-        while (!(typeid(eof) == typeid(t.get()))) {
-            cout << "Processed token: " << " - " << t->getText() << " on line: " << t->getLine() << endl;
-            t = s.getNextToken();
+using std::string;
+namespace pascal {
+    namespace frontend {
+        token::token(string const & text, int line) :text_(text), line_(line) {
         }
 
-    } catch(std::runtime_error& ex) {
-        std::cout << "Error: " << ex.what() << std::endl;
-    }
+        token::~token() {
+        }
 
-    return 0;
+        int token::getLine() const {
+            return line_;
+        }
+
+        std::string token::getText() const {
+            return text_;
+        };
+    }
 }

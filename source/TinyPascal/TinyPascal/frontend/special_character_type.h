@@ -7,15 +7,35 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#ifndef _CHARACTER_CATEGORY_H
-#define _CHARACTER_CATEGORY_H
-enum character_category {
-    LETTER,
-    DIGIT,
-    DOT,
-    SPACE,
-    QUOTE,
-    SPECIAL
-};
-
+#ifndef _SC_TYPE_
+#define _SC_TYPE_
+namespace pascal {
+    namespace frontend {
+        namespace lexer {
+            enum special_character_type {
+                UPARROW,
+                STAR,
+                LPAREN,
+                RPAREN,
+                MINUS,
+                PLUS,
+                EQUAL,
+                LBRACKET,
+                RBRACKET,
+                COLON,
+                SEMICOLON,
+                LT,
+                GT,
+                COMMA,
+                PERIOD,
+                SLASH,
+                COLONEQUAL,
+                LE,
+                GE,
+                NE,
+                DOTDOT
+            };
+        }
+    }
+}
 #endif

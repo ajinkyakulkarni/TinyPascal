@@ -7,32 +7,44 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#ifndef _FILE_BUFFER_H_
-#define _FILE_BUFFER_H_
+#include "file_buffer.h"
 
-#include <string>
-#include <fstream>
-#include <boost/noncopyable.hpp>
+using std::string;
+using std::ifstream;
 
-class file_buffer : boost::noncopyable {
-public:
+namespace pascal {
+    namespace frontend {
+        namespace io {
 
-    file_buffer(std::string const & filename, int bufferSize);
+            file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), stream_(filename) {
 
-    ~file_buffer();
+            }
 
-    bool canPeek();
+            file_buffer::~file_buffer() {
 
-    char peek();
+            }
 
-    char character();
+            bool file_buffer::canPeek() {
+                return stream_.peek();
+            }
 
-    void rewind();
+            bool file_buffer::eof() {
+                return stream_.eof();
+            }
 
-private:
-    const std::string filename_;
-    const int bufferSize_;
-    std::ifstream stream_;
-};
+            char file_buffer::peek() {
+                return stream_.peek();
+            }
 
-#endif
+            char file_buffer::character() {
+                return stream_.get();
+            }
+
+            void file_buffer::rewind() {
+                stream_.unget();
+            }
+        }
+    }
+}
+
+

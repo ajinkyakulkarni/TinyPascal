@@ -13,6 +13,18 @@
 		C04E3E91DA9F1DD6974A1337 /* character_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1336 /* character_table.cpp */; };
 		C04E3E91DA9F1DD6974A133E /* file_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A133D /* file_buffer.cpp */; };
 		C04E3E91DA9F1DD6974A1343 /* reserved_words_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1342 /* reserved_words_table.cpp */; };
+		C04E3E91DA9F1DD6974A1346 /* syntax_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1345 /* syntax_exception.cpp */; };
+		C04E3E91DA9F1DD6974A1349 /* unexpected_token_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1348 /* unexpected_token_exception.cpp */; };
+		C04E3E91DA9F1DD6974A134C /* unclosed_quote_literal_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A134B /* unclosed_quote_literal_exception.cpp */; };
+		C04E3E91DA9F1DD6974A1353 /* integral_literal_token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1352 /* integral_literal_token.cpp */; };
+		C04E3E91DA9F1DD6974A1356 /* real_literal_token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1355 /* real_literal_token.cpp */; };
+		C04E3E91DA9F1DD6974A1359 /* string_literal_token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1358 /* string_literal_token.cpp */; };
+		C04E3E91DA9F1DD6974A135C /* identifier_token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A135B /* identifier_token.cpp */; };
+		C04E3E91DA9F1DD6974A135F /* reserved_word_token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A135E /* reserved_word_token.cpp */; };
+		C04E3E91DA9F1DD6974A1362 /* special_character_token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1361 /* special_character_token.cpp */; };
+		C04E3E91DA9F1DD6974A1365 /* no_token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1364 /* no_token.cpp */; };
+		C04E3E91DA9F1DD6974A1368 /* eof_token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1367 /* eof_token.cpp */; };
+		C04E3E91DA9F1DD6974A136C /* invalid_real_number_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A136B /* invalid_real_number_exception.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,7 +43,7 @@
 		C04E3E91DA9F1DD6974A1322 /* TinyPascal */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TinyPascal; sourceTree = BUILT_PRODUCTS_DIR; };
 		C04E3E91DA9F1DD6974A132B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A132D /* TinyPascal.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TinyPascal.1; sourceTree = "<group>"; };
-		C04E3E91DA9F1DD6974A132F /* token_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = token_type.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A132F /* special_character_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = special_character_type.h; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1330 /* token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = token.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1332 /* token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = token.h; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1333 /* scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner.cpp; sourceTree = "<group>"; };
@@ -44,6 +56,32 @@
 		C04E3E91DA9F1DD6974A1341 /* Example1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Example1.txt; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1342 /* reserved_words_table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = reserved_words_table.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1344 /* reserved_words_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reserved_words_table.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1345 /* syntax_exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = syntax_exception.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1347 /* syntax_exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syntax_exception.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1348 /* unexpected_token_exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unexpected_token_exception.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A134A /* unexpected_token_exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unexpected_token_exception.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A134B /* unclosed_quote_literal_exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unclosed_quote_literal_exception.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A134D /* unclosed_quote_literal_exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unclosed_quote_literal_exception.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A134E /* pascal_exceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pascal_exceptions.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1352 /* integral_literal_token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = integral_literal_token.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1354 /* integral_literal_token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = integral_literal_token.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1355 /* real_literal_token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = real_literal_token.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1357 /* real_literal_token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = real_literal_token.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1358 /* string_literal_token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = string_literal_token.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A135A /* string_literal_token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_literal_token.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A135B /* identifier_token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = identifier_token.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A135D /* identifier_token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = identifier_token.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A135E /* reserved_word_token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = reserved_word_token.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1360 /* reserved_word_token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reserved_word_token.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1361 /* special_character_token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = special_character_token.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1363 /* special_character_token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = special_character_token.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1364 /* no_token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = no_token.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1366 /* no_token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = no_token.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1367 /* eof_token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eof_token.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1369 /* eof_token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eof_token.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A136A /* reserved_word_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reserved_word_type.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A136B /* invalid_real_number_exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = invalid_real_number_exception.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A136D /* invalid_real_number_exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = invalid_real_number_exception.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,21 +114,10 @@
 		C04E3E91DA9F1DD6974A132A /* TinyPascal */ = {
 			isa = PBXGroup;
 			children = (
-				C04E3E91DA9F1DD6974A1344 /* reserved_words_table.h */,
-				C04E3E91DA9F1DD6974A1342 /* reserved_words_table.cpp */,
-				C04E3E91DA9F1DD6974A133F /* file_buffer.h */,
-				C04E3E91DA9F1DD6974A133D /* file_buffer.cpp */,
-				C04E3E91DA9F1DD6974A1339 /* character_category.h */,
-				C04E3E91DA9F1DD6974A1338 /* character_table.h */,
-				C04E3E91DA9F1DD6974A1336 /* character_table.cpp */,
-				C04E3E91DA9F1DD6974A1335 /* scanner.h */,
-				C04E3E91DA9F1DD6974A1333 /* scanner.cpp */,
-				C04E3E91DA9F1DD6974A1332 /* token.h */,
-				C04E3E91DA9F1DD6974A1330 /* token.cpp */,
-				C04E3E91DA9F1DD6974A132F /* token_type.h */,
 				C04E3E91DA9F1DD6974A132D /* TinyPascal.1 */,
 				C04E3E91DA9F1DD6974A132B /* main.cpp */,
 				C04E3E91DA9F1DD6974A1340 /* Samples */,
+				C04E3E91DA9F1DD6974A136E /* frontend */,
 			);
 			path = TinyPascal;
 			sourceTree = "<group>";
@@ -101,6 +128,51 @@
 				C04E3E91DA9F1DD6974A1341 /* Example1.txt */,
 			);
 			path = Samples;
+			sourceTree = "<group>";
+		};
+		C04E3E91DA9F1DD6974A136E /* frontend */ = {
+			isa = PBXGroup;
+			children = (
+				C04E3E91DA9F1DD6974A1333 /* scanner.cpp */,
+				C04E3E91DA9F1DD6974A1335 /* scanner.h */,
+				C04E3E91DA9F1DD6974A135E /* reserved_word_token.cpp */,
+				C04E3E91DA9F1DD6974A1360 /* reserved_word_token.h */,
+				C04E3E91DA9F1DD6974A136A /* reserved_word_type.h */,
+				C04E3E91DA9F1DD6974A1355 /* real_literal_token.cpp */,
+				C04E3E91DA9F1DD6974A1357 /* real_literal_token.h */,
+				C04E3E91DA9F1DD6974A1366 /* no_token.h */,
+				C04E3E91DA9F1DD6974A1364 /* no_token.cpp */,
+				C04E3E91DA9F1DD6974A1342 /* reserved_words_table.cpp */,
+				C04E3E91DA9F1DD6974A1344 /* reserved_words_table.h */,
+				C04E3E91DA9F1DD6974A132F /* special_character_type.h */,
+				C04E3E91DA9F1DD6974A1363 /* special_character_token.h */,
+				C04E3E91DA9F1DD6974A1361 /* special_character_token.cpp */,
+				C04E3E91DA9F1DD6974A135A /* string_literal_token.h */,
+				C04E3E91DA9F1DD6974A1358 /* string_literal_token.cpp */,
+				C04E3E91DA9F1DD6974A135B /* identifier_token.cpp */,
+				C04E3E91DA9F1DD6974A135D /* identifier_token.h */,
+				C04E3E91DA9F1DD6974A1352 /* integral_literal_token.cpp */,
+				C04E3E91DA9F1DD6974A1354 /* integral_literal_token.h */,
+				C04E3E91DA9F1DD6974A134E /* pascal_exceptions.h */,
+				C04E3E91DA9F1DD6974A133F /* file_buffer.h */,
+				C04E3E91DA9F1DD6974A133D /* file_buffer.cpp */,
+				C04E3E91DA9F1DD6974A136B /* invalid_real_number_exception.cpp */,
+				C04E3E91DA9F1DD6974A136D /* invalid_real_number_exception.h */,
+				C04E3E91DA9F1DD6974A1345 /* syntax_exception.cpp */,
+				C04E3E91DA9F1DD6974A1347 /* syntax_exception.h */,
+				C04E3E91DA9F1DD6974A134B /* unclosed_quote_literal_exception.cpp */,
+				C04E3E91DA9F1DD6974A134D /* unclosed_quote_literal_exception.h */,
+				C04E3E91DA9F1DD6974A1348 /* unexpected_token_exception.cpp */,
+				C04E3E91DA9F1DD6974A134A /* unexpected_token_exception.h */,
+				C04E3E91DA9F1DD6974A1367 /* eof_token.cpp */,
+				C04E3E91DA9F1DD6974A1369 /* eof_token.h */,
+				C04E3E91DA9F1DD6974A1332 /* token.h */,
+				C04E3E91DA9F1DD6974A1330 /* token.cpp */,
+				C04E3E91DA9F1DD6974A1336 /* character_table.cpp */,
+				C04E3E91DA9F1DD6974A1338 /* character_table.h */,
+				C04E3E91DA9F1DD6974A1339 /* character_category.h */,
+			);
+			path = frontend;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +228,18 @@
 				C04E3E91DA9F1DD6974A1337 /* character_table.cpp in Sources */,
 				C04E3E91DA9F1DD6974A133E /* file_buffer.cpp in Sources */,
 				C04E3E91DA9F1DD6974A1343 /* reserved_words_table.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1346 /* syntax_exception.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1349 /* unexpected_token_exception.cpp in Sources */,
+				C04E3E91DA9F1DD6974A134C /* unclosed_quote_literal_exception.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1353 /* integral_literal_token.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1356 /* real_literal_token.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1359 /* string_literal_token.cpp in Sources */,
+				C04E3E91DA9F1DD6974A135C /* identifier_token.cpp in Sources */,
+				C04E3E91DA9F1DD6974A135F /* reserved_word_token.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1362 /* special_character_token.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1365 /* no_token.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1368 /* eof_token.cpp in Sources */,
+				C04E3E91DA9F1DD6974A136C /* invalid_real_number_exception.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

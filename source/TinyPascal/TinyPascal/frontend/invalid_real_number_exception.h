@@ -7,35 +7,26 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#ifndef __INVALID_REAL_NUMBER_H_
+#define __INVALID_REAL_NUMBER_H_
 
-#include <iostream>
-#include "token.h"
-#include "scanner.h"
-#include "eof_token.h"
+#include <stdexcept>
+#include <string>
 
-using namespace std;
-using namespace pascal::frontend;
+namespace pascal {
+    namespace frontend {
+        namespace errors {
+            using std::string;
 
-int main(int argc, const char *argv[]) {
+            class invalid_real_number_exception : public std::runtime_error {
+            public:
 
-    cout << "File supplied for scanning is: " << argv[1] << endl;
+                invalid_real_number_exception(string const & message);
 
-    std::string file(argv[1]);
-    scanner s(file);
+                virtual ~invalid_real_number_exception();
 
-    shared_ptr<token> t = s.getNextToken();
-
-    eof_token *eof;
-
-    try {
-        while (!(typeid(eof) == typeid(t.get()))) {
-            cout << "Processed token: " << " - " << t->getText() << " on line: " << t->getLine() << endl;
-            t = s.getNextToken();
+            };
         }
-
-    } catch(std::runtime_error& ex) {
-        std::cout << "Error: " << ex.what() << std::endl;
     }
-
-    return 0;
 }
+#endif

@@ -7,26 +7,28 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#ifndef _SCANNER_
-#define _SCANNER_
+#ifndef _SPECIAL_CHARACTER_TOKEN_H_
+#define _SPECIAL_CHARACTER_TOKEN_H_
 
-#include "token.h"
 #include <string>
-#include <memory>
+#include "special_character_type.h"
+#include "token.h"
 #include <boost/noncopyable.hpp>
 
-class scanner_impl;
+using pascal::frontend::lexer::special_character_type;
 
-class scanner : boost::noncopyable{
-public:
+namespace pascal {
+    namespace frontend {
+        class special_character_token : public token {
+        public:
 
-    scanner(std::string const & filename_);
-    ~scanner();
+            special_character_token(special_character_type type, std::string const & text, int line);
 
-    std::shared_ptr<token> getNextToken();
+            ~special_character_token();
 
-private:
-    scanner_impl *impl_;
-};
-
+        private:
+            special_character_type type_;
+        };
+    }
+}
 #endif

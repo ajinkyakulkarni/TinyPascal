@@ -11,36 +11,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #define _TOKEN_H_
 
 #include <string>
-#include "token_type.h"
+#include <boost/noncopyable.hpp>
 
-class token {
-public:
+namespace pascal {
+    namespace frontend {
+        class token : boost::noncopyable {
+        public:
 
-    token(token_type const & type, std::string const & text, int line);
+            token(std::string const & text, int line);
 
-    token(token const & other);
+            virtual ~token() = 0;
 
-    token& operator = (token const & other);
+            int getLine() const;
 
-    bool eof() const;
+            std::string getText() const;
 
-    bool isNoToken() const;
-
-    bool isError() const;
-
-    int getLine() const;
-
-    token_type getType() const;
-
-    std::string getText() const;
-
-    std::string getTypeAsString() const;
-
-private:
-
-    token_type type_;
-    std::string text_;
-    int line_;
-};
+        private:
+            std::string text_;
+            int line_;
+        };
+    }
+}
 
 #endif

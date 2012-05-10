@@ -7,35 +7,25 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#ifndef _STRING_LITERAL_TOKEN_H_
+#define _STRING_LITERAL_TOKEN_H_
 
-#include <iostream>
+#include <string>
+#include "special_character_type.h"
 #include "token.h"
-#include "scanner.h"
-#include "eof_token.h"
+#include <boost/noncopyable.hpp>
 
-using namespace std;
-using namespace pascal::frontend;
+namespace pascal {
+    namespace frontend {
+        class string_literal_token : public token {
+        public:
 
-int main(int argc, const char *argv[]) {
+            string_literal_token(std::string const & text, int line);
 
-    cout << "File supplied for scanning is: " << argv[1] << endl;
+            ~string_literal_token();
 
-    std::string file(argv[1]);
-    scanner s(file);
-
-    shared_ptr<token> t = s.getNextToken();
-
-    eof_token *eof;
-
-    try {
-        while (!(typeid(eof) == typeid(t.get()))) {
-            cout << "Processed token: " << " - " << t->getText() << " on line: " << t->getLine() << endl;
-            t = s.getNextToken();
-        }
-
-    } catch(std::runtime_error& ex) {
-        std::cout << "Error: " << ex.what() << std::endl;
+        };
     }
-
-    return 0;
 }
+
+#endif

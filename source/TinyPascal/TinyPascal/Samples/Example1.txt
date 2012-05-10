@@ -1,4 +1,8 @@
 PROGRAM add(INPUT,OUTPUT);
+
+     { This program asks for two numbers
+       then adds them together }
+
      VAR
        first_integer,
        second_integer,
@@ -14,4 +18,4 @@ PROGRAM add(INPUT,OUTPUT);
        answer := first_integer + second_integer;
 
        WRITELN('The answer = ',answer:1);
-     END.
+     END.   { program add }

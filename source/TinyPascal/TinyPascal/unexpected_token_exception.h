@@ -7,32 +7,20 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#include "character_table.h"
 
-character_table::character_table() {
-    for (int i = 0; i <= 255; i++) {
-        map_[(char) i] = SPECIAL;
-    }
+#ifndef _UNEXPECTED_TOKEN_EXCEPTION_
+#define _UNEXPECTED_TOKEN_EXCEPTION_
 
-    for (int i = 'a'; i <= 'z'; i++) {
-        map_[(char) i] = LETTER;
-    }
+#include <stdexcept>
+#include <string>
 
-    for (int i = 'A'; i <= 'Z'; i++) {
-        map_[(char) i] = LETTER;
-    }
+class unexpected_token_exception : public std::exception {
+public:
 
-    for (int i = '0'; i <= '9'; i++) {
-        map_[(char) i] = DIGIT;
-    }
+    unexpected_token_exception(const char *message);
 
-    map_['.'] = DOT;
-    map_[' '] = SPACE;
-    map_['\''] = QUOTE;
-    map_['_'] = LETTER;
-}
+    virtual ~unexpected_token_exception();
 
-character_category character_table::operator[](char value) {
-    character_category category = map_.at(value);
-    return category;
-}
+};
+
+#endif

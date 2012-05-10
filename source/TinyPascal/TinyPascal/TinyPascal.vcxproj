@@ -79,19 +79,29 @@
     <ClInclude Include="character_category.h" />
     <ClInclude Include="character_table.h" />
     <ClInclude Include="file_buffer.h" />
+    <ClInclude Include="pascal_exceptions.h" />
+    <ClInclude Include="reserved_words_table.h" />
     <ClInclude Include="scanner.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="syntax_exception.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="token.h" />
     <ClInclude Include="token_type.h" />
+    <ClInclude Include="unexpected_token_exception.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="character_table.cpp" />
     <ClCompile Include="file_buffer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="reserved_words_table.cpp" />
     <ClCompile Include="scanner.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="syntax_exception.cpp" />
     <ClCompile Include="token.cpp" />
+    <ClCompile Include="unexpected_token_exception.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Samples\Example1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

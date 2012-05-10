@@ -49,7 +49,7 @@ reserved_words_table::reserved_words_table() {
 
 struct word_to_lower_functor {
     void operator()(char& c) {
-        tolower(c);
+        c = tolower(c);
     }
 };
 

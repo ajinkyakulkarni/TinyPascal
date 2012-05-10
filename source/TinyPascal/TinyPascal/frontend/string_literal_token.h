@@ -21,8 +21,9 @@ namespace pascal {
         public:
 
             string_literal_token(std::string const & text, int line);
-
             ~string_literal_token();
+
+            void print() const;
 
         };
     }

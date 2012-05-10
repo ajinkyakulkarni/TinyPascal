@@ -18,19 +18,19 @@ using namespace pascal::frontend;
 
 int main(int argc, const char *argv[]) {
 
-    cout << "File supplied for scanning is: " << argv[1] << endl;
-
-    std::string file(argv[1]);
+    string file(argv[1]);
     scanner s(file);
 
     shared_ptr<token> t = s.getNextToken();
 
-    eof_token *eof;
-
     try {
-        while (!(typeid(eof) == typeid(t.get()))) {
-            cout << "Processed token: " << " - " << t->getText() << " on line: " << t->getLine() << endl;
+
+        eof_token* ptr = dynamic_cast<eof_token*>(t.get() );
+
+        while(!ptr){
+            t->print();
             t = s.getNextToken();
+            ptr = dynamic_cast<eof_token*>(t.get() );
         }
 
     } catch(std::runtime_error& ex) {

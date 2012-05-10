@@ -23,8 +23,9 @@ namespace pascal {
         public:
 
             special_character_token(special_character_type type, std::string const & text, int line);
-
             ~special_character_token();
+
+            void print() const;
 
         private:
             special_character_type type_;

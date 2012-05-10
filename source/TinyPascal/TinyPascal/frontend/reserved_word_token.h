@@ -21,8 +21,9 @@ namespace pascal {
         public:
 
             reserved_word_token(std::string const & text, int line);
-
             ~reserved_word_token();
+
+            void print() const;
 
         };
     }

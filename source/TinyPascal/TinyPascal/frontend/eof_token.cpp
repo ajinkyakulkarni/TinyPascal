@@ -9,14 +9,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 #include "eof_token.h"
 
+#include <iostream>
+
 using std::string;
+using std::cout;
+using std::endl;
+
 
 namespace pascal {
     namespace frontend {
-        eof_token::eof_token(string const & text, int line) : token(text, line) {
-        }
+        eof_token::eof_token(string const & text, int line) : token(text, line) { }
 
         eof_token::~eof_token() {
+        }
+
+        void eof_token::print() const {
+            cout << "EOF Token" << endl;
         }
     }
 }

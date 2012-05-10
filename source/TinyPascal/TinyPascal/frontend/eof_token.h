@@ -21,8 +21,9 @@ namespace pascal {
         public:
 
             eof_token(std::string const & text, int line);
-
             ~eof_token();
+
+            void print() const;
 
         };
     }

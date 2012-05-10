@@ -13,21 +13,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <string>
 #include <boost/noncopyable.hpp>
 
+using std::string;
+
 namespace pascal {
     namespace frontend {
         class token : boost::noncopyable {
         public:
 
-            token(std::string const & text, int line);
-
+            token(string const & text, int line);
             virtual ~token() = 0;
 
             int getLine() const;
-
             std::string getText() const;
 
+            virtual void print() const = 0;
+
         private:
-            std::string text_;
+            string text_;
             int line_;
         };
     }

@@ -191,7 +191,6 @@ namespace pascal {
                 if (this->empty())
                     return shared_ptr<token>(new eof_token("", lineNumber()));
 
-                no_token *eof;
                 while (true) {
 
                     read();
@@ -203,7 +202,8 @@ namespace pascal {
 
                     shared_ptr<token> result = processor_->processToken();
 
-                    if (!(typeid(eof) == typeid(result.get())))
+                    no_token* ptr = dynamic_cast<no_token*>(result.get() );
+                    if (!ptr)
                         return result;
                 }
 

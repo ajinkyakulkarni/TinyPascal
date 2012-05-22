@@ -8,35 +8,40 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <iostream>
-#include "frontend\token.h"
-#include "frontend\scanner.h"
-#include "frontend\eof_token.h"
+#include "symbol_table_entry.h"
 
+namespace pascal {
+	namespace intermediate {
+		symbol_table_entry::symbol_table_entry(std::string const & name_) : name(name_){  }
 
-using namespace std;
-using namespace pascal::frontend;
+		std::string const & symbol_table_entry::getName() const
+		{
+			return name;
+		}
 
-int main(int argc, const char *argv[]) {
+		symbol_table_attribute const & symbol_table_entry::getAttribute(symbol_table_key key) const
+		{
+			std::shared_ptr<symbol_table_attribute> result = attributes.at(key);
+			return *(result.get() );
+		}
 
-    string file(argv[1]);
-    scanner s(file);
+		bool symbol_table_entry::containsAttribute(symbol_table_key key) const{
+			return attributes.find(key) != attributes.end();
+		}
 
-    shared_ptr<token> t = s.getNextToken();
+		std::vector<int> const& symbol_table_entry::getLineNumbers() const
+		{
+			return lineNumbers;
+		}
 
-    try {
+		void symbol_table_entry::setAttribute(symbol_table_key key, std::shared_ptr<symbol_table_attribute> const & attr)
+		{
+			attributes[key] = attr;
+		}
 
-        eof_token* ptr = dynamic_cast<eof_token*>(t.get() );
-
-        while(!ptr){
-            t->print();
-            t = s.getNextToken();
-            ptr = dynamic_cast<eof_token*>(t.get() );
-        }
-
-    } catch(std::runtime_error& ex) {
-        std::cout << "Error: " << ex.what() << std::endl;
-    }
-
-    return 0;
+		void symbol_table_entry::appendLineNumber(int line)
+		{
+			lineNumbers.push_back(line);
+		}
+	}
 }

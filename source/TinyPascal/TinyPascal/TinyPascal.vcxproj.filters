@@ -13,75 +13,183 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\frontend">
+      <UniqueIdentifier>{b393821f-c138-4a15-bab9-a9600660a51f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\frontend">
+      <UniqueIdentifier>{bd7556a4-ad88-4f70-b98b-05f69fd96248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\intermediate">
+      <UniqueIdentifier>{35ffcd25-dcda-4190-8100-174f56be08a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\intermediate">
+      <UniqueIdentifier>{bac789ad-82d6-49c3-bf9f-f5d38a21477e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Samples\Example1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="frontend\character_category.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\character_table.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\eof_token.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\file_buffer.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\identifier_token.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\integral_literal_token.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\invalid_real_number_exception.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\no_token.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\pascal_exceptions.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\real_literal_token.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\reserved_word_token.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\reserved_word_type.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\reserved_words_table.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\scanner.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\special_character_token.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\special_character_type.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\string_literal_token.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\syntax_exception.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\token.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\unclosed_quote_literal_exception.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\unexpected_token_exception.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate\symbol_table_entry.h">
+      <Filter>Header Files\intermediate</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate\symbol_table_key.h">
+      <Filter>Header Files\intermediate</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate\symbol_table_attribute.h">
+      <Filter>Header Files\intermediate</Filter>
+    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="character_category.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="intermediate\symbol_table.h">
+      <Filter>Header Files\intermediate</Filter>
     </ClInclude>
-    <ClInclude Include="character_table.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="intermediate\symbol_table_stack.h">
+      <Filter>Header Files\intermediate</Filter>
     </ClInclude>
-    <ClInclude Include="file_buffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="scanner.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="token.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="token_type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="reserved_words_table.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="syntax_exception.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="unexpected_token_exception.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pascal_exceptions.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="intermediate\symbol_not_found_exception.h">
+      <Filter>Header Files\intermediate</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="frontend\character_table.cpp">
+      <Filter>Source Files\frontend</Filter>
     </ClCompile>
-    <ClCompile Include="character_table.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="frontend\eof_token.cpp">
+      <Filter>Source Files\frontend</Filter>
     </ClCompile>
-    <ClCompile Include="file_buffer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="frontend\file_buffer.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\identifier_token.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\integral_literal_token.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\invalid_real_number_exception.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\no_token.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\real_literal_token.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\reserved_word_token.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\reserved_words_table.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\scanner.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\special_character_token.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\string_literal_token.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\syntax_exception.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\token.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\unclosed_quote_literal_exception.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\unexpected_token_exception.cpp">
+      <Filter>Source Files\frontend</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="scanner.cpp">
+    <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="token.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="intermediate\symbol_table_entry.cpp">
+      <Filter>Source Files\intermediate</Filter>
     </ClCompile>
-    <ClCompile Include="reserved_words_table.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="intermediate\symbol_table_attribute.cpp">
+      <Filter>Source Files\intermediate</Filter>
     </ClCompile>
-    <ClCompile Include="syntax_exception.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="intermediate\symbol_table.cpp">
+      <Filter>Source Files\intermediate</Filter>
     </ClCompile>
-    <ClCompile Include="unexpected_token_exception.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="intermediate\symbol_table_stack.cpp">
+      <Filter>Source Files\intermediate</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Samples\Example1.txt" />
+    <ClCompile Include="intermediate\symbol_not_found_exception.cpp">
+      <Filter>Source Files\intermediate</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,36 +7,62 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#include "symbol_table.h"
+#include <algorithm>
 
-#include <iostream>
-#include "frontend\token.h"
-#include "frontend\scanner.h"
-#include "frontend\eof_token.h"
+using std::find_if;
 
 
-using namespace std;
-using namespace pascal::frontend;
 
-int main(int argc, const char *argv[]) {
+namespace pascal {
+	namespace intermediate {
 
-    string file(argv[1]);
-    scanner s(file);
+		class symbol_name_predicate{
+		public:
+			symbol_name_predicate(std::string const & name_) : name(name_){
 
-    shared_ptr<token> t = s.getNextToken();
+			}
 
-    try {
+			bool operator()( symbol_table_entry const & entry){
+				return (entry.getName() == name);
+			}
 
-        eof_token* ptr = dynamic_cast<eof_token*>(t.get() );
+		private:
+			std::string name;
+		};
 
-        while(!ptr){
-            t->print();
-            t = s.getNextToken();
-            ptr = dynamic_cast<eof_token*>(t.get() );
-        }
 
-    } catch(std::runtime_error& ex) {
-        std::cout << "Error: " << ex.what() << std::endl;
-    }
+		symbol_table::symbol_table(int level_) : level(level_)
+		{
 
-    return 0;
+		}
+			
+		bool symbol_table::containsSymbol(std::string const & name) const
+		{
+
+			symbol_name_predicate pred(name);
+
+			return (find_if(symbols.begin(), symbols.end(),pred) != symbols.end());
+		}
+			
+		bool symbol_table::isGlobalSymbolTable() const
+		{
+			return level == 0;
+		}
+			
+		symbol_table_entry const & symbol_table::lookup(std::string name) const
+		{
+			symbol_name_predicate pred(name);
+
+			std::vector<symbol_table_entry>::const_iterator result = find_if(symbols.begin(), symbols.end(),pred);
+
+			return *(result);
+		}
+
+		void symbol_table::addSymbol(symbol_table_entry const & entry)
+		{
+			symbols.push_back(entry);
+		}
+	}
 }
+			

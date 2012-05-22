@@ -8,35 +8,36 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <iostream>
-#include "frontend\token.h"
-#include "frontend\scanner.h"
-#include "frontend\eof_token.h"
+#ifndef SYMBOL_TABLE_ENTRY
+#define SYMBOL_TABLE_ENTRY
 
+#include <string>
+#include <vector>
+#include <map>
+#include "symbol_table_key.h"
+#include "symbol_table_attribute.h"
+#include <memory>
 
-using namespace std;
-using namespace pascal::frontend;
+namespace pascal {
+	namespace intermediate {
+		class symbol_table_entry{
+		public:
+			symbol_table_entry(std::string const & name_);
 
-int main(int argc, const char *argv[]) {
+			std::string const & getName() const;
+			bool containsAttribute(symbol_table_key key) const;
+			symbol_table_attribute const & getAttribute(symbol_table_key key) const;
+			std::vector<int> const& getLineNumbers() const;
 
-    string file(argv[1]);
-    scanner s(file);
+			void setAttribute(symbol_table_key key, std::shared_ptr<symbol_table_attribute> const & attr);
+			void appendLineNumber(int line);
+			
 
-    shared_ptr<token> t = s.getNextToken();
-
-    try {
-
-        eof_token* ptr = dynamic_cast<eof_token*>(t.get() );
-
-        while(!ptr){
-            t->print();
-            t = s.getNextToken();
-            ptr = dynamic_cast<eof_token*>(t.get() );
-        }
-
-    } catch(std::runtime_error& ex) {
-        std::cout << "Error: " << ex.what() << std::endl;
-    }
-
-    return 0;
+		private:
+			std::string name;
+			std::vector<int> lineNumbers;
+			std::map<symbol_table_key, std::shared_ptr<symbol_table_attribute> > attributes;
+		};
+	}
 }
+#endif

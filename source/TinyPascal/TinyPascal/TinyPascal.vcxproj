@@ -76,32 +76,64 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="character_category.h" />
-    <ClInclude Include="character_table.h" />
-    <ClInclude Include="file_buffer.h" />
-    <ClInclude Include="pascal_exceptions.h" />
-    <ClInclude Include="reserved_words_table.h" />
-    <ClInclude Include="scanner.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="syntax_exception.h" />
-    <ClInclude Include="targetver.h" />
-    <ClInclude Include="token.h" />
-    <ClInclude Include="token_type.h" />
-    <ClInclude Include="unexpected_token_exception.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="character_table.cpp" />
-    <ClCompile Include="file_buffer.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="reserved_words_table.cpp" />
-    <ClCompile Include="scanner.cpp" />
-    <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="syntax_exception.cpp" />
-    <ClCompile Include="token.cpp" />
-    <ClCompile Include="unexpected_token_exception.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Samples\Example1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="frontend\character_category.h" />
+    <ClInclude Include="frontend\character_table.h" />
+    <ClInclude Include="frontend\eof_token.h" />
+    <ClInclude Include="frontend\file_buffer.h" />
+    <ClInclude Include="frontend\identifier_token.h" />
+    <ClInclude Include="frontend\integral_literal_token.h" />
+    <ClInclude Include="frontend\invalid_real_number_exception.h" />
+    <ClInclude Include="frontend\no_token.h" />
+    <ClInclude Include="frontend\pascal_exceptions.h" />
+    <ClInclude Include="frontend\real_literal_token.h" />
+    <ClInclude Include="frontend\reserved_words_table.h" />
+    <ClInclude Include="frontend\reserved_word_token.h" />
+    <ClInclude Include="frontend\reserved_word_type.h" />
+    <ClInclude Include="frontend\scanner.h" />
+    <ClInclude Include="frontend\special_character_token.h" />
+    <ClInclude Include="frontend\special_character_type.h" />
+    <ClInclude Include="frontend\string_literal_token.h" />
+    <ClInclude Include="frontend\syntax_exception.h" />
+    <ClInclude Include="frontend\token.h" />
+    <ClInclude Include="frontend\unclosed_quote_literal_exception.h" />
+    <ClInclude Include="frontend\unexpected_token_exception.h" />
+    <ClInclude Include="intermediate\symbol_not_found_exception.h" />
+    <ClInclude Include="intermediate\symbol_table.h" />
+    <ClInclude Include="intermediate\symbol_table_attribute.h" />
+    <ClInclude Include="intermediate\symbol_table_entry.h" />
+    <ClInclude Include="intermediate\symbol_table_key.h" />
+    <ClInclude Include="intermediate\symbol_table_stack.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="frontend\character_table.cpp" />
+    <ClCompile Include="frontend\eof_token.cpp" />
+    <ClCompile Include="frontend\file_buffer.cpp" />
+    <ClCompile Include="frontend\identifier_token.cpp" />
+    <ClCompile Include="frontend\integral_literal_token.cpp" />
+    <ClCompile Include="frontend\invalid_real_number_exception.cpp" />
+    <ClCompile Include="frontend\no_token.cpp" />
+    <ClCompile Include="frontend\real_literal_token.cpp" />
+    <ClCompile Include="frontend\reserved_words_table.cpp" />
+    <ClCompile Include="frontend\reserved_word_token.cpp" />
+    <ClCompile Include="frontend\scanner.cpp" />
+    <ClCompile Include="frontend\special_character_token.cpp" />
+    <ClCompile Include="frontend\string_literal_token.cpp" />
+    <ClCompile Include="frontend\syntax_exception.cpp" />
+    <ClCompile Include="frontend\token.cpp" />
+    <ClCompile Include="frontend\unclosed_quote_literal_exception.cpp" />
+    <ClCompile Include="frontend\unexpected_token_exception.cpp" />
+    <ClCompile Include="intermediate\symbol_not_found_exception.cpp" />
+    <ClCompile Include="intermediate\symbol_table.cpp" />
+    <ClCompile Include="intermediate\symbol_table_attribute.cpp" />
+    <ClCompile Include="intermediate\symbol_table_entry.cpp" />
+    <ClCompile Include="intermediate\symbol_table_stack.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

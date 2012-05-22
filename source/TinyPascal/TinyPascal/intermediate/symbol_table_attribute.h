@@ -7,36 +7,19 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#ifndef _SYMBOL_TABLE_ATTRIBUTE_H
+#define _SYMBOL_TABLE_ATTRIBUTE_H
 
-#include <iostream>
-#include "frontend\token.h"
-#include "frontend\scanner.h"
-#include "frontend\eof_token.h"
+#include <boost/noncopyable.hpp>
 
+namespace pascal{
+	namespace intermediate{
+		class symbol_table_attribute : public boost::noncopyable{
+		public:
+			virtual ~symbol_table_attribute() = 0;
+		};
 
-using namespace std;
-using namespace pascal::frontend;
-
-int main(int argc, const char *argv[]) {
-
-    string file(argv[1]);
-    scanner s(file);
-
-    shared_ptr<token> t = s.getNextToken();
-
-    try {
-
-        eof_token* ptr = dynamic_cast<eof_token*>(t.get() );
-
-        while(!ptr){
-            t->print();
-            t = s.getNextToken();
-            ptr = dynamic_cast<eof_token*>(t.get() );
-        }
-
-    } catch(std::runtime_error& ex) {
-        std::cout << "Error: " << ex.what() << std::endl;
-    }
-
-    return 0;
+	}
 }
+
+#endif

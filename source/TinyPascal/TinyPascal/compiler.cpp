@@ -8,17 +8,26 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <string>
 #include "compiler.h"
+#include <iostream>
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::shared_ptr;
+using pascal::frontend::token;
+using pascal::frontend::eof_token;
 
-int main(int argc, const char *argv[]) {
+compiler::compiler(string filename) : lexer(filename), stable(0), p(lexer, stable)
+{
 
-    string file(argv[1]);
+}
 
-    compiler c(file);
-    c.compile();
+void compiler::compile() 
+{
 
-    return 0;
+    try {
+        p.parse();
+    } catch(std::runtime_error const & ex) {
+        std::cout << "Error: " << ex.what() << std::endl;
+    }
 }

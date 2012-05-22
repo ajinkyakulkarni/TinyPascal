@@ -7,18 +7,23 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#include "abstract_syntax_tree.h"
 
-#include <string>
-#include "compiler.h"
+namespace parser{
+    namespace intermediate{
+        abstract_syntax_tree::abstract_syntax_tree()
+        {
 
-using namespace std;
+        }
 
-int main(int argc, const char *argv[]) {
+        abstract_syntax_tree_node& abstract_syntax_tree::getRoot() const
+        {
+            return *(root.get());
+        }
 
-    string file(argv[1]);
-
-    compiler c(file);
-    c.compile();
-
-    return 0;
+        void abstract_syntax_tree::assign(std::unique_ptr<abstract_syntax_tree_node>& root_)
+        {
+            root = std::move(root_);
+        }
+    }
 }

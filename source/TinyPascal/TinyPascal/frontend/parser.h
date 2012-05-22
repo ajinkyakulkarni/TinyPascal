@@ -7,18 +7,22 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#ifndef _PARSER_H_
+#define _PARSER_H_
 
-#include <string>
-#include "compiler.h"
+#include "scanner.h"
+#include "symbol_table_stack.h"
 
-using namespace std;
-
-int main(int argc, const char *argv[]) {
-
-    string file(argv[1]);
-
-    compiler c(file);
-    c.compile();
-
-    return 0;
+namespace pascal{
+    namespace frontend{
+        class parser {
+        public:
+            parser(pascal::frontend::scanner& lexer_, pascal::intermediate::symbol_table_stack& symbol_table_stack_ );
+            void parse();
+        private:
+            pascal::frontend::scanner& lexer;
+            pascal::intermediate::symbol_table_stack& symbol_table_stack;
+        };
+    }
 }
+#endif

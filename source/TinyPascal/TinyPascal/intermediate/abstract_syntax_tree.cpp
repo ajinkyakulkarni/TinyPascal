@@ -7,44 +7,23 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#include "file_buffer.h"
+#include "abstract_syntax_tree.h"
 
-using std::string;
-using std::ifstream;
+namespace parser{
+    namespace intermediate{
+        abstract_syntax_tree::abstract_syntax_tree()
+        {
 
-namespace pascal {
-    namespace frontend {
-        namespace io {
+        }
 
-            file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), stream_(filename) {
+        abstract_syntax_tree_node& abstract_syntax_tree::getRoot() const
+        {
+            return *(root.get());
+        }
 
-            }
-
-            file_buffer::~file_buffer() {
-
-            }
-
-            bool file_buffer::canPeek() {
-                return static_cast<bool>(stream_.peek());
-            }
-
-            bool file_buffer::eof() {
-                return stream_.eof();
-            }
-
-            char file_buffer::peek() {
-                return stream_.peek();
-            }
-
-            char file_buffer::character() {
-                return stream_.get();
-            }
-
-            void file_buffer::rewind() {
-                stream_.unget();
-            }
+        void abstract_syntax_tree::assign(std::unique_ptr<abstract_syntax_tree_node>& root_)
+        {
+            root = std::move(root_);
         }
     }
 }
-
-

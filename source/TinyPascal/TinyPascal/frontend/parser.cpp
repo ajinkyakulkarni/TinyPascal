@@ -9,12 +9,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 #include "parser.h"
 #include "eof_token.h"
-
+#include <memory>
 
 namespace pascal{
     namespace frontend{
 
-        parser::parser(pascal::frontend::scanner& lexer_, pascal::intermediate::symbol_table_stack& symbol_table_stack_ ) : lexer(lexer_), symbol_table_stack(symbol_table_stack_)
+        parser::parser(pascal::frontend::scanner& lexer_, pascal::intermediate::symbol_table_stack& symbol_table_stack_ ) : lexer(lexer_), stable(symbol_table_stack_)
         {
         }
 
@@ -29,7 +29,6 @@ namespace pascal{
                 t = lexer.getNextToken();
                 ptr = dynamic_cast<eof_token*>(t.get() );
             }
-
         }
 
     }

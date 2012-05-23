@@ -23,7 +23,7 @@
       <UniqueIdentifier>{35ffcd25-dcda-4190-8100-174f56be08a8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\intermediate">
-      <UniqueIdentifier>{bac789ad-82d6-49c3-bf9f-f5d38a21477e}</UniqueIdentifier>
+      <UniqueIdentifier>{fb7e8a00-55fa-4929-86bd-ce74ac3e201c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +117,21 @@
     <ClInclude Include="intermediate\symbol_not_found_exception.h">
       <Filter>Header Files\intermediate</Filter>
     </ClInclude>
+    <ClInclude Include="compiler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\parser.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate\abstract_syntax_tree.h">
+      <Filter>Header Files\intermediate</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate\abstract_syntax_tree_node.h">
+      <Filter>Header Files\intermediate</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate\abstract_syntax_tree_node_type.h">
+      <Filter>Header Files\intermediate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="frontend\character_table.cpp">
@@ -176,20 +191,32 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="intermediate\symbol_table_entry.cpp">
+    <ClCompile Include="compiler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="intermediate\abstract_syntax_tree.cpp">
       <Filter>Source Files\intermediate</Filter>
     </ClCompile>
-    <ClCompile Include="intermediate\symbol_table_attribute.cpp">
+    <ClCompile Include="intermediate\abstract_syntax_tree_node.cpp">
+      <Filter>Source Files\intermediate</Filter>
+    </ClCompile>
+    <ClCompile Include="intermediate\symbol_not_found_exception.cpp">
       <Filter>Source Files\intermediate</Filter>
     </ClCompile>
     <ClCompile Include="intermediate\symbol_table.cpp">
       <Filter>Source Files\intermediate</Filter>
     </ClCompile>
+    <ClCompile Include="intermediate\symbol_table_attribute.cpp">
+      <Filter>Source Files\intermediate</Filter>
+    </ClCompile>
+    <ClCompile Include="intermediate\symbol_table_entry.cpp">
+      <Filter>Source Files\intermediate</Filter>
+    </ClCompile>
     <ClCompile Include="intermediate\symbol_table_stack.cpp">
       <Filter>Source Files\intermediate</Filter>
     </ClCompile>
-    <ClCompile Include="intermediate\symbol_not_found_exception.cpp">
-      <Filter>Source Files\intermediate</Filter>
+    <ClCompile Include="frontend\parser.cpp">
+      <Filter>Source Files\frontend</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -11,23 +11,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "compiler.h"
 #include <iostream>
 
-using std::cout;
-using std::endl;
-using std::shared_ptr;
-using pascal::frontend::token;
-using pascal::frontend::eof_token;
 
-compiler::compiler(string filename) : lexer(filename), stable(0), p(lexer, stable)
+compiler::compiler(std::string const & filename) : lexer(filename), stable(0), p(lexer, stable)
 {
 
 }
 
 void compiler::compile() 
 {
+	using std::cout;
+	using std::endl;
 
-    try {
-        p.parse();
-    } catch(std::runtime_error const & ex) {
-        std::cout << "Error: " << ex.what() << std::endl;
-    }
+
+	try {
+		p.parse();
+	} catch(std::runtime_error const & ex) {
+		std::cout << "Error: " << ex.what() << std::endl;
+	}
 }

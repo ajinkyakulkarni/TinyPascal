@@ -11,14 +11,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #ifndef __COMPILER_H_
 #define __COMPILER_H_
 
+#ifdef _WIN32
+
+#include "frontend\scanner.h"
+#include "intermediate\symbol_table_stack.h"
+#include "frontend\parser.h"
+
+#else
+
 #include "scanner.h"
 #include "symbol_table_stack.h"
 #include "parser.h"
+
+#endif
+
 #include <string>
 
 class compiler {
 public:
-    compiler(std::string filename);
+    compiler(std::string const & filename);
     void compile();
 private:
     pascal::frontend::scanner lexer;

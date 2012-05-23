@@ -7,44 +7,30 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#include "file_buffer.h"
+#ifndef __AST_NODE_H_
+#define __AST_NODE_H_
 
-using std::string;
-using std::ifstream;
+#include <memory>
+#include <vector>
+#include "abstract_syntax_tree_node_type.h"
 
-namespace pascal {
-    namespace frontend {
-        namespace io {
+namespace parser{
+    namespace intermediate{
+        class abstract_syntax_tree_node {
+        public:
 
-            file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), stream_(filename) {
+            size_t const size() const;
+            std::vector<std::unique_ptr<abstract_syntax_tree_node> > const & getChildren() const;
+            void getAttribute() const;
 
-            }
+            void addChild(std::unique_ptr<abstract_syntax_tree_node>& node);
+            void setAttribute();
 
-            file_buffer::~file_buffer() {
-
-            }
-
-            bool file_buffer::canPeek() {
-                return static_cast<bool>(stream_.peek());
-            }
-
-            bool file_buffer::eof() {
-                return stream_.eof();
-            }
-
-            char file_buffer::peek() {
-                return stream_.peek();
-            }
-
-            char file_buffer::character() {
-                return stream_.get();
-            }
-
-            void file_buffer::rewind() {
-                stream_.unget();
-            }
-        }
+        private:
+            abstract_syntax_tree_node_type type;
+            std::vector<std::unique_ptr<abstract_syntax_tree_node> > children;
+        };
     }
 }
 
-
+#endif

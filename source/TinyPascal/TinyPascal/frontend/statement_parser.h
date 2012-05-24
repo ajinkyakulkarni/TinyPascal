@@ -25,7 +25,7 @@ namespace pascal{
 	namespace frontend{
 		class statement_parser : public parser_base{
 		public:
-			statement_parser();
+			statement_parser(scanner& lexer_);
 			~statement_parser();
 			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse(std::shared_ptr<token>& token);
 		};

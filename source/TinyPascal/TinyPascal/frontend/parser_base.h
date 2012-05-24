@@ -20,15 +20,19 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "../intermediate/abstract_syntax_tree_node.h"
 #else
 #include "abstract_syntax_tree_node.h"
+#include "scanner.h"
 #endif
 
 namespace pascal{
 	namespace frontend{
 		class parser_base : public boost::noncopyable{
 		public:
-			parser_base();
+			parser_base(scanner& lexer_);
 			virtual ~parser_base() = 0;
 			virtual std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse(std::shared_ptr<token>& token) = 0;
+
+        public:
+            scanner& lexer;
 		};
 	}
 }

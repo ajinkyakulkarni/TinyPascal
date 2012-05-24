@@ -13,15 +13,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #ifdef _WIN32
 
 #include "../intermediate/abstract_syntax_tree.h"
+#include "../intermediate/abstract_syntax_tree_node.h"
 
 #else
 
 #include "abstract_syntax_tree.h"
 
+
 #endif
 
-
-#include <memory>
+#include "pascal_exceptions.h"
 
 namespace pascal{
     namespace frontend{
@@ -39,9 +40,16 @@ namespace pascal{
 
 			if(token->getType() == tokens::BEGIN)
 			{
-				statement_parser sparser;
-				root.assign(sparser.parse(token));
-			}
+				statement_parser sparser(lexer);
+                std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> node = sparser.parse(token);
+				root.assign(node);
+			}else if (token->getType() == tokens::IDENTIFIER){
+                statement_parser sparser(lexer);
+                std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> node = sparser.parse(token);
+				root.assign(node);
+            }else{
+                throw unexpected_token_exception("Expected a begin or identifier but did not find one.");
+            }
 
         }
 

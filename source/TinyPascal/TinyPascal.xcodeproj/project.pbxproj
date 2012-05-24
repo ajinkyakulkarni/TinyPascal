@@ -31,9 +31,12 @@
 		C04E3E91DA9F1DD6974A137B /* symbol_table_stack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A137A /* symbol_table_stack.cpp */; };
 		C04E3E91DA9F1DD6974A137E /* symbol_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A137D /* symbol_table.cpp */; };
 		C04E3E91DA9F1DD6974A1381 /* parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1380 /* parser.cpp */; };
-		C04E3E91DA9F1DD6974A1384 /* abstract_syntax_tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1383 /* abstract_syntax_tree.cpp */; };
-		C04E3E91DA9F1DD6974A1387 /* abstract_syntax_tree_node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1386 /* abstract_syntax_tree_node.cpp */; };
 		C04E3E91DA9F1DD6974A138B /* compiler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A138A /* compiler.cpp */; };
+		C04E3E91DA9F1DD6974A138E /* parser_base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A138D /* parser_base.cpp */; };
+		C04E3E91DA9F1DD6974A1391 /* reserved_word_to_token_converter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1390 /* reserved_word_to_token_converter.cpp */; };
+		C04E3E91DA9F1DD6974A1394 /* statement_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1393 /* statement_parser.cpp */; };
+		C04E3E91DA9F1DD6974A1399 /* abstract_syntax_tree_node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1398 /* abstract_syntax_tree_node.cpp */; };
+		C04E3E91DA9F1DD6974A139C /* abstract_syntax_tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A139B /* abstract_syntax_tree.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -104,13 +107,20 @@
 		C04E3E91DA9F1DD6974A137F /* symbol_table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = symbol_table.h; path = intermediate/symbol_table.h; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1380 /* parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = parser.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A1382 /* parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser.h; sourceTree = "<group>"; };
-		C04E3E91DA9F1DD6974A1383 /* abstract_syntax_tree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = abstract_syntax_tree.cpp; sourceTree = "<group>"; };
-		C04E3E91DA9F1DD6974A1385 /* abstract_syntax_tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = abstract_syntax_tree.h; sourceTree = "<group>"; };
-		C04E3E91DA9F1DD6974A1386 /* abstract_syntax_tree_node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = abstract_syntax_tree_node.cpp; sourceTree = "<group>"; };
-		C04E3E91DA9F1DD6974A1388 /* abstract_syntax_tree_node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = abstract_syntax_tree_node.h; sourceTree = "<group>"; };
-		C04E3E91DA9F1DD6974A1389 /* abstract_syntax_tree_node_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = abstract_syntax_tree_node_type.h; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A138A /* compiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compiler.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A138C /* compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compiler.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A138D /* parser_base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = parser_base.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A138F /* parser_base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parser_base.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1390 /* reserved_word_to_token_converter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = reserved_word_to_token_converter.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1392 /* reserved_word_to_token_converter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = reserved_word_to_token_converter.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1393 /* statement_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = statement_parser.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1395 /* statement_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = statement_parser.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1396 /* token_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = token_type.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1397 /* abstract_syntax_tree_node_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = abstract_syntax_tree_node_type.h; path = intermediate/abstract_syntax_tree_node_type.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A1398 /* abstract_syntax_tree_node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = abstract_syntax_tree_node.cpp; path = intermediate/abstract_syntax_tree_node.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A139A /* abstract_syntax_tree_node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = abstract_syntax_tree_node.h; path = intermediate/abstract_syntax_tree_node.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A139B /* abstract_syntax_tree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = abstract_syntax_tree.cpp; path = intermediate/abstract_syntax_tree.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A139D /* abstract_syntax_tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = abstract_syntax_tree.h; path = intermediate/abstract_syntax_tree.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +175,13 @@
 		C04E3E91DA9F1DD6974A136E /* frontend */ = {
 			isa = PBXGroup;
 			children = (
+				C04E3E91DA9F1DD6974A1396 /* token_type.h */,
+				C04E3E91DA9F1DD6974A1395 /* statement_parser.h */,
+				C04E3E91DA9F1DD6974A1393 /* statement_parser.cpp */,
+				C04E3E91DA9F1DD6974A1392 /* reserved_word_to_token_converter.h */,
+				C04E3E91DA9F1DD6974A1390 /* reserved_word_to_token_converter.cpp */,
+				C04E3E91DA9F1DD6974A138F /* parser_base.h */,
+				C04E3E91DA9F1DD6974A138D /* parser_base.cpp */,
 				C04E3E91DA9F1DD6974A1382 /* parser.h */,
 				C04E3E91DA9F1DD6974A1380 /* parser.cpp */,
 				C04E3E91DA9F1DD6974A1333 /* scanner.cpp */,
@@ -212,11 +229,11 @@
 		C04E3E91DA9F1DD6974A136F /* intermediate */ = {
 			isa = PBXGroup;
 			children = (
-				C04E3E91DA9F1DD6974A1389 /* abstract_syntax_tree_node_type.h */,
-				C04E3E91DA9F1DD6974A1388 /* abstract_syntax_tree_node.h */,
-				C04E3E91DA9F1DD6974A1386 /* abstract_syntax_tree_node.cpp */,
-				C04E3E91DA9F1DD6974A1385 /* abstract_syntax_tree.h */,
-				C04E3E91DA9F1DD6974A1383 /* abstract_syntax_tree.cpp */,
+				C04E3E91DA9F1DD6974A139D /* abstract_syntax_tree.h */,
+				C04E3E91DA9F1DD6974A139B /* abstract_syntax_tree.cpp */,
+				C04E3E91DA9F1DD6974A139A /* abstract_syntax_tree_node.h */,
+				C04E3E91DA9F1DD6974A1398 /* abstract_syntax_tree_node.cpp */,
+				C04E3E91DA9F1DD6974A1397 /* abstract_syntax_tree_node_type.h */,
 				C04E3E91DA9F1DD6974A137F /* symbol_table.h */,
 				C04E3E91DA9F1DD6974A137D /* symbol_table.cpp */,
 				C04E3E91DA9F1DD6974A137C /* symbol_table_stack.h */,
@@ -303,9 +320,12 @@
 				C04E3E91DA9F1DD6974A137B /* symbol_table_stack.cpp in Sources */,
 				C04E3E91DA9F1DD6974A137E /* symbol_table.cpp in Sources */,
 				C04E3E91DA9F1DD6974A1381 /* parser.cpp in Sources */,
-				C04E3E91DA9F1DD6974A1384 /* abstract_syntax_tree.cpp in Sources */,
-				C04E3E91DA9F1DD6974A1387 /* abstract_syntax_tree_node.cpp in Sources */,
 				C04E3E91DA9F1DD6974A138B /* compiler.cpp in Sources */,
+				C04E3E91DA9F1DD6974A138E /* parser_base.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1391 /* reserved_word_to_token_converter.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1394 /* statement_parser.cpp in Sources */,
+				C04E3E91DA9F1DD6974A1399 /* abstract_syntax_tree_node.cpp in Sources */,
+				C04E3E91DA9F1DD6974A139C /* abstract_syntax_tree.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,7 +13,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 namespace pascal{
 	namespace frontend{
 
-		statement_parser::statement_parser()
+		statement_parser::statement_parser(scanner& lexer_) : parser_base(lexer_)
 		{
 
 		}

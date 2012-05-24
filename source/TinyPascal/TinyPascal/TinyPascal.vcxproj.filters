@@ -138,6 +138,9 @@
     <ClInclude Include="frontend\parser_base.h">
       <Filter>Header Files\frontend</Filter>
     </ClInclude>
+    <ClInclude Include="frontend\statement_parser.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="frontend\character_table.cpp">
@@ -228,6 +231,9 @@
       <Filter>Source Files\frontend</Filter>
     </ClCompile>
     <ClCompile Include="frontend\parser_base.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\statement_parser.cpp">
       <Filter>Source Files\frontend</Filter>
     </ClCompile>
   </ItemGroup>

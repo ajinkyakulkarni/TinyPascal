@@ -9,7 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 #include "abstract_syntax_tree.h"
 
-namespace parser{
+namespace pascal{
     namespace intermediate{
         abstract_syntax_tree::abstract_syntax_tree()
         {

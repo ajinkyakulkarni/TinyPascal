@@ -14,7 +14,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <memory>
 #include "abstract_syntax_tree_node.h"
 
-namespace parser{
+namespace pascal{
     namespace intermediate{
         class abstract_syntax_tree {
         public:

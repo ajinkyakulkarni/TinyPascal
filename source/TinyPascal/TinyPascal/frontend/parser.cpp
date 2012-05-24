@@ -8,7 +8,19 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #include "parser.h"
-#include "eof_token.h"
+#include "statement_parser.h"
+
+#ifdef _WIN32
+
+#include "../intermediate/abstract_syntax_tree.h"
+
+#else
+
+#include "abstract_syntax_tree.h"
+
+#endif
+
+
 #include <memory>
 
 namespace pascal{
@@ -20,12 +32,16 @@ namespace pascal{
 
         void parser::parse()
         {
-            std::shared_ptr<token> t = lexer.getNextToken();
+			using pascal::intermediate::abstract_syntax_tree;
+            abstract_syntax_tree root;
+			
+			std::shared_ptr<token> token = lexer.getNextToken();
 
-			while(t->getType() != tokens::END_OF_FILE){
-                t->print();
-                t = lexer.getNextToken();
-            }
+			if(token->getType() == tokens::BEGIN)
+			{
+				statement_parser sparser;
+				root.assign(sparser.parse(token));
+			}
 
         }
 

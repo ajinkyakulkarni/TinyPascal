@@ -10,7 +10,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #ifndef __AST_NODE_TYPE_H_
 #define __AST_NODE_TYPE_H_
 
-namespace parser{
+namespace pascal{
     namespace intermediate{
         enum abstract_syntax_tree_node_type{
             PROGRAM,

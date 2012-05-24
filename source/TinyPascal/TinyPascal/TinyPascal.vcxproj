@@ -95,6 +95,7 @@
     <ClInclude Include="frontend\reserved_word_type.h" />
     <ClInclude Include="frontend\scanner.h" />
     <ClInclude Include="frontend\special_character_token.h" />
+    <ClInclude Include="frontend\statement_parser.h" />
     <ClInclude Include="frontend\string_literal_token.h" />
     <ClInclude Include="frontend\syntax_exception.h" />
     <ClInclude Include="frontend\token.h" />
@@ -130,6 +131,7 @@
     <ClCompile Include="frontend\reserved_word_to_token_converter.cpp" />
     <ClCompile Include="frontend\scanner.cpp" />
     <ClCompile Include="frontend\special_character_token.cpp" />
+    <ClCompile Include="frontend\statement_parser.cpp" />
     <ClCompile Include="frontend\string_literal_token.cpp" />
     <ClCompile Include="frontend\syntax_exception.cpp" />
     <ClCompile Include="frontend\token.cpp" />

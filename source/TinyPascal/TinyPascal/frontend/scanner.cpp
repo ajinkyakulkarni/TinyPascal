@@ -7,13 +7,13 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#include <boost/noncopyable.hpp>
+#include <sstream>
 #include "scanner.h"
 #include "character_table.h"
 #include "file_buffer.h"
 #include "reserved_words_table.h"
-#include <boost/noncopyable.hpp>
 #include "pascal_exceptions.h"
-#include <sstream>
 #include "identifier_token.h"
 #include "special_character_token.h"
 #include "string_literal_token.h"
@@ -23,6 +23,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "eof_token.h"
 #include "reserved_word_token.h"
 #include "invalid_real_number_exception.h"
+#include "reserved_word_to_token_converter.h"
 
 using std::string;
 using std::shared_ptr;
@@ -33,13 +34,10 @@ namespace pascal {
 
         class token_processor : boost::noncopyable {
         public:
-
             token_processor(scanner_impl& scanner);
-
             virtual ~token_processor() = 0;
 
             virtual shared_ptr<token> processToken() = 0;
-
             void configure();
 
         protected:
@@ -297,7 +295,11 @@ namespace pascal {
 
             reserved_words::reserved_word_type reserved = scanner_.getReservedWordToken(currentTokenText);
             if (reserved != reserved_words::NOT_RESERVED_WORD)
-                return shared_ptr<token>(new reserved_word_token(currentTokenText, scanner_.lineNumber()));
+			{
+				reserved_word_to_token_converter converter;
+				tokens::token_type type = converter[reserved];
+                return shared_ptr<token>(new reserved_word_token(type, currentTokenText, scanner_.lineNumber()));
+			}
 
             return shared_ptr<token>(new identifier_token(currentTokenText, scanner_.lineNumber()));
         }
@@ -361,64 +363,64 @@ namespace pascal {
 
             switch (scanner_.current()) {
                 case '^':
-                    return shared_ptr<token>(new special_character_token(UPARROW, currentTokenText, scanner_.lineNumber()));
+                    return shared_ptr<token>(new special_character_token(tokens::UP_ARROW, currentTokenText, scanner_.lineNumber()));
                 case '*':
-                    return shared_ptr<token>(new special_character_token(STAR, currentTokenText, scanner_.lineNumber()));
+                    return shared_ptr<token>(new special_character_token(tokens::STAR, currentTokenText, scanner_.lineNumber()));
                 case '(':
-                    return shared_ptr<token>(new special_character_token(LPAREN, currentTokenText, scanner_.lineNumber()));
+                    return shared_ptr<token>(new special_character_token(tokens::LEFT_PAREN, currentTokenText, scanner_.lineNumber()));
                 case ')':
-                    return shared_ptr<token>(new special_character_token(RPAREN, currentTokenText, scanner_.lineNumber()));
+                    return shared_ptr<token>(new special_character_token(tokens::RIGHT_PAREN, currentTokenText, scanner_.lineNumber()));
                 case '-':
-                    return shared_ptr<token>(new special_character_token(MINUS, currentTokenText, scanner_.lineNumber()));
+                    return shared_ptr<token>(new special_character_token(tokens::MINUS, currentTokenText, scanner_.lineNumber()));
                 case '+':
-                    return shared_ptr<token>(new special_character_token(PLUS, currentTokenText, scanner_.lineNumber()));
+                    return shared_ptr<token>(new special_character_token(tokens::PLUS, currentTokenText, scanner_.lineNumber()));
                 case '=':
-                    return shared_ptr<token>(new special_character_token(EQUAL, currentTokenText, scanner_.lineNumber()));
+                    return shared_ptr<token>(new special_character_token(tokens::EQUALS, currentTokenText, scanner_.lineNumber()));
                 case '[':
-                    return shared_ptr<token>(new special_character_token(LBRACKET, currentTokenText, scanner_.lineNumber()));
+                    return shared_ptr<token>(new special_character_token(tokens::LEFT_BRACKET, currentTokenText, scanner_.lineNumber()));
                 case ']':
-                    return shared_ptr<token>(new special_character_token(RBRACKET, currentTokenText, scanner_.lineNumber()));
+                    return shared_ptr<token>(new special_character_token(tokens::RIGHT_BRACKET, currentTokenText, scanner_.lineNumber()));
                 case ';':
-                    return shared_ptr<token>(new special_character_token(SEMICOLON, currentTokenText, scanner_.lineNumber()));
+                    return shared_ptr<token>(new special_character_token(tokens::SEMICOLON, currentTokenText, scanner_.lineNumber()));
                 case ',':
-                    return shared_ptr<token>(new special_character_token(COMMA, currentTokenText, scanner_.lineNumber()));
+                    return shared_ptr<token>(new special_character_token(tokens::COMMA, currentTokenText, scanner_.lineNumber()));
                 case '/':
-                    return shared_ptr<token>(new special_character_token(SLASH, currentTokenText, scanner_.lineNumber()));
+                    return shared_ptr<token>(new special_character_token(tokens::SLASH, currentTokenText, scanner_.lineNumber()));
                 case ':':
                     if (scanner_.canPeek() && scanner_.peek() == '=') {
                         scanner_.read();
                         currentTokenText.push_back(scanner_.current());
 
-                        return shared_ptr<token>(new special_character_token(COLONEQUAL, currentTokenText, scanner_.lineNumber()));
+                        return shared_ptr<token>(new special_character_token(tokens::COLON_EQUALS, currentTokenText, scanner_.lineNumber()));
                     } else {
-                        return shared_ptr<token>(new special_character_token(COLON, currentTokenText, scanner_.lineNumber()));
+                        return shared_ptr<token>(new special_character_token(tokens::COLON, currentTokenText, scanner_.lineNumber()));
                     }
                 case '<':
                     if (scanner_.canPeek() && scanner_.peek() == '=') {
                         scanner_.read();
                         currentTokenText.push_back(scanner_.current());
 
-                        return shared_ptr<token>(new special_character_token(LE, currentTokenText, scanner_.lineNumber()));
+                        return shared_ptr<token>(new special_character_token(tokens::LESS_EQUALS, currentTokenText, scanner_.lineNumber()));
                     } else {
-                        return shared_ptr<token>(new special_character_token(LT, currentTokenText, scanner_.lineNumber()));
+                        return shared_ptr<token>(new special_character_token(tokens::LESS_THAN, currentTokenText, scanner_.lineNumber()));
                     }
                 case '>':
                     if (scanner_.canPeek() && scanner_.peek() == '=') {
                         scanner_.read();
                         currentTokenText.push_back(scanner_.current());
 
-                        return shared_ptr<token>(new special_character_token(GE, currentTokenText, scanner_.lineNumber()));
+                        return shared_ptr<token>(new special_character_token(tokens::GREATER_EQUALS, currentTokenText, scanner_.lineNumber()));
                     } else {
-                        return shared_ptr<token>(new special_character_token(GT, currentTokenText, scanner_.lineNumber()));
+                        return shared_ptr<token>(new special_character_token(tokens::GREATER_THAN, currentTokenText, scanner_.lineNumber()));
                     }
                 case '.':
                     if (scanner_.canPeek() && scanner_.peek() == '.') {
                         scanner_.read();
                         currentTokenText.push_back(scanner_.current());
 
-                        return shared_ptr<token>(new special_character_token(DOTDOT, currentTokenText, scanner_.lineNumber()));
+                        return shared_ptr<token>(new special_character_token(tokens::DOT_DOT, currentTokenText, scanner_.lineNumber()));
                     } else {
-                        return shared_ptr<token>(new special_character_token(PERIOD, currentTokenText, scanner_.lineNumber()));
+                        return shared_ptr<token>(new special_character_token(tokens::DOT, currentTokenText, scanner_.lineNumber()));
                     }
                 default:
                     string message("Unrecongised token: " + currentTokenText);

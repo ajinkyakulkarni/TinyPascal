@@ -11,22 +11,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #define _STRING_LITERAL_TOKEN_H_
 
 #include <string>
-#include "special_character_type.h"
-#include "token.h"
 #include <boost/noncopyable.hpp>
+#include "token_type.h"
+#include "token.h"
 
 namespace pascal {
-    namespace frontend {
-        class string_literal_token : public token {
-        public:
+	namespace frontend {
+		class string_literal_token : public token {
+		public:
+			string_literal_token(std::string const & text, int line);
+			~string_literal_token();
 
-            string_literal_token(std::string const & text, int line);
-            ~string_literal_token();
+			void print() const;
+			tokens::token_type getType() const;
 
-            void print() const;
-
-        };
-    }
+		};
+	}
 }
 
 #endif

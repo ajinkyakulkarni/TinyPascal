@@ -25,5 +25,9 @@ namespace pascal {
         void no_token::print() const {
             cout << "No token " << endl;
         }
+
+		tokens::token_type no_token::getType() const{
+			return tokens::NO_TOKEN;
+		}
     }
 }

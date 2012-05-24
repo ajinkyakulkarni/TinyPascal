@@ -16,7 +16,7 @@ using std::endl;
 
 namespace pascal {
     namespace frontend {
-        reserved_word_token::reserved_word_token(string const & text, int line) : token(text, line) {
+        reserved_word_token::reserved_word_token(tokens::token_type type, string const & text, int line) : token(text, line), type_(type) {
         }
 
         reserved_word_token::~reserved_word_token() {
@@ -25,5 +25,9 @@ namespace pascal {
         void reserved_word_token::print() const {
             cout << "Reserved Word: " << getText() << endl;
         }
+
+		tokens::token_type reserved_word_token::getType() const{
+			return type_;
+		}
     }
 }

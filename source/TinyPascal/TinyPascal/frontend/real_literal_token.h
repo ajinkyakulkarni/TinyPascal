@@ -11,21 +11,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #define _REAL_LITERAL_TOKEN_H_
 
 #include <string>
-#include "special_character_type.h"
+#include "token_type.h"
 #include "token.h"
 #include <boost/noncopyable.hpp>
 
 namespace pascal {
-    namespace frontend {
-        class real_literal_token : public token {
-        public:
+	namespace frontend {
+		class real_literal_token : public token {
+		public:
 
-            real_literal_token(std::string const & text, int line);
-            ~real_literal_token();
+			real_literal_token(std::string const & text, int line);
+			~real_literal_token();
 
-            void print() const;
-
-        };
-    }
+			void print() const;
+			tokens::token_type getType() const;
+		};
+	}
 }
 #endif

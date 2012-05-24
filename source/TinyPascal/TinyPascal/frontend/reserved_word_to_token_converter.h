@@ -7,26 +7,20 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#ifndef _INTEGER_LITERAL_TOKEN_H_
-#define _INTEGER_LITERAL_TOKEN_H_
+#ifndef _RESERVED_WORD_TO_TOKEN_CONVERTER_H_
+#define _RESERVED_WORD_TO_TOKEN_CONVERTER_H_
 
-#include <string>
+#include "reserved_word_type.h"
 #include "token_type.h"
-#include "token.h"
 #include <boost/noncopyable.hpp>
 
 namespace pascal {
 	namespace frontend {
-		class integer_literal_token : public token {
+		class reserved_word_to_token_converter : boost::noncopyable {
 		public:
-
-			integer_literal_token(std::string const & text, int line);
-			~integer_literal_token();
-
-			void print() const;
-			tokens::token_type getType() const;
-
+			tokens::token_type operator[](reserved_words::reserved_word_type word);
 		};
 	}
 }
+
 #endif

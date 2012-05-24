@@ -11,22 +11,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #define _SPECIAL_CHARACTER_TOKEN_H_
 
 #include <string>
-#include "special_character_type.h"
+#include "token_type.h"
 #include "token.h"
 #include <boost/noncopyable.hpp>
 
 namespace pascal {
-    namespace frontend {
-        class special_character_token : public token {
-        public:
-            special_character_token(special_character_type type, std::string const & text, int line);
-            ~special_character_token();
+	namespace frontend {
+		class special_character_token : public token {
+		public:
+			special_character_token(tokens::token_type type, std::string const & text, int line);
+			~special_character_token();
 
-            void print() const;
+			void print() const;
+			tokens::token_type getType() const;
 
-        private:
-            special_character_type type_;
-        };
-    }
+		private:
+			tokens::token_type type_;
+		};
+	}
 }
 #endif

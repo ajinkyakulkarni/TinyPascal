@@ -25,5 +25,6 @@ namespace pascal {
         std::string token::getText() const {
             return text_;
         };
+
     }
 }

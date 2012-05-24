@@ -135,6 +135,9 @@
     <ClInclude Include="frontend\token_type.h">
       <Filter>Header Files\frontend</Filter>
     </ClInclude>
+    <ClInclude Include="frontend\reserved_word_to_token_converter.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="frontend\character_table.cpp">
@@ -219,6 +222,9 @@
       <Filter>Source Files\intermediate</Filter>
     </ClCompile>
     <ClCompile Include="frontend\parser.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\reserved_word_to_token_converter.cpp">
       <Filter>Source Files\frontend</Filter>
     </ClCompile>
   </ItemGroup>

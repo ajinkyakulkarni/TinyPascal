@@ -13,19 +13,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <string>
 #include "special_character_type.h"
 #include "token.h"
+#include "token_type.h"
 #include <boost/noncopyable.hpp>
 
 namespace pascal {
-    namespace frontend {
-        class reserved_word_token : public token {
-        public:
+	namespace frontend {
+		class reserved_word_token : public token {
+		public:
 
-            reserved_word_token(std::string const & text, int line);
-            ~reserved_word_token();
+			reserved_word_token(tokens::token_type type, std::string const & text, int line);
+			~reserved_word_token();
 
-            void print() const;
-
-        };
-    }
+			void print() const;
+			tokens::token_type getType() const;
+		private:
+			tokens::token_type type_;
+		};
+	}
 }
 #endif

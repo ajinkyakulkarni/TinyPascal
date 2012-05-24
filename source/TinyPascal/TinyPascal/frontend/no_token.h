@@ -24,7 +24,7 @@ namespace pascal {
             ~no_token();
 
             void print() const;
-
+			tokens::token_type getType() const;
         };
     }
 }

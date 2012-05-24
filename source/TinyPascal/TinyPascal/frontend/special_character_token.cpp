@@ -15,14 +15,18 @@ using std::cout;
 using std::endl;
 
 namespace pascal {
-    namespace frontend {
-        special_character_token::special_character_token(special_character_type type, string const & text, int line) : token(text, line), type_(type) { }
+	namespace frontend {
+		special_character_token::special_character_token(tokens::token_type type, string const & text, int line) : token(text, line), type_(type) { }
 
-        special_character_token::~special_character_token() {
-        }
+		special_character_token::~special_character_token() {
+		}
 
-        void special_character_token::print() const {
-            cout << "Special Character: " << getText() << endl;
-        }
-    }
+		void special_character_token::print() const {
+			cout << "Special Character: " << getText() << endl;
+		}
+
+		tokens::token_type special_character_token::getType() const{
+			return type_;
+		}
+	}
 }

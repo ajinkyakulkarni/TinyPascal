@@ -12,27 +12,29 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #include <string>
 #include <boost/noncopyable.hpp>
+#include "token_type.h"
 
 using std::string;
 
 namespace pascal {
-    namespace frontend {
-        class token : boost::noncopyable {
-        public:
+	namespace frontend {
+		class token : boost::noncopyable {
+		public:
 
-            token(string const & text, int line);
-            virtual ~token() = 0;
+			token(string const & text, int line);
+			virtual ~token() = 0;
 
-            int getLine() const;
-            std::string getText() const;
+			int getLine() const;
+			std::string getText() const;
 
-            virtual void print() const = 0;
+			virtual void print() const = 0;
+			virtual tokens::token_type getType() const = 0;
 
-        private:
-            string text_;
-            int line_;
-        };
-    }
+		private:
+			string text_;
+			int line_;
+		};
+	}
 }
 
 #endif

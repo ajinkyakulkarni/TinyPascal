@@ -25,5 +25,9 @@ namespace pascal {
         void integer_literal_token::print() const {
             cout << "Integer Literal: " << getText() << endl;
         }
+
+		tokens::token_type integer_literal_token::getType() const{
+			return tokens::INTEGER;
+		}
     }
 }

@@ -90,6 +90,7 @@
     <ClInclude Include="frontend\real_literal_token.h" />
     <ClInclude Include="frontend\reserved_words_table.h" />
     <ClInclude Include="frontend\reserved_word_token.h" />
+    <ClInclude Include="frontend\reserved_word_to_token_converter.h" />
     <ClInclude Include="frontend\reserved_word_type.h" />
     <ClInclude Include="frontend\scanner.h" />
     <ClInclude Include="frontend\special_character_token.h" />
@@ -125,6 +126,7 @@
     <ClCompile Include="frontend\real_literal_token.cpp" />
     <ClCompile Include="frontend\reserved_words_table.cpp" />
     <ClCompile Include="frontend\reserved_word_token.cpp" />
+    <ClCompile Include="frontend\reserved_word_to_token_converter.cpp" />
     <ClCompile Include="frontend\scanner.cpp" />
     <ClCompile Include="frontend\special_character_token.cpp" />
     <ClCompile Include="frontend\string_literal_token.cpp" />

@@ -14,17 +14,21 @@ using std::cout;
 using std::endl;
 
 namespace pascal {
-    namespace frontend {
-        using std::string;
+	namespace frontend {
+		using std::string;
 
-        identifier_token::identifier_token(string const & text, int line) : token(text, line) {
-        }
+		identifier_token::identifier_token(string const & text, int line) : token(text, line) {
+		}
 
-        identifier_token::~identifier_token() {
-        }
+		identifier_token::~identifier_token() {
+		}
 
-        void identifier_token::print() const {
-            cout << "Identifier: " << getText() << endl;
-        }
-    }
+		void identifier_token::print() const {
+			cout << "Identifier: " << getText() << endl;
+		}
+
+		tokens::token_type identifier_token::getType() const{
+			return tokens::IDENTIFIER;
+		}
+	}
 }

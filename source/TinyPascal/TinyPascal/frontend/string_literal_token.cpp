@@ -15,15 +15,19 @@ using std::cout;
 using std::endl;
 
 namespace pascal {
-    namespace frontend {
-        string_literal_token::string_literal_token(string const & text, int line) : token(text, line) {
-        }
+	namespace frontend {
+		string_literal_token::string_literal_token(string const & text, int line) : token(text, line) {
+		}
 
-        string_literal_token::~string_literal_token() {
-        }
+		string_literal_token::~string_literal_token() {
+		}
 
-        void string_literal_token::print() const {
-            cout << "String Literal: " << getText() << endl;
-        }
-    }
+		void string_literal_token::print() const {
+			cout << "String Literal: " << getText() << endl;
+		}
+
+		tokens::token_type string_literal_token::getType() const{
+			return tokens::STRING;
+		}
+	}
 }

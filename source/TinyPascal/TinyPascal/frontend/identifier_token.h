@@ -11,21 +11,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #define _IDENTIFIER_TOKEN_H_
 
 #include <string>
-#include "special_character_type.h"
-#include "token.h"
 #include <boost/noncopyable.hpp>
+#include "token_type.h"
+#include "token.h"
 
 namespace pascal {
-    namespace frontend {
-        class identifier_token : public token {
-        public:
+	namespace frontend {
+		class identifier_token : public token {
+		public:
 
-            identifier_token(std::string const & text, int line);
-            ~identifier_token();
+			identifier_token(std::string const & text, int line);
+			~identifier_token();
 
-            void print() const;
-
-        };
-    }
+			void print() const;
+			tokens::token_type identifier_token::getType() const;
+		};
+	}
 }
 #endif

@@ -22,12 +22,9 @@ namespace pascal{
         {
             std::shared_ptr<token> t = lexer.getNextToken();
 
-            eof_token* ptr = dynamic_cast<eof_token*>(t.get() );
-
-            while(!ptr){
+			while(t->getType() != tokens::END_OF_FILE){
                 t->print();
                 t = lexer.getNextToken();
-                ptr = dynamic_cast<eof_token*>(t.get() );
             }
         }
 

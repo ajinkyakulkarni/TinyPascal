@@ -26,5 +26,9 @@ namespace pascal {
         void eof_token::print() const {
             cout << "EOF Token" << endl;
         }
+
+		tokens::token_type eof_token::getType() const{
+			return tokens::END_OF_FILE;
+		}
     }
 }

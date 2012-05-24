@@ -23,15 +23,15 @@ namespace pascal {
 
         }
 
-        bool file_buffer::canPeek() {
+        bool file_buffer::canPeek() const{
             return static_cast<bool>(stream_.peek());
         }
 
-        bool file_buffer::eof() {
+        bool file_buffer::eof() const {
             return stream_.eof();
         }
 
-        char file_buffer::peek() {
+        char file_buffer::peek() const {
             return stream_.peek();
         }
 

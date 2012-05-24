@@ -11,16 +11,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #define _CHARACTER_CATEGORY_H
 
 namespace pascal {
-    namespace frontend {
-        enum character_category {
-            LETTER,
-            DIGIT,
-            DOT,
-            SPACE,
-            QUOTE,
-            SPECIAL
-        };
-    }
+	namespace frontend {
+		struct character{
+			enum character_category {
+				LETTER,
+				DIGIT,
+				DOT,
+				SPACE,
+				QUOTE,
+				SPECIAL
+			};
+		};
+	}
 }
 
 #endif

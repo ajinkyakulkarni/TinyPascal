@@ -76,9 +76,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="Samples\Example1.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="compiler.h" />
     <ClInclude Include="frontend\character_category.h" />
     <ClInclude Include="frontend\character_table.h" />
@@ -100,6 +97,7 @@
     <ClInclude Include="frontend\string_literal_token.h" />
     <ClInclude Include="frontend\syntax_exception.h" />
     <ClInclude Include="frontend\token.h" />
+    <ClInclude Include="frontend\token_type.h" />
     <ClInclude Include="frontend\unclosed_quote_literal_exception.h" />
     <ClInclude Include="frontend\unexpected_token_exception.h" />
     <ClInclude Include="intermediate\abstract_syntax_tree.h" />
@@ -143,6 +141,9 @@
     <ClCompile Include="intermediate\symbol_table_stack.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Samples\Example1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -23,10 +23,10 @@ namespace pascal {
         class reserved_words_table : boost::noncopyable {
         public:
             reserved_words_table();
-            reserved_word_type operator[](string const & word) const;
+            reserved_words::reserved_word_type operator[](string const & word) const;
 
         private:
-            map <string, reserved_word_type> words;
+            map <string, reserved_words::reserved_word_type> words;
         };
         
     }

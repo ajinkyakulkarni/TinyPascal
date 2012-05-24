@@ -19,9 +19,9 @@ namespace pascal {
         class character_table : boost::noncopyable {
         public:
             character_table();
-            character_category operator[](char value);
+            character::character_category operator[](char value);
         private:
-            std::map<char, character_category > map_;
+            std::map<char, character::character_category > map_;
         };
     }
 }

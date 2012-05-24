@@ -13,41 +13,41 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 namespace pascal {
     namespace frontend {
         reserved_words_table::reserved_words_table() {
-            words["do"] = DO;
-            words["if"] = IF;
-            words["in"] = IN;
-            words["of"] = OF;
-            words["or"] = OR;
-            words["to"] = TO;
-            words["and"] = AND;
-            words["div"] = DIV;
-            words["end"] = END;
-            words["for"] = FOR;
-            words["mod"] = MOD;
-            words["nill"] = NIL;
-            words["not"] = NOT;
-            words["set"] = SET;
-            words["var"] = VAR;
-            words["case"] = CASE;
-            words["else"] = ELSE;
-            words["file"] = FFILE;
-            words["goto"] = GOTO;
-            words["then"] = THEN;
-            words["type"] = TYPE;
-            words["with"] = WITH;
-            words["array"] = ARRAY;
-            words["begin"] = BEGIN;
-            words["const"] = CONST;
-            words["label"] = LABEL;
-            words["until"] = UNTIL;
-            words["while"] = WHILE;
-            words["downto"] = DOWNTO;
-            words["packed"] = PACKED;
-            words["record"] = RECORD;
-            words["repeat"] = REPEAT;
-            words["program"] = PROGRAM;
-            words["function"] = FUNCTION;
-            words["procedure"] = PROCEDURE;
+            words["do"] = reserved_words::DO;
+            words["if"] = reserved_words::IF;
+            words["in"] = reserved_words::IN;
+            words["of"] = reserved_words::OF;
+            words["or"] = reserved_words::OR;
+            words["to"] = reserved_words::TO;
+            words["and"] = reserved_words::AND;
+            words["div"] = reserved_words::DIV;
+            words["end"] = reserved_words::END;
+            words["for"] = reserved_words::FOR;
+            words["mod"] = reserved_words::MOD;
+            words["nill"] = reserved_words::NIL;
+            words["not"] = reserved_words::NOT;
+            words["set"] = reserved_words::SET;
+            words["var"] = reserved_words::VAR;
+            words["case"] = reserved_words::CASE;
+            words["else"] = reserved_words::ELSE;
+            words["file"] = reserved_words::FILE;
+            words["goto"] = reserved_words::GOTO;
+            words["then"] = reserved_words::THEN;
+            words["type"] = reserved_words::TYPE;
+            words["with"] = reserved_words::WITH;
+            words["array"] = reserved_words::ARRAY;
+            words["begin"] = reserved_words::BEGIN;
+            words["const"] = reserved_words::CONST;
+            words["label"] = reserved_words::LABEL;
+            words["until"] = reserved_words::UNTIL;
+            words["while"] = reserved_words::WHILE;
+            words["downto"] = reserved_words::DOWNTO;
+            words["packed"] = reserved_words::PACKED;
+            words["record"] = reserved_words::RECORD;
+            words["repeat"] = reserved_words::REPEAT;
+            words["program"] = reserved_words::PROGRAM;
+            words["function"] = reserved_words::FUNCTION;
+            words["procedure"] = reserved_words::PROCEDURE;
         }
 
         struct word_to_lower_functor {
@@ -56,15 +56,15 @@ namespace pascal {
             }
         };
 
-        reserved_word_type reserved_words_table::operator[] (string const & word) const {
+        reserved_words::reserved_word_type reserved_words_table::operator[] (string const & word) const {
             word_to_lower_functor f;
 
             string temp = word;
             std::for_each(temp.begin(), temp.end(), f);
 
-            map<string, reserved_word_type>::const_iterator result = words.find(temp);
+            map<string, reserved_words::reserved_word_type>::const_iterator result = words.find(temp);
             if (result == words.end())
-                return NOT_RESERVED_WORD;
+                return reserved_words::NOT_RESERVED_WORD;
 
             return result->second;
         }

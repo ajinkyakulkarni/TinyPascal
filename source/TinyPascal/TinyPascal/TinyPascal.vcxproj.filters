@@ -25,9 +25,9 @@
     <Filter Include="Source Files\intermediate">
       <UniqueIdentifier>{fb7e8a00-55fa-4929-86bd-ce74ac3e201c}</UniqueIdentifier>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Samples\Example1.txt" />
+    <Filter Include="Samples">
+      <UniqueIdentifier>{f828d001-e2ef-4c99-a9a5-db45fe1a13e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="frontend\character_category.h">
@@ -132,6 +132,9 @@
     <ClInclude Include="intermediate\abstract_syntax_tree_node_type.h">
       <Filter>Header Files\intermediate</Filter>
     </ClInclude>
+    <ClInclude Include="frontend\token_type.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="frontend\character_table.cpp">
@@ -218,5 +221,10 @@
     <ClCompile Include="frontend\parser.cpp">
       <Filter>Source Files\frontend</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Samples\Example1.txt">
+      <Filter>Samples</Filter>
+    </None>
   </ItemGroup>
 </Project>

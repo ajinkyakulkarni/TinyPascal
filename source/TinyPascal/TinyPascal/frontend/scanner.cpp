@@ -107,19 +107,19 @@ namespace pascal {
                 processor_ = shared_ptr<token_processor>(new start_processor(*this));
             }
 
-            bool empty() {
+            bool empty() const {
                 return !(buffer_.canPeek());
             }
 
-            bool eof() {
+            bool eof() const {
                 return buffer_.eof();
             }
 
-            char current() {
+            char current() const {
                 return current_;
             }
 
-            char peek() {
+            char peek() const {
                 return buffer_.peek();
             }
 
@@ -165,19 +165,19 @@ namespace pascal {
                 buffer_.rewind();
             }
 
-            bool canPeek() {
+            bool canPeek() const{
                 return buffer_.canPeek();
             }
 
-            character_category peekType() {
+            character::character_category peekType() {
                 return character_table_[buffer_.peek()];
             }
 
-            character_category currentType() {
+            character::character_category currentType() {
                 return character_table_[current()];
             }
 
-            reserved_word_type getReservedWordToken(string const& text) {
+            reserved_words::reserved_word_type getReservedWordToken(string const& text) {
                 return reserved_words_table_[text];
             }
 
@@ -257,16 +257,16 @@ namespace pascal {
 
         void token_processor::configure() {
             switch (scanner_.currentType()) {
-                case LETTER:
+                case character::LETTER:
                     scanner_.assignIdentifierProcessor();
                     break;
-                case DIGIT:
+                case character::DIGIT:
                     scanner_.assignNumericProcessor();
                     break;
-                case SPACE:
+                case character::SPACE:
                     scanner_.assignWhitespaceProcessor();
                     break;
-                case QUOTE:
+                case character::QUOTE:
                     scanner_.assignStringProcessor();
                     break;
                 default:
@@ -290,13 +290,13 @@ namespace pascal {
             string currentTokenText("");
             currentTokenText.push_back(scanner_.current());
 
-            while (scanner_.canPeek() && (scanner_.peekType() == DIGIT || scanner_.peekType() == LETTER)) {
+            while (scanner_.canPeek() && (scanner_.peekType() == character::DIGIT || scanner_.peekType() == character::LETTER)) {
                 scanner_.read();
                 currentTokenText.push_back(scanner_.current());
             }
 
-            reserved_word_type reserved = scanner_.getReservedWordToken(currentTokenText);
-            if (reserved != NOT_RESERVED_WORD)
+            reserved_words::reserved_word_type reserved = scanner_.getReservedWordToken(currentTokenText);
+            if (reserved != reserved_words::NOT_RESERVED_WORD)
                 return shared_ptr<token>(new reserved_word_token(currentTokenText, scanner_.lineNumber()));
 
             return shared_ptr<token>(new identifier_token(currentTokenText, scanner_.lineNumber()));
@@ -310,20 +310,20 @@ namespace pascal {
             string currentTokenText("");
             currentTokenText.push_back(scanner_.current());
 
-            while (scanner_.canPeek() && (scanner_.peekType() == DIGIT)) {
+            while (scanner_.canPeek() && (scanner_.peekType() == character::DIGIT)) {
                 scanner_.read();
                 currentTokenText.push_back(scanner_.current());
             }
 
-            if (scanner_.canPeek() && scanner_.peekType() == DOT) {
+            if (scanner_.canPeek() && scanner_.peekType() == character::DOT) {
                 scanner_.read();
                 currentTokenText.push_back(scanner_.current());
-                if (scanner_.canPeek() && scanner_.peekType() == DIGIT) {
-                    while (scanner_.canPeek() && scanner_.peekType() == DIGIT) {
+                if (scanner_.canPeek() && scanner_.peekType() == character::DIGIT) {
+                    while (scanner_.canPeek() && scanner_.peekType() == character::DIGIT) {
                         scanner_.read();
                         currentTokenText.push_back(scanner_.current());
                     }
-                    if (scanner_.canPeek() && (scanner_.peekType() == DOT)) {
+                    if (scanner_.canPeek() && (scanner_.peekType() ==character:: DOT)) {
                         currentTokenText.push_back(scanner_.peek());
                         string message("Invalid real number: " + currentTokenText);
                         message.append(" on line ");
@@ -438,7 +438,7 @@ namespace pascal {
             string currentTokenText("");
             currentTokenText.push_back(scanner_.current());
 
-            while (scanner_.canPeek() && scanner_.peekType() == SPACE) {
+            while (scanner_.canPeek() && scanner_.peekType() == character::SPACE) {
                 scanner_.read();
                 currentTokenText.push_back(scanner_.current());
             }
@@ -456,8 +456,8 @@ namespace pascal {
             while (scanner_.canPeek()) {
 
                 scanner_.read();
-                if (scanner_.currentType() == QUOTE) {
-                    if (scanner_.peekType() != QUOTE)
+                if (scanner_.currentType() == character::QUOTE) {
+                    if (scanner_.peekType() != character::QUOTE)
                         return shared_ptr<token>(new string_literal_token(currentTokenText, scanner_.lineNumber()));
                     currentTokenText.push_back(scanner_.current());
                 }

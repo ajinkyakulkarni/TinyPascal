@@ -15,13 +15,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "token.h"
 #include <boost/noncopyable.hpp>
 
-using pascal::frontend::lexer::special_character_type;
-
 namespace pascal {
     namespace frontend {
         class special_character_token : public token {
         public:
-
             special_character_token(special_character_type type, std::string const & text, int line);
             ~special_character_token();
 

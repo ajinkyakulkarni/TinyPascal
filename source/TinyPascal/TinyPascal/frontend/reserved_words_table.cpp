@@ -10,67 +10,64 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "reserved_words_table.h"
 #include <algorithm>
 
-using pascal::frontend::lexer::reserved_word_type;
-
 namespace pascal {
     namespace frontend {
-        namespace lexer {
-            reserved_words_table::reserved_words_table() {
-                words["do"] = DO;
-                words["if"] = IF;
-                words["in"] = IN;
-                words["of"] = OF;
-                words["or"] = OR;
-                words["to"] = TO;
-                words["and"] = AND;
-                words["div"] = DIV;
-                words["end"] = END;
-                words["for"] = FOR;
-                words["mod"] = MOD;
-                words["nill"] = NIL;
-                words["not"] = NOT;
-                words["set"] = SET;
-                words["var"] = VAR;
-                words["case"] = CASE;
-                words["else"] = ELSE;
-                words["file"] = FFILE;
-                words["goto"] = GOTO;
-                words["then"] = THEN;
-                words["type"] = TYPE;
-                words["with"] = WITH;
-                words["array"] = ARRAY;
-                words["begin"] = BEGIN;
-                words["const"] = CONST;
-                words["label"] = LABEL;
-                words["until"] = UNTIL;
-                words["while"] = WHILE;
-                words["downto"] = DOWNTO;
-                words["packed"] = PACKED;
-                words["record"] = RECORD;
-                words["repeat"] = REPEAT;
-                words["program"] = PROGRAM;
-                words["function"] = FUNCTION;
-                words["procedure"] = PROCEDURE;
+        reserved_words_table::reserved_words_table() {
+            words["do"] = DO;
+            words["if"] = IF;
+            words["in"] = IN;
+            words["of"] = OF;
+            words["or"] = OR;
+            words["to"] = TO;
+            words["and"] = AND;
+            words["div"] = DIV;
+            words["end"] = END;
+            words["for"] = FOR;
+            words["mod"] = MOD;
+            words["nill"] = NIL;
+            words["not"] = NOT;
+            words["set"] = SET;
+            words["var"] = VAR;
+            words["case"] = CASE;
+            words["else"] = ELSE;
+            words["file"] = FFILE;
+            words["goto"] = GOTO;
+            words["then"] = THEN;
+            words["type"] = TYPE;
+            words["with"] = WITH;
+            words["array"] = ARRAY;
+            words["begin"] = BEGIN;
+            words["const"] = CONST;
+            words["label"] = LABEL;
+            words["until"] = UNTIL;
+            words["while"] = WHILE;
+            words["downto"] = DOWNTO;
+            words["packed"] = PACKED;
+            words["record"] = RECORD;
+            words["repeat"] = REPEAT;
+            words["program"] = PROGRAM;
+            words["function"] = FUNCTION;
+            words["procedure"] = PROCEDURE;
+        }
+
+        struct word_to_lower_functor {
+            void operator()(char& c) {
+                c = tolower(c);
             }
+        };
 
-            struct word_to_lower_functor {
-                void operator()(char& c) {
-                    c = tolower(c);
-                }
-            };
+        reserved_word_type reserved_words_table::operator[] (string const & word) const {
+            word_to_lower_functor f;
 
-            reserved_word_type reserved_words_table::operator[] (string const & word) const {
-                word_to_lower_functor f;
+            string temp = word;
+            std::for_each(temp.begin(), temp.end(), f);
 
-                string temp = word;
-                std::for_each(temp.begin(), temp.end(), f);
+            map<string, reserved_word_type>::const_iterator result = words.find(temp);
+            if (result == words.end())
+                return NOT_RESERVED_WORD;
 
-                map<string, reserved_word_type>::const_iterator result = words.find(temp);
-                if (result == words.end())
-                    return NOT_RESERVED_WORD;
-
-                return result->second;
-            }
+            return result->second;
         }
     }
+    
 }

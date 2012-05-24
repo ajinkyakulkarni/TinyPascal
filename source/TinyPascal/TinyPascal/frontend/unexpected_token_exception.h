@@ -17,16 +17,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using std::string;
 namespace pascal {
     namespace frontend {
-        namespace errors {
-            class unexpected_token_exception : public std::runtime_error {
-            public:
-
-                unexpected_token_exception(string const & message);
-
-                virtual ~unexpected_token_exception();
-
-            };
-        }
+        class unexpected_token_exception : public std::runtime_error {
+        public:
+            unexpected_token_exception(string const & message);
+            virtual ~unexpected_token_exception();
+        };
     }
 }
 #endif

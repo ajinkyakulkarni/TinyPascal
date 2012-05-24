@@ -11,7 +11,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "special_character_token.h"
 
 using std::string;
-using pascal::frontend::lexer::special_character_type;
 using std::cout;
 using std::endl;
 

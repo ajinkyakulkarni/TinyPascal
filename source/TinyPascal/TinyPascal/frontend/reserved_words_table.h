@@ -17,22 +17,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 using std::map;
 using std::string;
-using pascal::frontend::lexer::reserved_word_type;
 
 namespace pascal {
     namespace frontend {
-        namespace lexer {
-            class reserved_words_table : boost::noncopyable {
-            public:
+        class reserved_words_table : boost::noncopyable {
+        public:
+            reserved_words_table();
+            reserved_word_type operator[](string const & word) const;
 
-                reserved_words_table();
-
-                reserved_word_type operator[](string const & word) const;
-
-            private:
-                map <string, reserved_word_type> words;
-            };
-        }
+        private:
+            map <string, reserved_word_type> words;
+        };
+        
     }
 }
 

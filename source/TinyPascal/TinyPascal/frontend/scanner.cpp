@@ -27,11 +27,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using std::string;
 using std::shared_ptr;
 
-using namespace pascal::frontend::errors;
-using namespace pascal::frontend::lexer;
-using namespace pascal::frontend::io;
-using namespace pascal::frontend;
-
 namespace pascal {
     namespace frontend {
         class scanner_impl;

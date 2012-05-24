@@ -17,16 +17,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using std::string;
 namespace pascal {
     namespace frontend {
-        namespace errors {
-            class unclosed_quote_literal_exception : public std::runtime_error {
-            public:
-
-                unclosed_quote_literal_exception(string const & message);
-
-                virtual ~unclosed_quote_literal_exception();
-
-            };
-        }
+        class unclosed_quote_literal_exception : public std::runtime_error {
+        public:
+            unclosed_quote_literal_exception(string const & message);
+            virtual ~unclosed_quote_literal_exception();
+        };
     }
 }
 

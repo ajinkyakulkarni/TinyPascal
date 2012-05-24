@@ -15,7 +15,7 @@ namespace pascal{
 
 		symbol_not_found_exception::symbol_not_found_exception() : runtime_error("Symbol not found")
 		{
-	
+			
 		}
 
 		symbol_not_found_exception::~symbol_not_found_exception()

@@ -11,34 +11,32 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 namespace pascal {
     namespace frontend {
-        namespace lexer {
-            character_table::character_table() {
-                for (int i = 0; i <= 255; i++) {
-                    map_[(char) i] = SPECIAL;
-                }
-
-                for (int i = 'a'; i <= 'z'; i++) {
-                    map_[(char) i] = LETTER;
-                }
-
-                for (int i = 'A'; i <= 'Z'; i++) {
-                    map_[(char) i] = LETTER;
-                }
-
-                for (int i = '0'; i <= '9'; i++) {
-                    map_[(char) i] = DIGIT;
-                }
-
-                map_['.'] = DOT;
-                map_[' '] = SPACE;
-                map_['\''] = QUOTE;
-                map_['_'] = LETTER;
+        character_table::character_table() {
+            for (int i = 0; i <= 255; i++) {
+                map_[(char) i] = SPECIAL;
             }
 
-            character_category character_table::operator[](char value) {
-                character_category category = map_.at(value);
-                return category;
+            for (int i = 'a'; i <= 'z'; i++) {
+                map_[(char) i] = LETTER;
             }
+
+            for (int i = 'A'; i <= 'Z'; i++) {
+                map_[(char) i] = LETTER;
+            }
+
+            for (int i = '0'; i <= '9'; i++) {
+                map_[(char) i] = DIGIT;
+            }
+
+            map_['.'] = DOT;
+            map_[' '] = SPACE;
+            map_['\''] = QUOTE;
+            map_['_'] = LETTER;
         }
-    }
+
+        character_category character_table::operator[](char value) {
+            character_category category = map_.at(value);
+            return category;
+        }
+     }
 }

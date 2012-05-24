@@ -16,30 +16,28 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 namespace pascal {
     namespace frontend {
-        namespace io {
-            class file_buffer : boost::noncopyable {
-            public:
+        class file_buffer : boost::noncopyable {
+        public:
 
-                file_buffer(std::string const & filename, int bufferSize);
+            file_buffer(std::string const & filename, int bufferSize);
 
-                ~file_buffer();
+            ~file_buffer();
 
-                bool canPeek();
+            bool canPeek();
 
-                bool eof();
+            bool eof();
 
-                char peek();
+            char peek();
 
-                char character();
+            char character();
 
-                void rewind();
+            void rewind();
 
-            private:
-                const std::string filename_;
-                const int bufferSize_;
-                std::ifstream stream_;
-            };
-        }
+        private:
+            const std::string filename_;
+            const int bufferSize_;
+            std::ifstream stream_;
+        };
     }
 }
 

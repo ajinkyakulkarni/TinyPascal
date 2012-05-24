@@ -15,18 +15,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 namespace pascal {
     namespace frontend {
-        namespace errors {
-            using std::string;
+        class invalid_real_number_exception : public std::runtime_error {
+        public:
+            invalid_real_number_exception(std::string const & message);
+            virtual ~invalid_real_number_exception();
 
-            class invalid_real_number_exception : public std::runtime_error {
-            public:
-
-                invalid_real_number_exception(string const & message);
-
-                virtual ~invalid_real_number_exception();
-
-            };
-        }
+        };
     }
 }
 #endif

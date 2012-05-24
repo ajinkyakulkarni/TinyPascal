@@ -12,16 +12,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 namespace pascal {
     namespace frontend {
-        namespace lexer {
-            enum character_category {
-                LETTER,
-                DIGIT,
-                DOT,
-                SPACE,
-                QUOTE,
-                SPECIAL
-            };
-        }
+        enum character_category {
+            LETTER,
+            DIGIT,
+            DOT,
+            SPACE,
+            QUOTE,
+            SPECIAL
+        };
     }
 }
 

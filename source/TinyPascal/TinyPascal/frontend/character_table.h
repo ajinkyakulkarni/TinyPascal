@@ -16,18 +16,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 namespace pascal {
     namespace frontend {
-        namespace lexer {
-            class character_table : boost::noncopyable {
-            public:
-
-                character_table();
-
-                character_category operator[](char value);
-
-            private:
-                std::map<char, character_category > map_;
-            };
-        }
+        class character_table : boost::noncopyable {
+        public:
+            character_table();
+            character_category operator[](char value);
+        private:
+            std::map<char, character_category > map_;
+        };
     }
 }
 #endif

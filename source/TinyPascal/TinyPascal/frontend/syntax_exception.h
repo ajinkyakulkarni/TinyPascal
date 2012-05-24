@@ -18,16 +18,11 @@ using std::string;
 
 namespace pascal {
     namespace frontend {
-        namespace errors {
-            class syntax_exception : public std::runtime_error {
-            public:
-
-                syntax_exception(string const & message);
-
-                virtual ~syntax_exception();
-
-            };
-        }
+        class syntax_exception : public std::runtime_error {
+        public:
+            syntax_exception(string const & message);
+            virtual ~syntax_exception();
+        };
     }
 }
 #endif

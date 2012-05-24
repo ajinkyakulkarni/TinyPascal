@@ -14,35 +14,33 @@ using std::ifstream;
 
 namespace pascal {
     namespace frontend {
-        namespace io {
 
-            file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), stream_(filename) {
+        file_buffer::file_buffer(string const & filename, int bufferSize) : filename_(filename), bufferSize_(bufferSize), stream_(filename) {
 
-            }
+        }
 
-            file_buffer::~file_buffer() {
+        file_buffer::~file_buffer() {
 
-            }
+        }
 
-            bool file_buffer::canPeek() {
-                return static_cast<bool>(stream_.peek());
-            }
+        bool file_buffer::canPeek() {
+            return static_cast<bool>(stream_.peek());
+        }
 
-            bool file_buffer::eof() {
-                return stream_.eof();
-            }
+        bool file_buffer::eof() {
+            return stream_.eof();
+        }
 
-            char file_buffer::peek() {
-                return stream_.peek();
-            }
+        char file_buffer::peek() {
+            return stream_.peek();
+        }
 
-            char file_buffer::character() {
-                return stream_.get();
-            }
+        char file_buffer::character() {
+            return stream_.get();
+        }
 
-            void file_buffer::rewind() {
-                stream_.unget();
-            }
+        void file_buffer::rewind() {
+            stream_.unget();
         }
     }
 }

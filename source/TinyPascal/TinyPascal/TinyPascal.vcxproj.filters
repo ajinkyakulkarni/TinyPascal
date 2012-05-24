@@ -227,6 +227,9 @@
     <ClCompile Include="frontend\reserved_word_to_token_converter.cpp">
       <Filter>Source Files\frontend</Filter>
     </ClCompile>
+    <ClCompile Include="frontend\parser_base.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Samples\Example1.txt">

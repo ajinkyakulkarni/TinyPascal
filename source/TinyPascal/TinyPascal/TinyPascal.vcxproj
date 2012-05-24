@@ -123,6 +123,7 @@
     <ClCompile Include="frontend\invalid_real_number_exception.cpp" />
     <ClCompile Include="frontend\no_token.cpp" />
     <ClCompile Include="frontend\parser.cpp" />
+    <ClCompile Include="frontend\parser_base.cpp" />
     <ClCompile Include="frontend\real_literal_token.cpp" />
     <ClCompile Include="frontend\reserved_words_table.cpp" />
     <ClCompile Include="frontend\reserved_word_token.cpp" />

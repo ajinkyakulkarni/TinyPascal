@@ -7,25 +7,29 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#ifndef _WHITESPACE_TOKEN_H_
-#define _WHITESPACE_TOKEN_H_
+#ifndef _PARSER_BASE_H_
+#define _PARSER_BASE_H_
 
 #include <string>
+#include <boost/noncopyable.hpp>
+#include <memory>
 #include "token_type.h"
 #include "token.h"
-#include <boost/noncopyable.hpp>
 
-namespace pascal {
-    namespace frontend {
-        class no_token : public token {
-        public:
+#ifdef #WIN32
+#include "../intermediate/abstract_syntax_tree_node.h"
+#else
+#include "abstract_syntax_tree_node.h"
+#endif
 
-            no_token(std::string const & text, int line);
-            ~no_token();
-
-            void print() const;
-			tokens::token_type getType() const;
-        };
-    }
+namespace pascal{
+	namespace frontend{
+		class parser_base : public boost::noncopyable{
+		public:
+			parser_base();
+			virtual ~parser_base() = 0;
+			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse(tokens::token_type type);
+		};
+	}
 }
 #endif

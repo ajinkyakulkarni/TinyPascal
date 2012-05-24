@@ -11,7 +11,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #define _EOF_LITERAL_TOKEN_H_
 
 #include <string>
-#include "special_character_type.h"
+#include "token_type.h"
 #include "token.h"
 #include <boost/noncopyable.hpp>
 

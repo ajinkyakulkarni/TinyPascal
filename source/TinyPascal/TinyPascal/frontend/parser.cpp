@@ -26,6 +26,7 @@ namespace pascal{
                 t->print();
                 t = lexer.getNextToken();
             }
+
         }
 
     }

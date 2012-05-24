@@ -75,9 +75,6 @@
     <ClInclude Include="frontend\special_character_token.h">
       <Filter>Header Files\frontend</Filter>
     </ClInclude>
-    <ClInclude Include="frontend\special_character_type.h">
-      <Filter>Header Files\frontend</Filter>
-    </ClInclude>
     <ClInclude Include="frontend\string_literal_token.h">
       <Filter>Header Files\frontend</Filter>
     </ClInclude>
@@ -136,6 +133,9 @@
       <Filter>Header Files\frontend</Filter>
     </ClInclude>
     <ClInclude Include="frontend\reserved_word_to_token_converter.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\parser_base.h">
       <Filter>Header Files\frontend</Filter>
     </ClInclude>
   </ItemGroup>

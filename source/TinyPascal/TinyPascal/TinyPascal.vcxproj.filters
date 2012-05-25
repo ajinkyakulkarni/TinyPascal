@@ -150,6 +150,12 @@
     <ClInclude Include="frontend\expression_parser.h">
       <Filter>Header Files\frontend</Filter>
     </ClInclude>
+    <ClInclude Include="intermediate\abstract_syntax_tree_attribute.h">
+      <Filter>Header Files\intermediate</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate\abstract_syntax_tree_node_attribute_type.h">
+      <Filter>Header Files\intermediate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="frontend\character_table.cpp">
@@ -253,6 +259,9 @@
     </ClCompile>
     <ClCompile Include="frontend\expression_parser.cpp">
       <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="intermediate\abstract_syntax_tree_attribute.cpp">
+      <Filter>Source Files\intermediate</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -27,9 +27,9 @@ namespace pascal{
 			return children;
 		}
 
-        void abstract_syntax_tree_node::getAttribute() const
+        std::shared_ptr<abstract_syntax_tree_attribute>& abstract_syntax_tree_node::getAttribute(astattrtypes::abstract_syntax_tree_node_attribute_type type) 
 		{
-
+			return attributes[type];
 		}
 
         void abstract_syntax_tree_node::addChild(std::unique_ptr<abstract_syntax_tree_node>& node)
@@ -37,9 +37,9 @@ namespace pascal{
 			children.push_back(std::move(node));
 		}
 
-        void abstract_syntax_tree_node::setAttribute()
+        void abstract_syntax_tree_node::setAttribute(astattrtypes::abstract_syntax_tree_node_attribute_type type, std::shared_ptr<abstract_syntax_tree_attribute>& attribute)
 		{
-
+			attributes[type] = attribute;
 		}
 	}
 }

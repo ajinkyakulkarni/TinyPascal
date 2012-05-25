@@ -50,9 +50,10 @@ namespace pascal{
 				stable.addLocalSymbol(entry);
 			}
 
-			token = lexer.getNextToken(); //consum colon equals token
+			token = lexer.getNextToken(); //consume colon equals token
 
 			unode variable_node(new astnode(pascal::intermediate::asttypes::VARIABLE));
+			//variable_node->setAttribute(Id, nameoftoken...)
 
 			assign_node->addChild(variable_node);
 

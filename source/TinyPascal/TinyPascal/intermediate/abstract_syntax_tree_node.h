@@ -12,7 +12,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #include <memory>
 #include <vector>
+#include <map>
 #include "abstract_syntax_tree_node_type.h"
+#include "abstract_syntax_tree_attribute.h"
+#include "abstract_syntax_tree_node_attribute_type.h"
 
 namespace pascal{
     namespace intermediate{
@@ -22,14 +25,15 @@ namespace pascal{
 
             size_t const size() const;
             std::vector<std::unique_ptr<abstract_syntax_tree_node> > const & getChildren() const;
-            void getAttribute() const;
+            std::shared_ptr<abstract_syntax_tree_attribute>& getAttribute(astattrtypes::abstract_syntax_tree_node_attribute_type type) ;
 
             void addChild(std::unique_ptr<abstract_syntax_tree_node>& node);
-            void setAttribute();
+            void setAttribute(astattrtypes::abstract_syntax_tree_node_attribute_type type, std::shared_ptr<abstract_syntax_tree_attribute>& attribute);
 
         private:
             asttypes::abstract_syntax_tree_node_type type;
             std::vector<std::unique_ptr<abstract_syntax_tree_node> > children;
+			std::map<astattrtypes::abstract_syntax_tree_node_attribute_type, std::shared_ptr<abstract_syntax_tree_attribute> > attributes;
         };
     }
 }

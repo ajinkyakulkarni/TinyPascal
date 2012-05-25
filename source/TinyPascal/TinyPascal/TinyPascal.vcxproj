@@ -106,7 +106,9 @@
     <ClInclude Include="frontend\unclosed_quote_literal_exception.h" />
     <ClInclude Include="frontend\unexpected_token_exception.h" />
     <ClInclude Include="intermediate\abstract_syntax_tree.h" />
+    <ClInclude Include="intermediate\abstract_syntax_tree_attribute.h" />
     <ClInclude Include="intermediate\abstract_syntax_tree_node.h" />
+    <ClInclude Include="intermediate\abstract_syntax_tree_node_attribute_type.h" />
     <ClInclude Include="intermediate\abstract_syntax_tree_node_type.h" />
     <ClInclude Include="intermediate\symbol_not_found_exception.h" />
     <ClInclude Include="intermediate\symbol_table.h" />
@@ -144,6 +146,7 @@
     <ClCompile Include="frontend\unclosed_quote_literal_exception.cpp" />
     <ClCompile Include="frontend\unexpected_token_exception.cpp" />
     <ClCompile Include="intermediate\abstract_syntax_tree.cpp" />
+    <ClCompile Include="intermediate\abstract_syntax_tree_attribute.cpp" />
     <ClCompile Include="intermediate\abstract_syntax_tree_node.cpp" />
     <ClCompile Include="intermediate\symbol_not_found_exception.cpp" />
     <ClCompile Include="intermediate\symbol_table.cpp" />

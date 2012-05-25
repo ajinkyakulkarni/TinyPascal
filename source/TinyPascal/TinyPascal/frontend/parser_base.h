@@ -15,20 +15,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <memory>
 #include "token_type.h"
 #include "token.h"
+#include "scanner.h"
 
 #ifdef _WIN32
 #include "../intermediate/abstract_syntax_tree_node.h"
+#include "../intermediate/symbol_table_stack.h"
 #else
 #include "abstract_syntax_tree_node.h"
+#include "..symbol_table_stack.h"
 #endif
 
 namespace pascal{
 	namespace frontend{
 		class parser_base : public boost::noncopyable{
 		public:
-			parser_base();
+			parser_base(pascal::frontend::scanner& scanner_, pascal::intermediate::symbol_table_stack& stable_);
 			virtual ~parser_base() = 0;
 			virtual std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse(std::shared_ptr<token>& token) = 0;
+		protected:
+			pascal::frontend::scanner& lexer;
+			pascal::intermediate::symbol_table_stack& stable;
 		};
 	}
 }

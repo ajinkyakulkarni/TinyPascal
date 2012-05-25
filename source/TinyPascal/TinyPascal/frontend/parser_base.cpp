@@ -11,7 +11,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 namespace pascal{
 	namespace frontend{
-		parser_base::parser_base()
+		parser_base::parser_base(pascal::frontend::scanner& lexer_, pascal::intermediate::symbol_table_stack& stable_) : lexer(lexer_), stable(stable_)
 		{
 		}
 		

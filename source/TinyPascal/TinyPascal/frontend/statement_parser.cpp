@@ -9,11 +9,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 #include "statement_parser.h"
+#include "compound_statement_parser.h"
+#include "assignment_statement_parser.h"
 
 namespace pascal{
 	namespace frontend{
 
-		statement_parser::statement_parser()
+		typedef pascal::intermediate::abstract_syntax_tree_node astnode;
+		typedef std::unique_ptr<astnode> unode;
+
+
+		statement_parser::statement_parser(pascal::frontend::scanner& lexer_, pascal::intermediate::symbol_table_stack& stable_) : parser_base(lexer_, stable_)
 		{
 
 		}
@@ -25,7 +31,17 @@ namespace pascal{
 
 		std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> statement_parser::parse(std::shared_ptr<token>& token)
 		{
-			return 0;
+			if(token->getType() == tokens::BEGIN){
+				compound_statement_parser cps(lexer, stable);
+				return cps.parse(token);
+			}else if(token->getType() == tokens::IDENTIFIER){
+				assignment_statement_parser asp(lexer, stable);
+				return asp.parse(token);
+			}else{
+				unode no_op_node(new astnode(pascal::intermediate::asttypes::NO_OP));
+				return no_op_node;
+			}
+
 		}
 	}
 }

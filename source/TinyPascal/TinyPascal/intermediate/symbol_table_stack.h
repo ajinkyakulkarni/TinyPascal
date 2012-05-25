@@ -26,6 +26,7 @@ namespace pascal{
 			bool localLookupContainsSymbol(std::string const & entry) const;
 			bool lookupContainsSymbol(std::string const & entry) const;
 			const symbol_table_entry& localLookup(std::string const & entry) const;
+			symbol_table_entry& symbol_table_stack::lookup(std::string const & entry) ;
 			const symbol_table_entry& lookup(std::string const & entry) const;
 
 			void addNewLevel();

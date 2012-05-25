@@ -7,3 +7,39 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+
+#include "abstract_syntax_tree_node.h"
+
+namespace pascal{
+	namespace intermediate{
+		abstract_syntax_tree_node::abstract_syntax_tree_node(asttypes::abstract_syntax_tree_node_type type_) : type(type_)
+		{
+
+		}
+
+		size_t const abstract_syntax_tree_node::size() const
+		{
+			return children.size();
+		}
+
+		std::vector<std::unique_ptr<abstract_syntax_tree_node> > const & abstract_syntax_tree_node::getChildren() const
+		{
+			return children;
+		}
+
+        void abstract_syntax_tree_node::getAttribute() const
+		{
+
+		}
+
+        void abstract_syntax_tree_node::addChild(std::unique_ptr<abstract_syntax_tree_node>& node)
+		{
+			children.push_back(std::move(node));
+		}
+
+        void abstract_syntax_tree_node::setAttribute()
+		{
+
+		}
+	}
+}

@@ -42,6 +42,17 @@ namespace pascal {
 			return tables[level].lookup(entry);
 		}
 
+		symbol_table_entry& symbol_table_stack::lookup(std::string const & entry) 
+		{
+			for(std::vector<symbol_table>::iterator i = tables.begin(); i != tables.end(); ++i){
+				if( (*i).containsSymbol(entry) ){
+					return (*i).lookup(entry);
+				}
+			}
+
+			throw symbol_not_found_exception();
+		}
+
 		const symbol_table_entry& symbol_table_stack::lookup(std::string const & entry) const
 		{
 			for(std::vector<symbol_table>::const_iterator i = tables.begin(); i != tables.end(); ++i){

@@ -7,30 +7,30 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#ifndef _FILE_BUFFER_H_
-#define _FILE_BUFFER_H_
+
+#ifndef _ASSIGNMENT_STATEMENT_PARSER_H_
+#define _ASSIGNMENT_STATEMENT_PARSER_H_
 
 #include <string>
-#include <fstream>
 #include <boost/noncopyable.hpp>
+#include <memory>
+#include "statement_parser.h"
 
-namespace pascal {
-    namespace frontend {
-        class file_buffer : boost::noncopyable {
-        public:
-            file_buffer(std::string const & filename, int bufferSize);
-            ~file_buffer();
-            bool canPeek() const;
-            bool eof() const;
-            char peek() const;
-            char character();
-            void rewind();
-        private:
-            const std::string filename_;
-            const int bufferSize_;
-            mutable std::ifstream stream_;
-        };
-    }
+#ifdef _WIN32
+#include "../intermediate/abstract_syntax_tree_node.h"
+#else
+#include "abstract_syntax_tree_node.h"
+#endif
+
+namespace pascal{
+	namespace frontend{
+		class assignment_statement_parser : public statement_parser{
+		public:
+			assignment_statement_parser(pascal::frontend::scanner& lexer_, pascal::intermediate::symbol_table_stack& stable_);
+			~assignment_statement_parser();
+			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse(std::shared_ptr<token>& token);
+		};
+	}
 }
 
 #endif

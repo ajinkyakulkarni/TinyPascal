@@ -18,6 +18,7 @@ namespace pascal{
     namespace intermediate{
         class abstract_syntax_tree_node {
         public:
+			explicit abstract_syntax_tree_node(asttypes::abstract_syntax_tree_node_type type_);
 
             size_t const size() const;
             std::vector<std::unique_ptr<abstract_syntax_tree_node> > const & getChildren() const;
@@ -27,7 +28,7 @@ namespace pascal{
             void setAttribute();
 
         private:
-            abstract_syntax_tree_node_type type;
+            asttypes::abstract_syntax_tree_node_type type;
             std::vector<std::unique_ptr<abstract_syntax_tree_node> > children;
         };
     }

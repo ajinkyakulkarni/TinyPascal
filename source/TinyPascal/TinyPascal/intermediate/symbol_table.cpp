@@ -59,6 +59,15 @@ namespace pascal {
 			return *(result);
 		}
 
+		symbol_table_entry& symbol_table::lookup(std::string name)
+		{
+			symbol_name_predicate pred(name);
+
+			std::vector<symbol_table_entry>::iterator result = find_if(symbols.begin(), symbols.end(),pred);
+
+			return *(result);
+		}
+
 		void symbol_table::addSymbol(symbol_table_entry const & entry)
 		{
 			symbols.push_back(entry);

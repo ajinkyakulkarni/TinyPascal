@@ -24,6 +24,7 @@ namespace pascal {
 			bool containsSymbol(std::string const & name) const;
 			bool isGlobalSymbolTable() const;
 			symbol_table_entry const & lookup(std::string name) const;
+			symbol_table_entry& lookup(std::string name);
 
 			void addSymbol(symbol_table_entry const & entry);
 		private:

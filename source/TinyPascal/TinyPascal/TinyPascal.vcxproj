@@ -77,9 +77,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="compiler.h" />
+    <ClInclude Include="frontend\assignment_statement_parser.h" />
     <ClInclude Include="frontend\character_category.h" />
     <ClInclude Include="frontend\character_table.h" />
+    <ClInclude Include="frontend\compound_statement_parser.h" />
     <ClInclude Include="frontend\eof_token.h" />
+    <ClInclude Include="frontend\expression_parser.h" />
     <ClInclude Include="frontend\file_buffer.h" />
     <ClInclude Include="frontend\identifier_token.h" />
     <ClInclude Include="frontend\integral_literal_token.h" />
@@ -116,8 +119,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="compiler.cpp" />
+    <ClCompile Include="frontend\assignment_statement_parser.cpp" />
     <ClCompile Include="frontend\character_table.cpp" />
+    <ClCompile Include="frontend\compound_assignment_statement.cpp" />
     <ClCompile Include="frontend\eof_token.cpp" />
+    <ClCompile Include="frontend\expression_parser.cpp" />
     <ClCompile Include="frontend\file_buffer.cpp" />
     <ClCompile Include="frontend\identifier_token.cpp" />
     <ClCompile Include="frontend\integral_literal_token.cpp" />

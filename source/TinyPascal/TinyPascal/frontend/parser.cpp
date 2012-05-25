@@ -39,8 +39,10 @@ namespace pascal{
 
 			if(token->getType() == tokens::BEGIN)
 			{
-				statement_parser sparser;
+				statement_parser sparser(this->lexer,this->stable);
 				root.assign(sparser.parse(token));
+			}else{
+				// error we should start with begin....
 			}
 
         }

@@ -141,6 +141,15 @@
     <ClInclude Include="frontend\statement_parser.h">
       <Filter>Header Files\frontend</Filter>
     </ClInclude>
+    <ClInclude Include="frontend\compound_statement_parser.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\assignment_statement_parser.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\expression_parser.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="frontend\character_table.cpp">
@@ -234,6 +243,15 @@
       <Filter>Source Files\frontend</Filter>
     </ClCompile>
     <ClCompile Include="frontend\statement_parser.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\assignment_statement_parser.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\compound_assignment_statement.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\expression_parser.cpp">
       <Filter>Source Files\frontend</Filter>
     </ClCompile>
   </ItemGroup>

@@ -13,15 +13,16 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #ifdef _WIN32
 
 #include "../intermediate/abstract_syntax_tree.h"
+#include "../intermediate/abstract_syntax_tree_node.h"
 
 #else
 
 #include "abstract_syntax_tree.h"
 
+
 #endif
 
-
-#include <memory>
+#include "pascal_exceptions.h"
 
 namespace pascal{
     namespace frontend{
@@ -39,6 +40,7 @@ namespace pascal{
 
 			if(token->getType() == tokens::BEGIN)
 			{
+
 				statement_parser sparser(this->lexer,this->stable);
 				root.assign(sparser.parse(token));
 			}else{

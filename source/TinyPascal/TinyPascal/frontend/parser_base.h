@@ -29,10 +29,12 @@ namespace pascal{
 	namespace frontend{
 		class parser_base : public boost::noncopyable{
 		public:
+
 			parser_base(pascal::frontend::scanner& scanner_, pascal::intermediate::symbol_table_stack& stable_);
 			virtual ~parser_base() = 0;
 			virtual std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse(std::shared_ptr<token>& token) = 0;
-		protected:
+
+        protected:
 			pascal::frontend::scanner& lexer;
 			pascal::intermediate::symbol_table_stack& stable;
 		};

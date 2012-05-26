@@ -49,7 +49,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "/Users/blairdavidson/CPP/TinyPascal/source/TinyPascal/TinyPascal/Samples/Example1.txt"
+            argument = "/Users/blairdavidson/CPP/TinyPascal/source/TinyPascal/TinyPascal/Samples/assignsamples.txt"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

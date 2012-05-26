@@ -11,6 +11,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "statement_parser.h"
 #include "compound_statement_parser.h"
 #include "assignment_statement_parser.h"
+#include "unexpected_token_exception.h"
 
 namespace pascal{
 	namespace frontend{
@@ -43,5 +44,33 @@ namespace pascal{
 			}
 
 		}
+
+        void statement_parser::parseStatementList(std::shared_ptr<token>& token, std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node>& compoundNode)
+        {
+            while(token->getType() != tokens::END_OF_FILE && token->getType() != tokens::END)
+            {
+                std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> statementNode = parse(token);
+                compoundNode->addChild(statementNode);
+
+                token = lexer.getNextToken();
+                if (token->getType() == tokens::SEMICOLON){
+                    token = lexer.getNextToken(); // consume ;
+                    continue;
+                }else if (token->getType() == tokens::END)
+                {
+                    token = lexer.getNextToken(); // consume END
+
+                }else{
+                    throw unexpected_token_exception("expected ; or END");
+                }
+
+            }
+
+            if (token->getType() != tokens::END){
+                throw unexpected_token_exception("expected END");
+            }
+
+            token = lexer.getNextToken(); // consume end token
+        }
 	}
 }

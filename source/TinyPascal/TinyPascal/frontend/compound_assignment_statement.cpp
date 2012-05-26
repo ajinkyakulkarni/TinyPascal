@@ -24,7 +24,14 @@ namespace pascal{
 
 		std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> compound_statement_parser::parse(std::shared_ptr<token>& token)
 		{
-			return 0;
+            token = lexer.getNextToken(); // consume begin token
+
+			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> root(new pascal::intermediate::abstract_syntax_tree_node(pascal::intermediate::asttypes::COMPOUND));
+
+            statement_parser sparser(this->lexer, this->stable);
+            sparser.parseStatementList(token, root);
+
+            return root;
 		}
 	}
 }

@@ -7,31 +7,19 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-#ifndef _STATEMENT_PARSER_H_
-#define _STATEMENT_PARSER_H_
 
-#include <string>
-#include <boost/noncopyable.hpp>
-#include <memory>
-#include "parser_base.h"
+#include "abstract_syntax_tree.h"
 
-#ifdef _WIN32
-#include "../intermediate/abstract_syntax_tree_node.h"
-#include "../intermediate/abstract_syntax_tree_node_type.h"
-#else
-#include "abstract_syntax_tree_node.h"
-#include "abstract_syntax_tree_node_type.h"
-#endif
+#ifndef __AST_PRINTER_H_
+#define __AST_PRINTER_H_
 
-namespace pascal{
-	namespace frontend{
-		class statement_parser : public parser_base{
-		public:
-			statement_parser(pascal::frontend::scanner& scanner_, pascal::intermediate::symbol_table_stack& stable_);
-			~statement_parser();
-			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse(std::shared_ptr<token>& token);
-            void parseStatementList(std::shared_ptr<token>& token, std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node>& compoundNode);
-		};
-	}
+namespace pascal {
+    namespace intermediate {
+        class abstract_syntax_tree_printer {
+        public:
+            void print(abstract_syntax_tree const & ast) const;
+        };
+    }
 }
+
 #endif

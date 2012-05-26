@@ -22,7 +22,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include "../intermediate/symbol_table_stack.h"
 #else
 #include "abstract_syntax_tree_node.h"
-#include "..symbol_table_stack.h"
+#include "symbol_table_stack.h"
 #endif
 
 namespace pascal{

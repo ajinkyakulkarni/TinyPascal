@@ -37,6 +37,12 @@
 		C04E3E91DA9F1DD6974A1394 /* statement_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1393 /* statement_parser.cpp */; };
 		C04E3E91DA9F1DD6974A1399 /* abstract_syntax_tree_node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A1398 /* abstract_syntax_tree_node.cpp */; };
 		C04E3E91DA9F1DD6974A139C /* abstract_syntax_tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A139B /* abstract_syntax_tree.cpp */; };
+		C04E3E91DA9F1DD6974A139F /* assignment_statement_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A139E /* assignment_statement_parser.cpp */; };
+		C04E3E91DA9F1DD6974A13A2 /* compound_assignment_statement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A13A1 /* compound_assignment_statement.cpp */; };
+		C04E3E91DA9F1DD6974A13A5 /* expression_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A13A4 /* expression_parser.cpp */; };
+		C04E3E91DA9F1DD6974A13A8 /* abstract_syntax_tree_attribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A13A7 /* abstract_syntax_tree_attribute.cpp */; };
+		C04E3E91DA9F1DD6974A13AD /* id_attribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A13AC /* id_attribute.cpp */; };
+		C04E3E91DA9F1DD6974A13B0 /* abstract_syntax_tree_printer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C04E3E91DA9F1DD6974A13AF /* abstract_syntax_tree_printer.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -121,6 +127,20 @@
 		C04E3E91DA9F1DD6974A139A /* abstract_syntax_tree_node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = abstract_syntax_tree_node.h; path = intermediate/abstract_syntax_tree_node.h; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A139B /* abstract_syntax_tree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = abstract_syntax_tree.cpp; path = intermediate/abstract_syntax_tree.cpp; sourceTree = "<group>"; };
 		C04E3E91DA9F1DD6974A139D /* abstract_syntax_tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = abstract_syntax_tree.h; path = intermediate/abstract_syntax_tree.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A139E /* assignment_statement_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = assignment_statement_parser.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13A0 /* assignment_statement_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = assignment_statement_parser.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13A1 /* compound_assignment_statement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compound_assignment_statement.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13A3 /* compound_statement_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = compound_statement_parser.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13A4 /* expression_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = expression_parser.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13A6 /* expression_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = expression_parser.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13A7 /* abstract_syntax_tree_attribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = abstract_syntax_tree_attribute.cpp; path = intermediate/abstract_syntax_tree_attribute.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13A9 /* abstract_syntax_tree_attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = abstract_syntax_tree_attribute.h; path = intermediate/abstract_syntax_tree_attribute.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13AA /* abstract_syntax_tree_node_attribute_type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = abstract_syntax_tree_node_attribute_type.h; path = intermediate/abstract_syntax_tree_node_attribute_type.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13AB /* assignsamples.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = assignsamples.txt; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13AC /* id_attribute.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = id_attribute.cpp; path = intermediate/id_attribute.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13AE /* id_attribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = id_attribute.h; path = intermediate/id_attribute.h; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13AF /* abstract_syntax_tree_printer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = abstract_syntax_tree_printer.cpp; path = intermediate/abstract_syntax_tree_printer.cpp; sourceTree = "<group>"; };
+		C04E3E91DA9F1DD6974A13B1 /* abstract_syntax_tree_printer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = abstract_syntax_tree_printer.h; path = intermediate/abstract_syntax_tree_printer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +187,7 @@
 		C04E3E91DA9F1DD6974A1340 /* Samples */ = {
 			isa = PBXGroup;
 			children = (
+				C04E3E91DA9F1DD6974A13AB /* assignsamples.txt */,
 				C04E3E91DA9F1DD6974A1341 /* Example1.txt */,
 			);
 			path = Samples;
@@ -175,6 +196,12 @@
 		C04E3E91DA9F1DD6974A136E /* frontend */ = {
 			isa = PBXGroup;
 			children = (
+				C04E3E91DA9F1DD6974A13A6 /* expression_parser.h */,
+				C04E3E91DA9F1DD6974A13A4 /* expression_parser.cpp */,
+				C04E3E91DA9F1DD6974A13A3 /* compound_statement_parser.h */,
+				C04E3E91DA9F1DD6974A13A1 /* compound_assignment_statement.cpp */,
+				C04E3E91DA9F1DD6974A13A0 /* assignment_statement_parser.h */,
+				C04E3E91DA9F1DD6974A139E /* assignment_statement_parser.cpp */,
 				C04E3E91DA9F1DD6974A1396 /* token_type.h */,
 				C04E3E91DA9F1DD6974A1395 /* statement_parser.h */,
 				C04E3E91DA9F1DD6974A1393 /* statement_parser.cpp */,
@@ -229,6 +256,13 @@
 		C04E3E91DA9F1DD6974A136F /* intermediate */ = {
 			isa = PBXGroup;
 			children = (
+				C04E3E91DA9F1DD6974A13B1 /* abstract_syntax_tree_printer.h */,
+				C04E3E91DA9F1DD6974A13AF /* abstract_syntax_tree_printer.cpp */,
+				C04E3E91DA9F1DD6974A13AE /* id_attribute.h */,
+				C04E3E91DA9F1DD6974A13AC /* id_attribute.cpp */,
+				C04E3E91DA9F1DD6974A13AA /* abstract_syntax_tree_node_attribute_type.h */,
+				C04E3E91DA9F1DD6974A13A9 /* abstract_syntax_tree_attribute.h */,
+				C04E3E91DA9F1DD6974A13A7 /* abstract_syntax_tree_attribute.cpp */,
 				C04E3E91DA9F1DD6974A139D /* abstract_syntax_tree.h */,
 				C04E3E91DA9F1DD6974A139B /* abstract_syntax_tree.cpp */,
 				C04E3E91DA9F1DD6974A139A /* abstract_syntax_tree_node.h */,
@@ -326,6 +360,12 @@
 				C04E3E91DA9F1DD6974A1394 /* statement_parser.cpp in Sources */,
 				C04E3E91DA9F1DD6974A1399 /* abstract_syntax_tree_node.cpp in Sources */,
 				C04E3E91DA9F1DD6974A139C /* abstract_syntax_tree.cpp in Sources */,
+				C04E3E91DA9F1DD6974A139F /* assignment_statement_parser.cpp in Sources */,
+				C04E3E91DA9F1DD6974A13A2 /* compound_assignment_statement.cpp in Sources */,
+				C04E3E91DA9F1DD6974A13A5 /* expression_parser.cpp in Sources */,
+				C04E3E91DA9F1DD6974A13A8 /* abstract_syntax_tree_attribute.cpp in Sources */,
+				C04E3E91DA9F1DD6974A13AD /* id_attribute.cpp in Sources */,
+				C04E3E91DA9F1DD6974A13B0 /* abstract_syntax_tree_printer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

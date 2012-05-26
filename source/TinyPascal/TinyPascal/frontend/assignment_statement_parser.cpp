@@ -14,8 +14,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #ifdef _WIN32
 #include "../intermediate/symbol_table_entry.h"
+#include "../intermediate/id_attribute.h"
 #else
-#include "symbol_table_entry.h"
+
+#include "id_attribute.h"
 #endif
 
 namespace pascal{
@@ -53,7 +55,7 @@ namespace pascal{
 			token = lexer.getNextToken(); //consume colon equals token
 
 			unode variable_node(new astnode(pascal::intermediate::asttypes::VARIABLE));
-			//variable_node->setAttribute(Id, nameoftoken...)
+			variable_node->setAttribute(pascal::intermediate::astattrtypes::ID, std::shared_ptr<pascal::intermediate::abstract_syntax_tree_attribute>(new pascal::intermediate::id_attribute(token->getText())));
 
 			assign_node->addChild(variable_node);
 
@@ -63,7 +65,9 @@ namespace pascal{
 			}
 
 			expression_parser exp(lexer,stable);
-			assign_node->addChild(exp.parse(token));
+            std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> exp_result(exp.parse(token));
+
+			assign_node->addChild(exp_result);
 
 			return assign_node;
 		}

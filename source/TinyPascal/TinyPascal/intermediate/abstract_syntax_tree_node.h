@@ -13,6 +13,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #include <memory>
 #include <vector>
 #include <map>
+#include <string>
 #include "abstract_syntax_tree_node_type.h"
 #include "abstract_syntax_tree_attribute.h"
 #include "abstract_syntax_tree_node_attribute_type.h"
@@ -24,11 +25,13 @@ namespace pascal{
 			explicit abstract_syntax_tree_node(asttypes::abstract_syntax_tree_node_type type_);
 
             size_t const size() const;
+            bool const hasChildren() const;
+            std::string toString() const;
             std::vector<std::unique_ptr<abstract_syntax_tree_node> > const & getChildren() const;
             std::shared_ptr<abstract_syntax_tree_attribute>& getAttribute(astattrtypes::abstract_syntax_tree_node_attribute_type type) ;
 
             void addChild(std::unique_ptr<abstract_syntax_tree_node>& node);
-            void setAttribute(astattrtypes::abstract_syntax_tree_node_attribute_type type, std::shared_ptr<abstract_syntax_tree_attribute>& attribute);
+            void setAttribute(astattrtypes::abstract_syntax_tree_node_attribute_type type, std::shared_ptr<abstract_syntax_tree_attribute> const& attribute);
 
         private:
             asttypes::abstract_syntax_tree_node_type type;

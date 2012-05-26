@@ -14,15 +14,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 #include "../intermediate/abstract_syntax_tree.h"
 #include "../intermediate/abstract_syntax_tree_node.h"
+#include "../intermediate/abstract_syntax_tree_printer.h"
 
 #else
 
 #include "abstract_syntax_tree.h"
-
+#include "abstract_syntax_tree_printer.h"
 
 #endif
-
-#include "pascal_exceptions.h"
 
 namespace pascal{
     namespace frontend{
@@ -34,18 +33,25 @@ namespace pascal{
         void parser::parse()
         {
 			using pascal::intermediate::abstract_syntax_tree;
+            using pascal::intermediate::abstract_syntax_tree_printer;
+
             abstract_syntax_tree root;
 			
 			std::shared_ptr<token> token = lexer.getNextToken();
 
-			if(token->getType() == tokens::BEGIN)
+            if(token->getType() == tokens::BEGIN)
 			{
 
 				statement_parser sparser(this->lexer,this->stable);
-				root.assign(sparser.parse(token));
+				std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> result(sparser.parse(token));
+                root.assign(result);
+
 			}else{
 				// error we should start with begin....
 			}
+
+            abstract_syntax_tree_printer printer;
+            printer.print(root);
 
         }
 

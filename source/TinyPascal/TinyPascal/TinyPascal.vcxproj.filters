@@ -156,6 +156,15 @@
     <ClInclude Include="intermediate\abstract_syntax_tree_node_attribute_type.h">
       <Filter>Header Files\intermediate</Filter>
     </ClInclude>
+    <ClInclude Include="frontend\special_character_type.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate\abstract_syntax_tree_printer.h">
+      <Filter>Header Files\intermediate</Filter>
+    </ClInclude>
+    <ClInclude Include="intermediate\id_attribute.h">
+      <Filter>Header Files\intermediate</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="frontend\character_table.cpp">
@@ -263,9 +272,18 @@
     <ClCompile Include="intermediate\abstract_syntax_tree_attribute.cpp">
       <Filter>Source Files\intermediate</Filter>
     </ClCompile>
+    <ClCompile Include="intermediate\abstract_syntax_tree_printer.cpp">
+      <Filter>Source Files\intermediate</Filter>
+    </ClCompile>
+    <ClCompile Include="intermediate\id_attribute.cpp">
+      <Filter>Source Files\intermediate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Samples\Example1.txt">
+      <Filter>Samples</Filter>
+    </None>
+    <None Include="Samples\assignsamples.txt">
       <Filter>Samples</Filter>
     </None>
   </ItemGroup>

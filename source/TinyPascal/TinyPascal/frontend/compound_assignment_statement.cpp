@@ -24,7 +24,7 @@ namespace pascal{
 
 		std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> compound_statement_parser::parse(std::shared_ptr<token>& token)
 		{
-            std::shared_ptr<pascal::frontend::token> ntoken = lexer.getNextToken(); // consume begin token
+            std::shared_ptr<pascal::frontend::token> ntoken = lexer.getNextToken();
 
 			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> root(new pascal::intermediate::abstract_syntax_tree_node(pascal::intermediate::asttypes::COMPOUND));
 

@@ -14,7 +14,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 namespace pascal {
 	namespace intermediate {
 
-		symbol_table_stack::symbol_table_stack(int level_) : level(level_){}
+		symbol_table_stack::symbol_table_stack(int level_) : level(level_)
+		{
+			symbol_table t(level_);
+			tables.push_back(t);
+		}
 
 		int symbol_table_stack::currentLevel() const
 		{

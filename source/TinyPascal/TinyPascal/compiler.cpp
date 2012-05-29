@@ -14,15 +14,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 compiler::compiler(std::string const & filename) : lexer(filename), stable(0), p(lexer, stable)
 {
-
 }
 
 void compiler::compile() 
 {
-	using std::cout;
-	using std::endl;
-
-
 	try {
 		p.parse();
 	} catch(std::runtime_error const & ex) {

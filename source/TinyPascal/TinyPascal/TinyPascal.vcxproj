@@ -98,6 +98,7 @@
     <ClInclude Include="frontend\reserved_word_type.h" />
     <ClInclude Include="frontend\scanner.h" />
     <ClInclude Include="frontend\special_character_token.h" />
+    <ClInclude Include="frontend\special_character_type.h" />
     <ClInclude Include="frontend\statement_parser.h" />
     <ClInclude Include="frontend\string_literal_token.h" />
     <ClInclude Include="frontend\syntax_exception.h" />
@@ -110,6 +111,8 @@
     <ClInclude Include="intermediate\abstract_syntax_tree_node.h" />
     <ClInclude Include="intermediate\abstract_syntax_tree_node_attribute_type.h" />
     <ClInclude Include="intermediate\abstract_syntax_tree_node_type.h" />
+    <ClInclude Include="intermediate\abstract_syntax_tree_printer.h" />
+    <ClInclude Include="intermediate\id_attribute.h" />
     <ClInclude Include="intermediate\symbol_not_found_exception.h" />
     <ClInclude Include="intermediate\symbol_table.h" />
     <ClInclude Include="intermediate\symbol_table_attribute.h" />
@@ -148,6 +151,8 @@
     <ClCompile Include="intermediate\abstract_syntax_tree.cpp" />
     <ClCompile Include="intermediate\abstract_syntax_tree_attribute.cpp" />
     <ClCompile Include="intermediate\abstract_syntax_tree_node.cpp" />
+    <ClCompile Include="intermediate\abstract_syntax_tree_printer.cpp" />
+    <ClCompile Include="intermediate\id_attribute.cpp" />
     <ClCompile Include="intermediate\symbol_not_found_exception.cpp" />
     <ClCompile Include="intermediate\symbol_table.cpp" />
     <ClCompile Include="intermediate\symbol_table_attribute.cpp" />
@@ -157,6 +162,7 @@
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Samples\assignsamples.txt" />
     <None Include="Samples\Example1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

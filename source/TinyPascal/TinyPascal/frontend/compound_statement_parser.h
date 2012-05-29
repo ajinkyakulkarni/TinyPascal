@@ -38,7 +38,7 @@ namespace pascal{
 		public:
 			compound_statement_parser(pascal::frontend::scanner& lexer_, pascal::intermediate::symbol_table_stack& stable_);
 			~compound_statement_parser();
-			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse(std::shared_ptr<token>& token);
+			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse();
 		};
 	}
 }

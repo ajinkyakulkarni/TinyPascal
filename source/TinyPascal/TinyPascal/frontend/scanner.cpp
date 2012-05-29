@@ -46,56 +46,38 @@ namespace pascal {
 
         class start_processor : public token_processor {
         public:
-
             start_processor(scanner_impl& scanner);
-
             shared_ptr<token> processToken();
-
         };
 
         class identifier_processor : public token_processor {
         public:
-
             identifier_processor(scanner_impl& scanner);
-
             shared_ptr<token> processToken();
-
         };
 
         class numeric_processor : public token_processor {
         public:
-
             numeric_processor(scanner_impl& scanner);
-
             shared_ptr<token> processToken();
-
         };
 
         class special_character_processor : public token_processor {
         public:
-
             special_character_processor(scanner_impl& scanner);
-
             shared_ptr<token> processToken();
-
         };
 
         class whitespace_processor : public token_processor {
         public:
-
             whitespace_processor(scanner_impl& scanner);
-
             shared_ptr<token> processToken();
-
         };
 
         class string_processor : public token_processor {
         public:
-
             string_processor(scanner_impl& scanner);
-
             shared_ptr<token> processToken();
-
         };
 
         class scanner_impl : boost::noncopyable {
@@ -103,6 +85,7 @@ namespace pascal {
             scanner_impl(string const & filename)
             : filename_(filename), buffer_(filename, 10), current_(0), line_(1) {
                 processor_ = shared_ptr<token_processor>(new start_processor(*this));
+				token_ = shared_ptr<token>(new eof_token("",-1));
             }
 
             bool empty() const {
@@ -179,29 +162,38 @@ namespace pascal {
                 return reserved_words_table_[text];
             }
 
-            shared_ptr<token> getNextToken() {
+            void consume() 
+			{
 
-                if (this->empty())
-                    return shared_ptr<token>(new eof_token("", lineNumber()));
+                if (this->empty()){
+                    token_ = shared_ptr<token>(new eof_token("", lineNumber()));
+					return;
+				}
 
-                while (true) {
-
+                while (true) 
+				{
                     read();
 
-                    if (this->eof())
-                        return shared_ptr<token>(new eof_token("", lineNumber()));
+                    if (this->eof()){
+                        token_ =  shared_ptr<token>(new eof_token("", lineNumber()));
+						return;
+					}
 
                     processor_->configure();
 
                     shared_ptr<token> result = processor_->processToken();
-
-                    no_token* ptr = dynamic_cast<no_token*>(result.get() );
-                    if (!ptr)
-                        return result;
+                    if (result->getType() != tokens::NO_TOKEN){
+                        token_ =  result;
+						return;
+					}
                 }
 
-                return shared_ptr<token>(new no_token("", lineNumber()));
+                token_ = shared_ptr<token>(new no_token("", lineNumber()));
             }
+
+			std::shared_ptr<token> currentToken() const{
+				return token_;
+			}
 
             void assignIdentifierProcessor() {
                 processor_ = shared_ptr<token_processor>(new identifier_processor(*this));
@@ -231,6 +223,7 @@ namespace pascal {
             shared_ptr<token_processor> processor_;
             char current_;
             int line_;
+			shared_ptr<token> token_;
         };
 
         scanner::scanner(std::string const & filename) {
@@ -241,9 +234,13 @@ namespace pascal {
             delete impl_;
         }
 
-        shared_ptr<token> scanner::getNextToken() {
-            return impl_->getNextToken();
+        std::shared_ptr<token> scanner::current() const {
+			return impl_->currentToken();
         }
+
+		void scanner::consume(){
+			impl_->consume();
+		}
 
         token_processor::token_processor(scanner_impl& scanner) : scanner_(scanner) {
 

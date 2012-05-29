@@ -19,6 +19,8 @@ namespace pascal{
 		typedef pascal::intermediate::abstract_syntax_tree_node astnode;
 		typedef std::unique_ptr<astnode> unode;
 
+		using std::shared_ptr;
+
 
 		statement_parser::statement_parser(pascal::frontend::scanner& lexer_, pascal::intermediate::symbol_table_stack& stable_) : parser_base(lexer_, stable_)
 		{
@@ -30,14 +32,17 @@ namespace pascal{
 
 		}
 
-		std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> statement_parser::parse(std::shared_ptr<token>& token)
+		std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> statement_parser::parse()
 		{
-			if(token->getType() == tokens::BEGIN){
+
+			shared_ptr<token> current = lexer.current();
+
+			if(current->getType() == tokens::BEGIN){
 				compound_statement_parser cps(lexer, stable);
-				return cps.parse(token);
-			}else if(token->getType() == tokens::IDENTIFIER){
+				return cps.parse();
+			}else if(current->getType() == tokens::IDENTIFIER){
 				assignment_statement_parser asp(lexer, stable);
-				return asp.parse(token);
+				return asp.parse();
 			}else{
 				unode no_op_node(new astnode(pascal::intermediate::asttypes::NO_OP));
 				return no_op_node;
@@ -45,32 +50,32 @@ namespace pascal{
 
 		}
 
-        void statement_parser::parseStatementList(std::shared_ptr<token>& token, std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node>& compoundNode)
+        void statement_parser::parseStatementList(std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node>& compoundNode)
         {
-            while(token->getType() != tokens::END_OF_FILE && token->getType() != tokens::END)
+            while(lexer.current()->getType() != tokens::END_OF_FILE && lexer.current()->getType() != tokens::END)
             {
-                std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> statementNode = parse(token);
+                std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> statementNode = parse();
                 compoundNode->addChild(statementNode);
 
-                token = lexer.getNextToken();
-                if (token->getType() == tokens::SEMICOLON){
-                    token = lexer.getNextToken(); // consume ;
-                    continue;
-                }else if (token->getType() == tokens::END)
-                {
-                    token = lexer.getNextToken(); // consume END
+				lexer.consume();
 
+                if (lexer.current()->getType() == tokens::SEMICOLON){
+                    lexer.consume(); // consume ;
+                }else if (lexer.current()->getType() == tokens::END)
+                {
+                    lexer.consume();; // consume END
                 }else{
                     throw unexpected_token_exception("expected ; or END");
                 }
 
             }
 
-            if (token->getType() != tokens::END){
+            if (lexer.current()->getType() != tokens::END){
                 throw unexpected_token_exception("expected END");
             }
 
-            token = lexer.getNextToken(); // consume end token
+            lexer.consume();
+
         }
 	}
 }

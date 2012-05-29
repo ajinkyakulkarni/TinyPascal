@@ -36,36 +36,36 @@ namespace pascal{
 
 		}
 
-		std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> assignment_statement_parser::parse(std::shared_ptr<token>& token)
+		std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> assignment_statement_parser::parse()
 		{
 
 			unode assign_node(new astnode(pascal::intermediate::asttypes::ASSIGN));
 
-			if(stable.lookupContainsSymbol(token->getText()))
+			if(stable.lookupContainsSymbol(lexer.current()->getText()))
 			{
-				pascal::intermediate::symbol_table_entry& entry = stable.lookup(token->getText());
-				entry.appendLineNumber(token->getLine());
+				pascal::intermediate::symbol_table_entry& entry = stable.lookup(lexer.current()->getText());
+				entry.appendLineNumber(lexer.current()->getLine());
 
 			}else{
-				pascal::intermediate::symbol_table_entry entry(token->getText());
-				entry.appendLineNumber(token->getLine());
+				pascal::intermediate::symbol_table_entry entry(lexer.current()->getText());
+				entry.appendLineNumber(lexer.current()->getLine());
 				stable.addLocalSymbol(entry);
 			}
 
-			token = lexer.getNextToken(); //consume colon equals token
+			lexer.consume();//consume colon equals token
 
 			unode variable_node(new astnode(pascal::intermediate::asttypes::VARIABLE));
-			variable_node->setAttribute(pascal::intermediate::astattrtypes::ID, std::shared_ptr<pascal::intermediate::abstract_syntax_tree_attribute>(new pascal::intermediate::id_attribute(token->getText())));
+			variable_node->setAttribute(pascal::intermediate::astattrtypes::ID, std::shared_ptr<pascal::intermediate::abstract_syntax_tree_attribute>(new pascal::intermediate::id_attribute(lexer.current()->getText())));
 
 			assign_node->addChild(variable_node);
 
-			if (token->getType() != tokens::COLON_EQUALS) 
+			if (lexer.current()->getType() != tokens::COLON_EQUALS) 
 			{
 				throw unexpected_token_exception(":= expected in assignment statement");
 			}
 
 			expression_parser exp(lexer,stable);
-            std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> exp_result(exp.parse(token));
+            std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> exp_result(exp.parse());
 
 			assign_node->addChild(exp_result);
 

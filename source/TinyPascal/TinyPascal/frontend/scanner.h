@@ -21,13 +21,11 @@ namespace pascal {
 
         class scanner : boost::noncopyable {
         public:
-
             scanner(std::string const & filename_);
-
             ~scanner();
 
-            std::shared_ptr<token> getNextToken();
-
+			void consume();
+            std::shared_ptr<token> current() const;
         private:
             scanner_impl *impl_;
         };

@@ -29,8 +29,8 @@ namespace pascal{
 		public:
 			statement_parser(pascal::frontend::scanner& scanner_, pascal::intermediate::symbol_table_stack& stable_);
 			~statement_parser();
-			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse(std::shared_ptr<token>& token);
-            void parseStatementList(std::shared_ptr<token>& token, std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node>& compoundNode);
+			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse();
+            void parseStatementList(std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node>& compoundNode);
 		};
 	}
 }

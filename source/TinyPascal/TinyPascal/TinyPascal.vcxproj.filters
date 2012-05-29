@@ -165,6 +165,12 @@
     <ClInclude Include="intermediate\id_attribute.h">
       <Filter>Header Files\intermediate</Filter>
     </ClInclude>
+    <ClInclude Include="frontend\message_printer.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="frontend\console_printer.h">
+      <Filter>Header Files\frontend</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="frontend\character_table.cpp">
@@ -277,6 +283,12 @@
     </ClCompile>
     <ClCompile Include="intermediate\id_attribute.cpp">
       <Filter>Source Files\intermediate</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\message_printer.cpp">
+      <Filter>Source Files\frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend\console_printer.cpp">
+      <Filter>Source Files\frontend</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

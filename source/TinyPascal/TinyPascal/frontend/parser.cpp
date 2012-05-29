@@ -26,33 +26,31 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 namespace pascal{
     namespace frontend{
 
+		using pascal::intermediate::abstract_syntax_tree;
+        using pascal::intermediate::abstract_syntax_tree_printer;
+		using std::shared_ptr;
+
         parser::parser(pascal::frontend::scanner& lexer_, pascal::intermediate::symbol_table_stack& symbol_table_stack_ ) : lexer(lexer_), stable(symbol_table_stack_)
         {
         }
 
         void parser::parse()
         {
-			using pascal::intermediate::abstract_syntax_tree;
-            using pascal::intermediate::abstract_syntax_tree_printer;
-
-            abstract_syntax_tree root;
 			
-			std::shared_ptr<token> token = lexer.getNextToken();
+            abstract_syntax_tree root;
+			lexer.consume(); // consume begin
 
-            if(token->getType() == tokens::BEGIN)
+            if(lexer.current()->getType() == tokens::BEGIN)
 			{
-
 				statement_parser sparser(this->lexer,this->stable);
-				std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> result(sparser.parse(token));
+				std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> result(sparser.parse());
                 root.assign(result);
-
 			}else{
-				// error we should start with begin....
+				
 			}
 
             abstract_syntax_tree_printer printer;
             printer.print(root);
-
         }
 
     }

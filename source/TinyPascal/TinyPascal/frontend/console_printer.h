@@ -7,32 +7,20 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
+#ifndef _CONSOLE_PRINTER_H_
+#define _CONSOLE_PRINTER_H_
 
-#include "compound_statement_parser.h"
+#include <string>
+#include "message_printer.h"
 
-namespace pascal{
-	namespace frontend{
-		compound_statement_parser::compound_statement_parser(pascal::frontend::scanner& lexer_, pascal::intermediate::symbol_table_stack& stable_) : statement_parser(lexer_, stable_)
-		{
-
-		}
-			
-		compound_statement_parser::~compound_statement_parser()
-		{
-
-		}
-
-		std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> compound_statement_parser::parse()
-		{
-
-			lexer.consume();
-
-			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> root(new pascal::intermediate::abstract_syntax_tree_node(pascal::intermediate::asttypes::COMPOUND));
-
-            statement_parser sparser(this->lexer, this->stable);
-            sparser.parseStatementList(root);
-
-            return root;
-		}
-	}
+namespace pascal {
+    namespace frontend {
+		class console_printer : public message_printer {
+        public:
+			void print(std::string const & message);
+			~console_printer() ;
+        };
+    }
 }
+
+#endif

@@ -14,17 +14,17 @@ namespace pascal{
 	namespace frontend{
 		expression_parser::expression_parser(pascal::frontend::scanner& lexer_, pascal::intermediate::symbol_table_stack& stable_) : parser_base(lexer_, stable_)
 		{
-
 		}
 			
 		expression_parser::~expression_parser()
 		{
-
 		}
 
-		std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> expression_parser::parse(std::shared_ptr<token>& token)
+		std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> expression_parser::parse()
 		{
 			return 0;
 		}
+
+
 	}
 }

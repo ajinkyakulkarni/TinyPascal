@@ -28,12 +28,12 @@ namespace pascal{
 		public:
 			expression_parser(pascal::frontend::scanner& lexer_, pascal::intermediate::symbol_table_stack& stable_);
 			~expression_parser();
-			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse(std::shared_ptr<token>& token);
+			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parse();
 		private:
-			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parseExpression(std::shared_ptr<token>& token);
-			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parseSimpleExpression(std::shared_ptr<token>& token);
-			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parseTerm(std::shared_ptr<token>& token);
-			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parseFactor(std::shared_ptr<token>& token);
+			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parseExpression();
+			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parseSimpleExpression();
+			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parseTerm();
+			std::unique_ptr<pascal::intermediate::abstract_syntax_tree_node> parseFactor();
 		};
 	}
 }
